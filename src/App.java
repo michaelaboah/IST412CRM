@@ -1,9 +1,11 @@
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import model.Customer;
 import utility.ExternalDataControl;
@@ -22,28 +24,17 @@ public class App {
         cus.setCustID(31574986);
         
         MainData.getCustomers().add(cus);
-        ArrayList<String> list = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray();
-        // jsonArray.add(MainData.getCustomers().get(0).getFirstName());
 
-        // System.out.println(JsonUtil.storeAsJArray(MainData.getCustomers()).get(0));
+        // JsonUtil.writeJson("customer.json", Customer.customerJsonArray(MainData.getCustomers()));
+        // System.out.println(JsonUtil.readJson("customer.json"));
 
-        JSONObject jObject = new JSONObject();
-        jObject.put("FirstName", cus.getFirstName());
-        jObject.put("LastName", cus.getLastName());
+        Object obj = new JSONParser().parse(new FileReader("customer.json"));
+        JSONObject jObject = (JSONObject) obj;
 
-
-        System.out.println(jObject);
+        JSONArray ja = (JSONArray) jObject.get("Customers");
+        JSONObject t = (JSONObject)ja.get(0);
+        System.out.println(t.get("UserName"));
 
 
-
-        jsonArray.addAll(MainData.getCustomers());
-        
-        // System.out.println(jsonArray);
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter("customer.json"));
-
-        // writer.write(jsonArray.);
-        writer.close();
     }
 }

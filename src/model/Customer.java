@@ -1,5 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 public class Customer {
     private String firstName, lastName, email, 
         username, password, address;
@@ -92,6 +97,27 @@ public class Customer {
         return "firstName:" ;
     }
     
+    public static JSONObject customerToJson(Customer cus){
+        var jObject = new JSONObject();
+        jObject.put("First Name", cus.firstName);
+        jObject.put("Last Name", cus.lastName);
+        jObject.put("Email", cus.email);
+        jObject.put("UserName", cus.username);
+        jObject.put("Password", cus.password);
+        jObject.put("Address", cus.address);
+        jObject.put("CustomerID", cus.custID);
+        return jObject;
+    }
+
+    public static JSONObject customerJsonArray(ArrayList<Customer> testArr){
+        JSONArray jsonArray = new JSONArray();
+        for (Customer element : testArr) {
+            jsonArray.add(customerToJson(element));
+        }
+        JSONObject jObject = new JSONObject();
+        jObject.put("Customers", jsonArray);
+    return jObject;
+    }
 
 
 }

@@ -24,11 +24,5 @@ public class MainData {
     }
 
 
-    // public static JSONArray convertCustomerToJson(){
-    //     JSONArray jArray = new JSONArray();
-    //     for (Customer customer : customers) {
-    //         jArray.add(customer.getFirstName());
-    //     }
-    // }
 
 }
