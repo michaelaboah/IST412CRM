@@ -28,11 +28,10 @@ public class App {
         // JsonUtil.writeJson("customer.json", Customer.customerJsonArray(MainData.getCustomers()));
         // System.out.println(JsonUtil.readJson("customer.json"));
 
-        Object obj = new JSONParser().parse(new FileReader("customer.json"));
-        JSONObject jObject = (JSONObject) obj;
 
-        JSONArray ja = (JSONArray) jObject.get("Customers");
-        JSONObject t = (JSONObject)ja.get(0);
+        
+        JSONArray ja = (JSONArray) JsonUtil.readJson("customer.json").get("Customers");
+        JSONObject t = (JSONObject) ja.get(0);
         System.out.println(t.get("UserName"));
 
 

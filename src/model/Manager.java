@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 public class Manager {
     
     private String fName, lName, username, password;
@@ -82,6 +85,25 @@ public class Manager {
 
     public void setManagerID(Integer managerID) {
         this.managerID = managerID;
+    }
+
+    public static JSONObject managerToJson(Manager man){
+        var jObject = new JSONObject();
+        jObject.put("Manager FirstName", man.fName);
+        jObject.put("Manager LastName", man.lName);
+        jObject.put("Manager Username", man.username);
+        jObject.put("Manager Password", man.password);
+        jObject.put("Manager Type", man.managerType);
+        jObject.put("ManagerID", man.managerID);
+        return jObject;
+    }
+
+    public static JSONArray managerJsonArray(ArrayList<Manager> testArr){
+        var jsonArray = new JSONArray();
+        for (Manager element : testArr) {
+            jsonArray.add(managerToJson(element));
+        }
+    return jsonArray;
     }
 
 } 

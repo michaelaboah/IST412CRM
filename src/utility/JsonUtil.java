@@ -40,7 +40,7 @@ public class JsonUtil {
 
     public static JSONObject readJson(String filepath){
         try {
-            var obj = new JSONParser().parse(new FileReader(filepath));
+            Object obj = new JSONParser().parse(new FileReader("customer.json"));
             JSONObject jObject = (JSONObject) obj;
             return jObject;
         } catch (Exception e) {
@@ -50,9 +50,8 @@ public class JsonUtil {
         }
     }
 
-    public static JSONObject saveAllData(String jsonName, JSONAware json){
-        var persistance = new JSONObject();
-        persistance.put(jsonName, json);
-        return persistance;
+    public static void saveAllData(String jsonName, JSONAware json){
+        
+        MainData.getDataPersistance().put(jsonName, json);
     }
 }
