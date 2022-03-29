@@ -17,16 +17,19 @@ public class Customer {
         this.custID = custID;
     }
 
-    public Customer() {
-        this.firstName = "Joe";
-        this.lastName = "Smith";
-        this.email = "joesmith@gmail.com";
-        this.username = "c1";
-        this.password = "12";
-        this.address = "543 Keswick Drive, Yardley, PA, 19067";
-        this.custID = 23;
-    }
+    // public Customer() {
+    //     this.firstName = "Joe";
+    //     this.lastName = "Smith";
+    //     this.email = "joesmith@gmail.com";
+    //     this.username = "c1";
+    //     this.password = "12";
+    //     this.address = "543 Keswick Drive, Yardley, PA, 19067";
+    //     this.custID = 23;
+    // }
 
+
+    public Customer() {
+    }
 
     public String getFirstName() {
         return this.firstName;
@@ -83,7 +86,12 @@ public class Customer {
     public void setCustID(Integer custID) {
         this.custID = custID;
     }
+
+    @Override
+    public String toString() {
+        return "firstName:" ;
+    }
     
-    
+
 
 }

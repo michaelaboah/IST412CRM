@@ -1,8 +1,12 @@
-package IST412CRM.utility;
+package utility;
 import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
+
+import model.*;
+
 public class MainData {
-    private static ArrayList<model.Customer> customers = new ArrayList<>();
+    private static ArrayList<Customer> customers = new ArrayList<>();
     private static ArrayList<Item> items = new ArrayList<>();
 
 
@@ -18,4 +22,13 @@ public class MainData {
     public static ArrayList<Item> getItems() {
         return items;
     }
+
+
+    // public static JSONArray convertCustomerToJson(){
+    //     JSONArray jArray = new JSONArray();
+    //     for (Customer customer : customers) {
+    //         jArray.add(customer.getFirstName());
+    //     }
+    // }
+
 }
