@@ -196,12 +196,12 @@ public class IssueTicket implements Serializable {
             JSONObject jObject = (JSONObject) jArray.get(i);
             ticket.setName(jObject.get("Ticket Name").toString());
             ticket.setDescription(jObject.get("Ticket Description").toString());
-            // ticket.setDateTime(LocalDateTime.parse(jObject.get("Number Created").toString()));
+            ticket.setDateTime(LocalDateTime.parse(jObject.get("Ticket Date").toString()));
             ticket.setResponse(jObject.get("Ticket Response").toString());
             ticket.setRecipient(Manager.jsonToManager((JSONObject)jObject.get("Ticket Recipient")));    
             ticket.setReportID(Integer.parseInt(jObject.get("Ticket ReportID").toString()));
-            // ticket.issueTicketsCreated = Integer.parseInt(jObject.get("Ticket Date").toString());
-            // ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
+            ticket.issueTicketsCreated = Integer.parseInt(jObject.get("Number Created").toString());
+            ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
             list.add(ticket);
         }
 
@@ -212,12 +212,9 @@ public class IssueTicket implements Serializable {
 
     @Override
     public String toString() {
-
-        return "id: " + getReportID() + "date/time of issue: " + getDateTime()
-                + "name: " + getName() + " email: " + custOwner.getEmail()
-                + " resolved status: " + getIsResolved() + "issue type: "
-                + getIssueType() + " description: " + getDescription();
-
+        return "IssueTicket [custOwner=" + custOwner + ", dateTime=" + dateTime + ", description=" + description
+                + ", isResolved=" + isResolved + ", issueType=" + issueType + ", name=" + name + ", recipient="
+                + recipient + ", reportID=" + reportID + ", response=" + response + "]";
     }
 
 
@@ -273,8 +270,6 @@ public class IssueTicket implements Serializable {
 			//Do some basic validations to check
 			//if user object does not break any assumption of system
 		}
-
-
 
 	}
 }

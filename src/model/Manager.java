@@ -11,6 +11,8 @@ public class Manager {
     private ManagerType managerType;
     private Integer managerID;
 
+
+
     public enum ManagerType {
         CRM, // Just to access one employee use case
         SHIPMENT, // For shipment issues
@@ -87,6 +89,12 @@ public class Manager {
         this.managerID = managerID;
     }
 
+    @Override
+    public String toString() {
+        return "Manager [fName=" + fName + ", lName=" + lName + ", managerID=" + managerID + ", managerType="
+                + managerType + ", password=" + password + ", username=" + username + "]";
+    }
+
     public static JSONObject managerToJson(Manager man){
         var jObject = new JSONObject();
         jObject.put("Manager FirstName", man.fName);
@@ -104,7 +112,30 @@ public class Manager {
         man.lName = json.get("Manager LastName").toString();
         man.username = json.get("Manager Username").toString();
         man.password = json.get("Manager Password").toString();
-        // man.managerType = (ManagerType) json.get("Manager Type");
+        switch (json.get("Manager Type").toString()) {
+            case "CRM":
+                man.setManagerType(ManagerType.CRM);
+                break;
+
+            case "SHIPMENT":
+                man.setManagerType(ManagerType.SHIPMENT);
+                break;
+
+            case "BILLING":
+                man.setManagerType(ManagerType.BILLING);
+                break;
+            
+            case "PRODUCT":
+                man.setManagerType(ManagerType.PRODUCT);
+                break;
+
+            case "TECH_SUPPORT":
+                man.setManagerType(ManagerType.TECH_SUPPORT);
+                break;
+
+            default:
+                break;
+        }
         man.managerID = Integer.parseInt(json.get("ManagerID").toString());
         return man;
     }

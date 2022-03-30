@@ -94,7 +94,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "firstName:" ;
+        return "Customer [address=" + address + ", custID=" + custID + ", email=" + email + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", password=" + password + ", username=" + username + "]";
     }
     
     public static JSONObject customerToJson(Customer cus){
@@ -117,7 +118,7 @@ public class Customer {
         cus.username = jsonObject.get("UserName").toString();
         cus.password = jsonObject.get("Password").toString();
         cus.address = jsonObject.get("Address").toString();
-        cus.custID = (Integer) jsonObject.get("CustomerID");
+        cus.custID = Integer.parseInt(jsonObject.get("CustomerID").toString());
         return cus;
     }
 
