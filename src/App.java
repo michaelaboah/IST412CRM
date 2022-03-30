@@ -40,9 +40,9 @@ public class App {
         ticket.setIssueType(IssueType.BILLING);
         ticket.setResponse("response");
 
-        MainData.getIssueTickets().add(ticket);
+        // MainData.getIssueTickets().add(ticket);
         
-        JsonUtil.writeJson("IssueTicket.json", IssueTicket.issueTicketJsonArray(MainData.getIssueTickets()));
+        // JsonUtil.writeJson("IssueTicket.json", IssueTicket.issueTicketJsonArray(MainData.getIssueTickets()));
         // System.out.println(JsonUtil.readJsonObject("IssueTicket.json"));
 
 
@@ -56,9 +56,15 @@ public class App {
         
         // System.out.println(JsonUtil.readJsonArray("IssueTicket.json", 0).get("Ticket Recipient"));
 
-        JSONObject test = (JSONObject) JsonUtil.readJsonArray("IssueTicket.json", 0).get("Ticket Recipient");
-        System.out.println(test.get("Manager Password"));
-        // System.out.println(MainData.getIssueTickets().toString());
+        
+        // for (int i = 0; i < args.length; i++) {
+        //     MainData.getIssueTickets().add((IssueTicket)JsonUtil.readJsonArray("IssueTicket.json").get(i));
+        // }
+
+        // System.out.println(JsonUtil.readJsonArray("IssueTicket.json").get(0));
+
+
+        // System.out.println(MainData.getIssueTickets().get(0));
         
         // System.out.println(t.get("UserName"));
 

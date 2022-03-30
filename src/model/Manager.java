@@ -98,6 +98,17 @@ public class Manager {
         return jObject;
     }
 
+    public static Manager jsonToManager(JSONObject json){
+        var man = new Manager();
+        man.fName = json.get("Manager FirstName").toString();
+        man.lName = json.get("Manager LastName").toString();
+        man.username = json.get("Manager Username").toString();
+        man.password = json.get("Manager Password").toString();
+        man.managerType = (ManagerType) json.get("Manager Type");
+        man.managerID = (Integer) json.get("ManagerID");
+        return man;
+    }
+
     public static JSONArray managerJsonArray(ArrayList<Manager> testArr){
         var jsonArray = new JSONArray();
         for (Manager element : testArr) {

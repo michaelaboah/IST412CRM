@@ -42,7 +42,6 @@ public class JsonUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static JSONObject readJsonObject(String filepath){
@@ -57,11 +56,23 @@ public class JsonUtil {
         }
     }
 
-    public static JSONObject readJsonArray(String filepath, int i){
+    
+    public static JSONArray readJsonArray(String filepath){
         try {
             Object parsed = new JSONParser().parse(new FileReader(filepath));
             JSONArray jArray = (JSONArray) parsed;
-            JSONObject jObject = (JSONObject) jArray.get(i);
+            // JSONObject jObject = (JSONObject) jArray.get(i);
+            return jArray;
+        } catch (Exception e) {
+            //TODO: handle exception
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static JSONObject jArrToJObj(JSONArray arr, int i){
+        try {
+            JSONObject jObject = (JSONObject) arr.get(i);
             return jObject;
         } catch (Exception e) {
             //TODO: handle exception

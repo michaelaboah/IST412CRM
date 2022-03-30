@@ -187,6 +187,29 @@ public class IssueTicket implements Serializable {
     return jsonArray;
     }
 
+
+
+    public static ArrayList<IssueTicket> jsonToIssueTicket(JSONArray jArray){
+        var list = new ArrayList<IssueTicket>();
+        var ticket = new IssueTicket();
+        for (int i = 0; i < jArray.size(); i++) {
+            JSONObject jObject = (JSONObject) jArray.get(i);
+            ticket.setName(jObject.get("Ticket Name").toString());
+            ticket.setDescription(jObject.get("Ticket Description").toString());
+            ticket.setDateTime(LocalDateTime.parse(jObject.get("Number Created").toString()));
+            ticket.setResponse(jObject.get("Ticket Response").toString());
+            ticket.setRecipient(Manager.jsonToManager((JSONObject)jObject.get("Ticket Recipient")));    
+            ticket.setReportID((Integer)jObject.get("Ticket ReportID"));
+            ticket.issueTicketsCreated = (Integer) jObject.get("Ticket Date");
+            ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
+            list.add(ticket);
+        }
+
+        
+
+        return list;
+    }
+
     @Override
     public String toString() {
 
