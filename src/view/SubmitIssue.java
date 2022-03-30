@@ -81,13 +81,25 @@ public class SubmitIssue extends JPanel {
         backBtn.setOpaque(true);
         backBtn.setBorderPainted(false);
         add(backBtn);
+    }
 
+    public JComboBox getComboBox() {
+        return comboBox;
+    }
 
+    public TextArea getTextArea() {
+        return textArea;
+    }
 
+    public JButton getSubmitForm() {
+        return submitForm;
+    }
 
+    public JButton getLogout() {
+        return logout;
+    }
 
-
-
-
+    public JButton getBackBtn() {
+        return backBtn;
     }
 }
