@@ -93,7 +93,7 @@ public class Manager {
         jObject.put("Manager LastName", man.lName);
         jObject.put("Manager Username", man.username);
         jObject.put("Manager Password", man.password);
-        jObject.put("Manager Type", man.managerType);
+        jObject.put("Manager Type", man.managerType.toString());
         jObject.put("ManagerID", man.managerID);
         return jObject;
     }

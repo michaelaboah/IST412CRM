@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -8,6 +9,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import model.Customer;
+import model.IssueTicket;
+import model.IssueType;
+import model.Manager;
+import model.Manager.ManagerType;
 import utility.ExternalDataControl;
 import utility.JsonUtil;
 import utility.MainData;
@@ -22,17 +27,40 @@ public class App {
         cus.setUsername("customer username");
         cus.setPassword("customer password");
         cus.setCustID(31574986);
-        
         MainData.getCustomers().add(cus);
 
-        // JsonUtil.writeJson("customer.json", Customer.customerJsonArray(MainData.getCustomers()));
-        // System.out.println(JsonUtil.readJson("customer.json"));
+        IssueTicket ticket = new IssueTicket();
+        ticket.setName("ticketName");
+        ticket.setDescription("ticketDescription");
+        ticket.setReportID(8520562);
+        ticket.setDateTime(LocalDateTime.now());
+        ticket.setIsResolved(false);
+        ticket.setCustOwner(new Customer("Joe", "Smith", "joesmith@gmail.com", "username", "password", "address", 133233));
+        ticket.setRecipient(new Manager("Joe", "Dude", "m1", "12", ManagerType.CRM, 498654));
+        ticket.setIssueType(IssueType.BILLING);
+        ticket.setResponse("response");
+
+        MainData.getIssueTickets().add(ticket);
+        
+        JsonUtil.writeJson("IssueTicket.json", IssueTicket.issueTicketJsonArray(MainData.getIssueTickets()));
+        // System.out.println(JsonUtil.readJsonObject("IssueTicket.json"));
 
 
         
-        JSONArray ja = (JSONArray) JsonUtil.readJson("customer.json").get("Customers");
-        JSONObject t = (JSONObject) ja.get(0);
-        System.out.println(t.get("UserName"));
+        // JSONArray ja = (JSONArray) JsonUtil.readJson("IssueTicket.json").;
+        // System.out.println(JsonUtil.readJsonArray("IssueTicket.json"));
+        
+        
+        // System.out.println(JsonUtil.readJsonObject("IssueTicket.json").get("Ticket Recipient"));
+
+        
+        // System.out.println(JsonUtil.readJsonArray("IssueTicket.json", 0).get("Ticket Recipient"));
+
+        JSONObject test = (JSONObject) JsonUtil.readJsonArray("IssueTicket.json", 0).get("Ticket Recipient");
+        System.out.println(test.get("Manager Password"));
+        // System.out.println(MainData.getIssueTickets().toString());
+        
+        // System.out.println(t.get("UserName"));
 
 
     }
