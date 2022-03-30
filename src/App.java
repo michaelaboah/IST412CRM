@@ -43,8 +43,15 @@ public class App {
         // MainData.getIssueTickets().add(ticket);
         
         // MainData.setIssueTickets();
-        
+            // JSONObject test = (JSONObject) JsonUtil.readJsonArray("IssueTicket.json").get(0);
+            // System.out.println(test.get("Ticket Date"));
 
-        System.out.println(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")).get(0).getRecipient());
+            // var clock = LocalDateTime.parse(test.get("Ticket Date").toString());
+            // System.out.println(clock);
+            
+        // System.out.println(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")).get(0).getDateTime());
+
+        MainData.setIssueTickets(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")));
+        System.out.println(MainData.getIssueTickets().get(0).getCustOwner());
     }
 }
