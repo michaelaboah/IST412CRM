@@ -6,9 +6,13 @@ public class main {
 
         LoginUI loginUI = new LoginUI();
         ManagerUI manager = new ManagerUI();
+        CustomerUI customerUI = new CustomerUI();
+        SubmitIssue submitIssue = new SubmitIssue();
 
         frame.add(loginUI);
         frame.add(manager);
+        frame.add(customerUI);
+        frame.add(submitIssue);
         frame.setVisible(true);
     }
 }

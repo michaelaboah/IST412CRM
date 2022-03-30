@@ -5,14 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5c98e70-eb57-43b2-b3f5-010373284629" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/CRMJframe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ListCntl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ListCntl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UserList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/SubmitIssue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/model/IssueTicket$IssueTicketBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/model/IssueTicket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/model/Manager$ManagerType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/model/Manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/utility/JsonUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/utility/MainData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/ManagerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/ManagerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IssueOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IssueOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IssueTicket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IssueTicket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/MainData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/MainData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/CustomerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CustomerUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoginUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ManagerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ManagerUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/RecordSearchUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/RecordSearchUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +104,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

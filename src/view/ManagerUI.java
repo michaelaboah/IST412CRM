@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ManagerUI extends JPanel {
 
-    JLabel name = new JLabel("Carlos Flores");
+    JLabel userName = new JLabel("Carlos Flores");
     JLabel ticketAmount = new JLabel("1");
     JButton resolveBtn = new JButton("Resolve Issue Ticket");
     JButton reviewBtn = new JButton("Review All Tickets");
@@ -17,7 +17,7 @@ public class ManagerUI extends JPanel {
     public ManagerUI()  {
         setBounds(50, 30, 1180, 620);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setBackground(Color.decode("#212121"));
 
         JLabel title = new JLabel("CRM System");
@@ -32,10 +32,10 @@ public class ManagerUI extends JPanel {
         welcomeTxt.setForeground(Color.decode("#ffffff"));
         add(welcomeTxt);
 
-        name.setBounds(596, 208, 200, 28);
-        name.setFont(new Font("Helvetica", Font.PLAIN, 24));
-        name.setForeground(Color.decode("#ffffff"));
-        add(name);
+        userName.setBounds(596, 208, 200, 28);
+        userName.setFont(new Font("Helvetica", Font.PLAIN, 24));
+        userName.setForeground(Color.decode("#ffffff"));
+        add(userName);
 
         JLabel description = new JLabel("You have ");
         description.setBounds(408, 286, 90, 21);
@@ -101,7 +101,23 @@ public class ManagerUI extends JPanel {
 
     }
 
+    public JLabel getUserName() {
+        return userName;
+    }
 
+    public JLabel getTicketAmount() {
+        return ticketAmount;
+    }
 
+    public JButton getResolveBtn() {
+        return resolveBtn;
+    }
 
+    public JButton getReviewBtn() {
+        return reviewBtn;
+    }
+
+    public JButton getLogout() {
+        return logout;
+    }
 }
