@@ -1,3 +1,4 @@
+
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,42 +17,23 @@ import model.Manager.ManagerType;
 import utility.ExternalDataControl;
 import utility.JsonUtil;
 import utility.MainData;
+import view.*;
 
-public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println();
+public class App {    
+    public static void main(String[] args) {
+    CRMJframe frame = new CRMJframe();
 
-        Customer cus = new Customer();
-        cus.setFirstName("customer firstname");
-        cus.setLastName("customer lastName");
-        cus.setUsername("customer username");
-        cus.setPassword("customer password");
-        cus.setCustID(31574986);
-        MainData.getCustomers().add(cus);
+    LoginUI loginUI = new LoginUI();
+    ManagerUI manager = new ManagerUI();
+    CustomerUI customerUI = new CustomerUI();
+    SubmitIssue submitIssue = new SubmitIssue();
 
-        IssueTicket ticket = new IssueTicket();
-        ticket.setName("ticketName");
-        ticket.setDescription("ticketDescription");
-        ticket.setReportID(8520562);
-        ticket.setDateTime(LocalDateTime.now());
-        ticket.setIsResolved(false);
-        ticket.setCustOwner(new Customer("Joe", "Smith", "joesmith@gmail.com", "username", "password", "address", 133233));
-        ticket.setRecipient(new Manager("Joe", "Dude", "m1", "12", ManagerType.CRM, 498654));
-        ticket.setIssueType(IssueType.BILLING);
-        ticket.setResponse("response");
+    frame.add(loginUI);
+    frame.add(manager);
+    frame.add(customerUI);
+    frame.add(submitIssue);
+    frame.setVisible(true);
 
-        // MainData.getIssueTickets().add(ticket);
-        
-        // MainData.setIssueTickets();
-            // JSONObject test = (JSONObject) JsonUtil.readJsonArray("IssueTicket.json").get(0);
-            // System.out.println(test.get("Ticket Date"));
-
-            // var clock = LocalDateTime.parse(test.get("Ticket Date").toString());
-            // System.out.println(clock);
-            
-        // System.out.println(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")).get(0).getDateTime());
-
-        MainData.setIssueTickets(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")));
-        System.out.println(MainData.getIssueTickets().get(0).getCustOwner());
     }
 }
+
