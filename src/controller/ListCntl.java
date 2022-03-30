@@ -29,9 +29,9 @@ public class ListCntl {
         showLoginUI();
     }
 
-    public IssueOrderList getOrderList() {
-        return IssueOrder.getIssueOrderList();
-    }
+    // public IssueOrderList getOrderList() {
+    //     return IssueOrder.getIssueOrderList();
+    // }
 
     //Ticket List
     public ArrayList<IssueTicket> getTicketList() {

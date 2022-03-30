@@ -93,9 +93,20 @@ public class Manager {
         jObject.put("Manager LastName", man.lName);
         jObject.put("Manager Username", man.username);
         jObject.put("Manager Password", man.password);
-        jObject.put("Manager Type", man.managerType);
+        jObject.put("Manager Type", man.managerType.toString());
         jObject.put("ManagerID", man.managerID);
         return jObject;
+    }
+
+    public static Manager jsonToManager(JSONObject json){
+        var man = new Manager();
+        man.fName = json.get("Manager FirstName").toString();
+        man.lName = json.get("Manager LastName").toString();
+        man.username = json.get("Manager Username").toString();
+        man.password = json.get("Manager Password").toString();
+        // man.managerType = (ManagerType) json.get("Manager Type");
+        man.managerID = Integer.parseInt(json.get("ManagerID").toString());
+        return man;
     }
 
     public static JSONArray managerJsonArray(ArrayList<Manager> testArr){

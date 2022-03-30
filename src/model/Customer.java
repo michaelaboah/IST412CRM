@@ -109,6 +109,18 @@ public class Customer {
         return jObject;
     }
 
+    public static Customer jsonToCustomer(JSONObject jsonObject){
+        var cus = new Customer();
+        cus.firstName = jsonObject.get("First Name").toString();
+        cus.lastName = jsonObject.get("Last Name").toString();
+        cus.email = jsonObject.get("Email").toString();
+        cus.username = jsonObject.get("UserName").toString();
+        cus.password = jsonObject.get("Password").toString();
+        cus.address = jsonObject.get("Address").toString();
+        cus.custID = (Integer) jsonObject.get("CustomerID");
+        return cus;
+    }
+
     public static JSONObject customerJsonArray(ArrayList<Customer> testArr){
         JSONArray jsonArray = new JSONArray();
         for (Customer element : testArr) {
