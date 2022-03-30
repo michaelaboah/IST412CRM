@@ -1,119 +1,107 @@
 package view;
 
-import controller.ListCntl;
-import model.Manager.ManagerType;
-
-import java.security.AllPermission;
-
 import javax.swing.*;
+import java.awt.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
-public class ManagerUI extends javax.swing.JFrame {
+public class ManagerUI extends JPanel {
 
-    private ListCntl theListCntl;
+    JLabel name = new JLabel("Carlos Flores");
+    JLabel ticketAmount = new JLabel("1");
+    JButton resolveBtn = new JButton("Resolve Issue Ticket");
+    JButton reviewBtn = new JButton("Review All Tickets");
+    JButton logout = new JButton("Logout");
 
+    public ManagerUI()  {
+        setBounds(50, 30, 1180, 620);
+        setLayout(null);
+        setVisible(true);
+        setBackground(Color.decode("#212121"));
 
-    public ManagerUI(ListCntl listCntl) {
-        this.theListCntl = listCntl;
-        this.initComponents();
-        this.addALButtons();
+        JLabel title = new JLabel("CRM System");
+        title.setBounds(0, 0, 203, 38);
+        title.setFont(new Font("Helvetica", Font.BOLD, 32));
+        title.setForeground(Color.decode("#ffffff"));
+        add(title);
+
+        JLabel welcomeTxt = new JLabel("Welcome back, ");
+        welcomeTxt.setBounds(429, 208, 322, 28);
+        welcomeTxt.setFont(new Font("Helvetica", Font.PLAIN, 24));
+        welcomeTxt.setForeground(Color.decode("#ffffff"));
+        add(welcomeTxt);
+
+        name.setBounds(596, 208, 200, 28);
+        name.setFont(new Font("Helvetica", Font.PLAIN, 24));
+        name.setForeground(Color.decode("#ffffff"));
+        add(name);
+
+        JLabel description = new JLabel("You have ");
+        description.setBounds(408, 286, 90, 21);
+        description.setFont(new Font("Helvetica", Font.PLAIN, 18));
+        description.setForeground(Color.decode("#ffffff"));
+        add(description);
+
+        ticketAmount.setBounds(487, 286, 20, 21);
+        ticketAmount.setFont(new Font("Helvetica", Font.BOLD, 18));
+        ticketAmount.setForeground(Color.decode("#ffffff"));
+        add(ticketAmount);
+
+        JLabel descContinue = new JLabel("issues ticket pending to be resolve.");
+        descContinue.setBounds(500, 286, 280, 21);
+        descContinue.setFont(new Font("Helvetica", Font.PLAIN, 18));
+        descContinue.setForeground(Color.decode("#ffffff"));
+        add(descContinue);
+
+        resolveBtn.setBounds(298, 357, 230, 55);
+        resolveBtn.setFocusable(false);
+        resolveBtn.setFont(new Font("Helvetica", Font.BOLD, 18));
+        resolveBtn.setForeground(Color.white);
+        resolveBtn.setBackground(Color.decode("#000000"));
+        resolveBtn.setOpaque(true);
+        resolveBtn.setBorderPainted(false);
+        add(resolveBtn);
+
+        JLabel orTxt = new JLabel("OR");
+        orTxt.setBounds(578, 374, 30, 21);
+        orTxt.setFont(new Font("Helvetica", Font.PLAIN, 18));
+        orTxt.setForeground(Color.decode("#ffffff"));
+        add(orTxt);
+
+        reviewBtn.setBounds(652, 357, 230, 55);
+        reviewBtn.setFocusable(false);
+        reviewBtn.setFont(new Font("Helvetica", Font.BOLD, 18));
+        reviewBtn.setForeground(Color.white);
+        reviewBtn.setBackground(Color.decode("#000000"));
+        reviewBtn.setOpaque(true);
+        reviewBtn.setBorderPainted(false);
+        add(reviewBtn);
+
+        JLabel date = new JLabel("" + LocalDate.now());
+        date.setBounds(1080, 0, 100, 21);
+        date.setForeground(Color.white);
+        date.setFont(new Font("Helvetica", Font.PLAIN, 18));
+        add(date);
+
+        JLabel time = new JLabel("" + LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm a")));
+        time.setBounds(1095, 31, 80, 21);
+        time.setFont(new Font("Helvetica", Font.PLAIN, 18));
+        time.setForeground(Color.white  );
+        add(time);
+
+        logout.setBounds(1050, 570, 130, 50);
+        logout.setFocusable(false);
+        logout.setFont(new Font("Helvetica", Font.BOLD, 18));
+        logout.setForeground(Color.white);
+        logout.setBackground(Color.decode("#484848"));
+        logout.setOpaque(true);
+        logout.setBorderPainted(false);
+        add(logout);
+
     }
 
-    private void initComponents() {
-
-        welcomeLabel = new javax.swing.JLabel();
-        resolveButton = new javax.swing.JButton();
-        managerTypeLabel = new javax.swing.JLabel();
-        recordsButton = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        welcomeLabel.setFont(new java.awt.Font("Helvetica", 1, 20)); // NOI18N
-        welcomeLabel.setText("Welcome, " + theListCntl.getCurrentManager().getFName() + ".");
-        welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        
-
-        resolveButton.setBackground(new java.awt.Color(41,134,204));
-        resolveButton.setFont(new java.awt.Font("Helvetica", 1, 13)); // NOI18N
-        resolveButton.setForeground(new java.awt.Color(255, 255, 255));
-        resolveButton.setOpaque(true);
-        resolveButton.setBorderPainted(false);
-        resolveButton.setText("Resolve Assigned Issue Tickets");
-
-        managerTypeLabel.setFont(new java.awt.Font("Helvetica", 0, 13)); // NOI18N
-        managerTypeLabel.setText("Manager Type: " + theListCntl.getCurrentManager().getManagerType());
-
-        if(theListCntl.getCurrentManager().getManagerType() != ManagerType.CRM) {
-            recordsButton.setBackground(new java.awt.Color(91,91,91));
-        }
-        else {
-            recordsButton.setBackground(new java.awt.Color(41,134,204));
-        }
-        recordsButton.setForeground(new java.awt.Color(255, 255, 255));
-        recordsButton.setFont(new java.awt.Font("Helvetica", 1, 13)); // NOI18N
-        
-        recordsButton.setOpaque(true);
-        recordsButton.setBorderPainted(false);
-        recordsButton.setFont(new java.awt.Font("Helvetica", 1, 13)); // NOI18N
-        recordsButton.setText("Review Issue Ticket Records");
-
-        javax.swing.GroupLayout menuLayout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(menuLayout);
-        menuLayout.setHorizontalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuLayout.createSequentialGroup()
-                        .addComponent(managerTypeLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayout.createSequentialGroup()
-                        .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(recordsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(resolveButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE))
-                        .addContainerGap())))
-        );
-        menuLayout.setVerticalGroup(
-            menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuLayout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(managerTypeLabel)
-                .addGap(26, 26, 26)
-                .addComponent(welcomeLabel)
-                .addGap(18, 18, 18)
-                .addComponent(resolveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(recordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-        );
-
-        pack();
-        
-        if(theListCntl.getCurrentManager().getManagerType() != ManagerType.CRM) {
-            recordsButton.setEnabled(false);
-        }
-    }// </editor-fold>>                         
 
 
-    // Variables declaration - do not modify                     
-    private javax.swing.JLabel welcomeLabel;
-    private javax.swing.JLabel managerTypeLabel;
-    private javax.swing.JButton recordsButton;
-    private javax.swing.JButton resolveButton;
-    // End of variables declaration
-  
 
-    private void addALButtons() {
-        recordsButton.addActionListener(e -> {
-            System.out.println("records clicked!");
-            this.setVisible(false);
-            RecordSearchUI recordUI = new RecordSearchUI(theListCntl);
-            recordUI.setVisible(true);
-        });
-
-        resolveButton.addActionListener(e -> {
-            System.out.println("resolve clicked!");
-        });
-    }
-}    
+}
