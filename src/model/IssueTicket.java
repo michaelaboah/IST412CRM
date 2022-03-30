@@ -196,12 +196,12 @@ public class IssueTicket implements Serializable {
             JSONObject jObject = (JSONObject) jArray.get(i);
             ticket.setName(jObject.get("Ticket Name").toString());
             ticket.setDescription(jObject.get("Ticket Description").toString());
-            ticket.setDateTime(LocalDateTime.parse(jObject.get("Number Created").toString()));
+            // ticket.setDateTime(LocalDateTime.parse(jObject.get("Number Created").toString()));
             ticket.setResponse(jObject.get("Ticket Response").toString());
             ticket.setRecipient(Manager.jsonToManager((JSONObject)jObject.get("Ticket Recipient")));    
-            ticket.setReportID((Integer)jObject.get("Ticket ReportID"));
-            ticket.issueTicketsCreated = (Integer) jObject.get("Ticket Date");
-            ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
+            ticket.setReportID(Integer.parseInt(jObject.get("Ticket ReportID").toString()));
+            // ticket.issueTicketsCreated = Integer.parseInt(jObject.get("Ticket Date").toString());
+            // ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
             list.add(ticket);
         }
 

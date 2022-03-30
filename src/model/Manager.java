@@ -104,8 +104,8 @@ public class Manager {
         man.lName = json.get("Manager LastName").toString();
         man.username = json.get("Manager Username").toString();
         man.password = json.get("Manager Password").toString();
-        man.managerType = (ManagerType) json.get("Manager Type");
-        man.managerID = (Integer) json.get("ManagerID");
+        // man.managerType = (ManagerType) json.get("Manager Type");
+        man.managerID = Integer.parseInt(json.get("ManagerID").toString());
         return man;
     }
 
