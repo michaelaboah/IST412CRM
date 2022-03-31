@@ -205,9 +205,6 @@ public class IssueTicket implements Serializable {
             ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
             list.add(ticket);
         }
-
-        
-
         return list;
     }
 

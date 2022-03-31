@@ -41,7 +41,7 @@ public class ListCntl {
             String username = theLoginUI.getUserNameField().getText();
             String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
 
-            System.out.println(MainData.getCustomers());
+            System.out.println(MainData.getCustomers().get(0).getEmail());
 
 
         });
