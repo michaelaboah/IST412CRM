@@ -21,6 +21,9 @@ import view.*;
 
 public class App {    
     public static void main(String[] args) {
+
+        MainData.setIssueTickets(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")));
+        
     CRMJframe frame = new CRMJframe();
 
     LoginUI loginUI = new LoginUI();
