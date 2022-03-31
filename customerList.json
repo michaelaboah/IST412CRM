@@ -1,0 +1,47 @@
+[
+    {
+        "Email": "myleecherry11@gmail.com",
+        "UserName": "mcherry0903",
+        "Address": "123 Road St",
+        "First Name": "Mylee",
+        "CustomerID": 17284683,
+        "Last Name": "Cherry",
+        "Password": "password123"
+    },
+    {
+        "Email": "annetwiggins@yahoo.com",
+        "UserName": "aneewiggins3",
+        "Address": "462 College Ave",
+        "First Name": "Anee",
+        "CustomerID": 83475259,
+        "Last Name": "Wiggins",
+        "Password": "wordpass321"
+    },
+    {
+        "Email": "brentsm555@hotmail.com",
+        "UserName": "brentman111",
+        "Address": "342 Hawethorne Ave",
+        "First Name": "Brent",
+        "CustomerID": 90256146,
+        "Last Name": "Smith",
+        "Password": "passingwords987"
+    },
+    {
+        "Email": "mattmannpersonal@gmail.com",
+        "UserName": "mannmatt1",
+        "Address": "462 Town Blvd",
+        "First Name": "Matthew",
+        "CustomerID": 34164256,
+        "Last Name": "Mann",
+        "Password": "pass555"
+    },
+    {
+        "Email": "pattykaykay@yahoo.com",
+        "UserName": "kaypt322",
+        "Address": "994 Lancaster Ave",
+        "First Name": "Patricia",
+        "CustomerID": 32526211,
+        "Last Name": "McKay",
+        "Password": "word222"
+    }
+]

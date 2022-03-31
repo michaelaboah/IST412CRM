@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 public class Customer {
     private String firstName, lastName, email, 
@@ -98,6 +99,7 @@ public class Customer {
                 + ", lastName=" + lastName + ", password=" + password + ", username=" + username + "]";
     }
     
+    //Method to convert Customer object to JSONObject
     public static JSONObject customerToJson(Customer cus){
         var jObject = new JSONObject();
         jObject.put("First Name", cus.firstName);
@@ -110,6 +112,16 @@ public class Customer {
         return jObject;
     }
 
+    // Method to convert an Arraylist of type Customer to a JSONArray
+    public static JSONArray customerToJsonArray(ArrayList<Customer> testArr){
+        JSONArray jsonArray = new JSONArray();
+        for (Customer element : testArr) {
+            jsonArray.add(customerToJson(element));
+        }
+    return jsonArray;
+    }
+
+    //Method to convert JSON with a meta type of Customer to a real Customer Object
     public static Customer jsonToCustomer(JSONObject jsonObject){
         var cus = new Customer();
         cus.firstName = jsonObject.get("First Name").toString();
@@ -122,15 +134,16 @@ public class Customer {
         return cus;
     }
 
-    public static JSONObject customerJsonArray(ArrayList<Customer> testArr){
-        JSONArray jsonArray = new JSONArray();
-        for (Customer element : testArr) {
-            jsonArray.add(customerToJson(element));
+    public static ArrayList<Customer> jArrayToCustArray(JSONArray jArray){
+        var customerList = new ArrayList<Customer>();
+        
+        for (int i = 0; i < jArray.size(); i++) {
+            customerList.add(jsonToCustomer((JSONObject)jArray.get(i)));
         }
-        JSONObject jObject = new JSONObject();
-        jObject.put("Customers", jsonArray);
-    return jObject;
+        return customerList;
     }
+
+
 
 
 }
