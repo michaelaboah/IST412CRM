@@ -94,7 +94,8 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "firstName:" ;
+        return "Customer [address=" + address + ", custID=" + custID + ", email=" + email + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", password=" + password + ", username=" + username + "]";
     }
     
     public static JSONObject customerToJson(Customer cus){
@@ -107,6 +108,18 @@ public class Customer {
         jObject.put("Address", cus.address);
         jObject.put("CustomerID", cus.custID);
         return jObject;
+    }
+
+    public static Customer jsonToCustomer(JSONObject jsonObject){
+        var cus = new Customer();
+        cus.firstName = jsonObject.get("First Name").toString();
+        cus.lastName = jsonObject.get("Last Name").toString();
+        cus.email = jsonObject.get("Email").toString();
+        cus.username = jsonObject.get("UserName").toString();
+        cus.password = jsonObject.get("Password").toString();
+        cus.address = jsonObject.get("Address").toString();
+        cus.custID = Integer.parseInt(jsonObject.get("CustomerID").toString());
+        return cus;
     }
 
     public static JSONObject customerJsonArray(ArrayList<Customer> testArr){

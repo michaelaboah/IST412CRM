@@ -1,3 +1,4 @@
+
 package controller;
 
 import model.*;
@@ -14,24 +15,24 @@ public class ListCntl {
     private LoginUI theLoginUI;
     private CustomerUI theCustomerUI;
     private ManagerUI theManagerUI;
-    private RecordSearchUI theRecordSearchUI;
-    private UserList theUserList;
+    // private RecordSearchUI theRecordSearchUI;
+    // private UserList theUserList;
 
     public ListCntl() {
 
         this.getTestTicketData();
         System.out.println(IssueTicket.getIssueTicketList());
 
-        theUserList = new UserList(this);
+        // theUserList = new UserList(this);
 
-        theLoginUI = new LoginUI(this);
+        // theLoginUI = new LoginUI(this);
          
         showLoginUI();
     }
 
-    public IssueOrderList getOrderList() {
-        return IssueOrder.getIssueOrderList();
-    }
+    // public IssueOrderList getOrderList() {
+    //     return IssueOrder.getIssueOrderList();
+    // }
 
     //Ticket List
     public ArrayList<IssueTicket> getTicketList() {
@@ -98,54 +99,54 @@ public class ListCntl {
     }
     
 
-    public void requestAuthenticateCustomer(Customer customer){
-        if(customer == null) {
-            System.out.println("Please select the type of account.");
-            return;
-        }
+    // public void requestAuthenticateCustomer(Customer customer){
+    //     if(customer == null) {
+    //         System.out.println("Please select the type of account.");
+    //         return;
+    //     }
 
-        if(theUserList.authenticateCustomer(customer)==true) {
-            System.out.println("Valid user");
-            theLoginUI.setVisible(false);
-            theCustomerUI = new CustomerUI(this);
-            theCustomerUI.setVisible(true);
-            //ObjectiveCntl objectiveCntl = new ObjectiveCntl(this, user);
-            //TimeGoalCntl timeGoalCntl = new TimeGoalCntl(theUserList.getListOfUsers(), currentUser);
-        }
+    //     // if(theUserList.authenticateCustomer(customer)==true) {
+    //     //     System.out.println("Valid user");
+    //     //     theLoginUI.setVisible(false);
+    //     //     theCustomerUI = new CustomerUI(this);
+    //         theCustomerUI.setVisible(true);
+    //         //ObjectiveCntl objectiveCntl = new ObjectiveCntl(this, user);
+    //         //TimeGoalCntl timeGoalCntl = new TimeGoalCntl(theUserList.getListOfUsers(), currentUser);
+    //     }
 
-        else
-            System.out.println("Cntl: Invalid username/password");
-    }
+    //     else
+    //         System.out.println("Cntl: Invalid username/password");
+    // }
 
-    public void requestAuthenticateManager(Manager manager){
-        if(theUserList.authenticateManager(manager)==true){
-            //System.out.println("Valid user");
-            theLoginUI.setVisible(false);
-            theManagerUI = new ManagerUI(this);
-            theManagerUI.setVisible(true);
-            //ObjectiveCntl objectiveCntl = new ObjectiveCntl(this, user);
-            //TimeGoalCntl timeGoalCntl = new TimeGoalCntl(theUserList.getListOfUsers(), currentUser);
-        }
+    // public void requestAuthenticateManager(Manager manager){
+    //     if(theUserList.authenticateManager(manager)==true){
+    //         //System.out.println("Valid user");
+    //         theLoginUI.setVisible(false);
+    //         theManagerUI = new ManagerUI(this);
+    //         theManagerUI.setVisible(true);
+    //         //ObjectiveCntl objectiveCntl = new ObjectiveCntl(this, user);
+    //         //TimeGoalCntl timeGoalCntl = new TimeGoalCntl(theUserList.getListOfUsers(), currentUser);
+    //     }
 
-        else
-            System.out.println("LoginCntl: Invalid username/password");
-    }
+    //     else
+    //         System.out.println("LoginCntl: Invalid username/password");
+    // }
 
-    public void setCurrentCustomer(Customer customer) {
-        this.currentCustomer = customer;
-    }
+    // public void setCurrentCustomer(Customer customer) {
+    //     this.currentCustomer = customer;
+    // }
 
-    public void setCurrentManager(Manager manager) {
-        this.currentManager = manager;
-    }
+    // public void setCurrentManager(Manager manager) {
+    //     this.currentManager = manager;
+    // }
 
-    public Customer getCurrentCustomer() {
-        return this.currentCustomer;
-    }
+    // public Customer getCurrentCustomer() {
+    //     return this.currentCustomer;
+    // }
 
-    public Manager getCurrentManager() {
-        return this.currentManager;
-    }
+    // public Manager getCurrentManager() {
+    //     return this.currentManager;
+    // }
 
     /*
     public void writeData() {

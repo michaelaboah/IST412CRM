@@ -1,0 +1,27 @@
+[{
+	"Ticket IssueType": "BILLING",
+	"Ticket Name": "ticketName",
+	"Ticket Description": "ticketDescription",
+	"Number Created": 0,
+	"Ticket Response": "response",
+	"Ticket Recipient": {
+		"Manager Password": "12",
+		"Manager LastName": "Dude",
+		"Manager FirstName": "Joe",
+		"Manager Username": "m1",
+		"Manager Type": "CRM",
+		"ManagerID": 498654
+	},
+	"Ticket ReportID": 8520562,
+	"Ticket Date": "2022-03-29T22:39:14.495964",
+	"Ticket Customer": {
+		"Email": "joesmith@gmail.com",
+		"UserName": "username",
+		"Address": "address",
+		"First Name": "Joe",
+		"CustomerID": 133233,
+		"Last Name": "Smith",
+		"Password": "password"
+	},
+	"Ticket List": null
+}]
