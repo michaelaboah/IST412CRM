@@ -122,6 +122,7 @@ public class Customer {
         return cus;
     }
 
+
     public static JSONObject customerJsonArray(ArrayList<Customer> testArr){
         JSONArray jsonArray = new JSONArray();
         for (Customer element : testArr) {

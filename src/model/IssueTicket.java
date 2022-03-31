@@ -26,6 +26,54 @@ public class IssueTicket implements Serializable {
     private static int issueTicketsCreated;
     private static ArrayList<IssueTicket> issueTicketList;
 
+    public IssueTicket(String name, String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved,
+            Customer custOwner, Manager recipient, IssueType issueType, String response) {
+        this.name = name;
+        this.description = description;
+        this.reportID = reportID;
+        this.dateTime = dateTime;
+        this.isResolved = isResolved;
+        this.custOwner = custOwner;
+        this.recipient = recipient;
+        this.issueType = issueType;
+        this.response = response;
+    }
+
+    public IssueTicket(String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved, String type){
+        this.description = description;
+        this.reportID = reportID;
+        this.dateTime = dateTime;
+        this.isResolved = isResolved;
+        
+        switch (type) {
+            case "-":
+            this.issueType = IssueType.None;
+            break;
+    
+            case "A current shipment progress":
+            this.issueType = IssueType.SHIPMENT;
+            break;
+
+            case "Billing":
+            this.issueType = IssueType.BILLING;
+            break;
+
+            case "A product I ordered":
+            this.issueType = IssueType.PRODUCT;
+            break;
+
+            case "Website":
+            this.issueType = IssueType.TECH_SUPPORT;
+            break;
+            
+            case "Other":
+            this.issueType = IssueType.OTHER;
+            break;
+
+            default:
+                break;
+        }
+    }
 
     public IssueTicket(IssueTicketBuilder builder) {
 
@@ -205,9 +253,6 @@ public class IssueTicket implements Serializable {
             ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
             list.add(ticket);
         }
-
-        
-
         return list;
     }
 
