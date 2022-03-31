@@ -26,23 +26,23 @@ public class App {
         MainData.setIssueTickets(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")));
         MainData.getCustomers().add(Customer.jsonToCustomer(JsonUtil.readJsonObject("customer.json")));
         
-     CRMJframe frame = new CRMJframe();
+        CRMJframe frame = new CRMJframe();
 
-     LoginUI loginUI = new LoginUI();
-     ManagerUI manager = new ManagerUI();
-     CustomerUI customerUI = new CustomerUI();
-     SubmitIssue submitIssue = new SubmitIssue();
+        LoginUI loginUI = new LoginUI();
+        ManagerUI manager = new ManagerUI();
+        CustomerUI customerUI = new CustomerUI();
+        SubmitIssue submitIssue = new SubmitIssue();
 
-         ListCntl listCntl = new ListCntl(loginUI, customerUI, submitIssue);
-         listCntl.login();
-         listCntl.logout();
-         listCntl.submitComplaint();
+        ListCntl listCntl = new ListCntl(loginUI, customerUI, submitIssue);
+        listCntl.login();
+        listCntl.logout();
+        listCntl.submitComplaint();
 
-     frame.add(loginUI);
-     frame.add(manager);
-     frame.add(customerUI);
-     frame.add(submitIssue);
-     frame.setVisible(true);
+        frame.add(loginUI);
+        frame.add(manager);
+        frame.add(customerUI);
+        frame.add(submitIssue);
+        frame.setVisible(true);
 
     }
 }
