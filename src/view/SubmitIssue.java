@@ -18,7 +18,7 @@ public class SubmitIssue extends JPanel {
     public SubmitIssue() {
         setBounds(50, 30, 1180, 620);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setBackground(Color.decode("#212121"));
 
         JLabel date = new JLabel("" + LocalDate.now());

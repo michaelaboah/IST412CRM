@@ -106,4 +106,8 @@ public class LoginUI extends JPanel {
         return bg;
     }
 
+    public void displayIncorrectCredentials() {
+        JOptionPane.showMessageDialog(this, "Invalid username or password", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
 }

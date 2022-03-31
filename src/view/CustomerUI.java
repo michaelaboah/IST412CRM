@@ -21,7 +21,7 @@ public class CustomerUI extends JPanel {
     public CustomerUI() {
         setBounds(50, 30, 1180, 620);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setBackground(Color.decode("#212121"));
 
         JLabel title = new JLabel("CRM System");

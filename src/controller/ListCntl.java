@@ -22,18 +22,18 @@ public class ListCntl {
     // private UserList theUserList;
 
 
+    public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI) {
+        this.theLoginUI = theLoginUI;
+        this.theCustomerUI = theCustomerUI;
 
-    public ListCntl(LoginUI theLoginUI) {
-        this.theLoginUI= theLoginUI;
-
-        this.getTestTicketData();
-        System.out.println(IssueTicket.getIssueTicketList());
+//        this.getTestTicketData();
+//        System.out.println(IssueTicket.getIssueTicketList());
 
         // theUserList = new UserList(this);
 
         // theLoginUI = new LoginUI(this);
-         
-        showLoginUI();
+
+//        showLoginUI();
     }
 
     public void login() {
@@ -44,6 +44,14 @@ public class ListCntl {
             System.out.println(MainData.getCustomers().get(0).getEmail());
 
 
+            if (username.equals(MainData.getCustomers().get(0).getUsername()) && password.equals(MainData.getCustomers().get(0).getPassword()) && theLoginUI.getCustomer().isSelected()) {
+                theLoginUI.setVisible(false);
+                theCustomerUI.setVisible(true);
+            } else {
+                theLoginUI.displayIncorrectCredentials();
+            }
+
+
         });
     }
 
@@ -52,41 +60,41 @@ public class ListCntl {
     // }
 
     //Ticket List
-    public ArrayList<IssueTicket> getTicketList() {
-        return IssueTicket.getIssueTicketList();
-    }
-
-
-    public void getTestTicketData() {
-
-        Customer cust = new Customer();
-        Manager manager = new Manager();
-
-        Customer cust2 = new Customer("joe", "man", "jm@gmail.com", 
-        "jm", "password1", "42 Wallaby Way, Sydney, Australia", 27);
-
-        /*
-        public IssueTicket(Integer reportID, LocalDateTime dateTime, String name, 
-        Boolean isResolved, String description, Customer custOwner, 
-        Manager recipient, IssueType issueType)
-    */
-        IssueTicket ticket1 = new IssueTicket();
-
-        IssueTicket ticket2 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
-        .description("help2")
-        .name("Problem2")
-        .build();
-
-        IssueTicket ticket3 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
-        .description("help3")
-        .name("Problem3")
-        .build();
-
-        IssueTicket ticket4 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
-        .description("help4")
-        .name("Problem4")
-        .build();
-    }
+//    public ArrayList<IssueTicket> getTicketList() {
+//        return IssueTicket.getIssueTicketList();
+//    }
+//
+//
+//    public void getTestTicketData() {
+//
+//        Customer cust = new Customer();
+//        Manager manager = new Manager();
+//
+//        Customer cust2 = new Customer("joe", "man", "jm@gmail.com",
+//        "jm", "password1", "42 Wallaby Way, Sydney, Australia", 27);
+//
+//        /*
+//        public IssueTicket(Integer reportID, LocalDateTime dateTime, String name,
+//        Boolean isResolved, String description, Customer custOwner,
+//        Manager recipient, IssueType issueType)
+//    */
+//        IssueTicket ticket1 = new IssueTicket();
+//
+//        IssueTicket ticket2 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
+//        .description("help2")
+//        .name("Problem2")
+//        .build();
+//
+//        IssueTicket ticket3 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
+//        .description("help3")
+//        .name("Problem3")
+//        .build();
+//
+//        IssueTicket ticket4 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
+//        .description("help4")
+//        .name("Problem4")
+//        .build();
+//    }
 
     /*
     public void setTicketListName(IssueTicket issueTicket) {
@@ -103,18 +111,18 @@ public class ListCntl {
     }
     */
 
-    public void showCustomerUI() {
-        theCustomerUI.setVisible(true);
-    }
+//    public void showCustomerUI() {
+//        theCustomerUI.setVisible(true);
+//    }
+//
+//    public void showManagerUI() {
+//        theManagerUI.setVisible(true);
+//    }
+//
+//    public void showLoginUI(){
+//        theLoginUI.setVisible(true);
+//    }
 
-    public void showManagerUI() {
-        theManagerUI.setVisible(true);
-    }
-
-    public void showLoginUI(){
-        theLoginUI.setVisible(true);
-    }
-    
 
     // public void requestAuthenticateCustomer(Customer customer){
     //     if(customer == null) {
@@ -187,7 +195,7 @@ public class ListCntl {
             System.out.println("File data could not be gotten");
         }
         */
-        System.out.println("session restored");
+//        System.out.println("session restored");
     }
     /*
     public void resetSession() {

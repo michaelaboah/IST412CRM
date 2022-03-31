@@ -6,16 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c5c98e70-eb57-43b2-b3f5-010373284629" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer.json" beforeDir="false" afterPath="$PROJECT_DIR$/customer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/controller/ListCntl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/controller/ListCntl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/model/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/model/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/CustomerUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/CustomerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/CustomerUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/model/IssueTicket$IssueTicketBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/model/IssueTicket$IssueTicketBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/model/IssueTicket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/model/IssueTicket.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ListCntl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ListCntl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/CustomerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CustomerUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoginUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
