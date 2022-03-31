@@ -1,3 +1,4 @@
+
 package model;
 
 import java.io.Serializable;
@@ -12,6 +13,8 @@ import org.json.simple.JSONObject;
 
 public class IssueTicket implements Serializable {
 
+    
+
     private String name, description;
     private Integer reportID;
     private LocalDateTime dateTime;
@@ -23,6 +26,54 @@ public class IssueTicket implements Serializable {
     private static int issueTicketsCreated;
     private static ArrayList<IssueTicket> issueTicketList;
 
+    public IssueTicket(String name, String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved,
+            Customer custOwner, Manager recipient, IssueType issueType, String response) {
+        this.name = name;
+        this.description = description;
+        this.reportID = reportID;
+        this.dateTime = dateTime;
+        this.isResolved = isResolved;
+        this.custOwner = custOwner;
+        this.recipient = recipient;
+        this.issueType = issueType;
+        this.response = response;
+    }
+
+    public IssueTicket(String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved, String type){
+        this.description = description;
+        this.reportID = reportID;
+        this.dateTime = dateTime;
+        this.isResolved = isResolved;
+        
+        switch (type) {
+            case "-":
+            this.issueType = IssueType.None;
+            break;
+    
+            case "A current shipment progress":
+            this.issueType = IssueType.SHIPMENT;
+            break;
+
+            case "Billing":
+            this.issueType = IssueType.BILLING;
+            break;
+
+            case "A product I ordered":
+            this.issueType = IssueType.PRODUCT;
+            break;
+
+            case "Website":
+            this.issueType = IssueType.TECH_SUPPORT;
+            break;
+            
+            case "Other":
+            this.issueType = IssueType.OTHER;
+            break;
+
+            default:
+                break;
+        }
+    }
 
     public IssueTicket(IssueTicketBuilder builder) {
 
@@ -42,6 +93,8 @@ public class IssueTicket implements Serializable {
             issueTicketList = new ArrayList<>();
             issueTicketList.add(this);
         }
+
+        
     }
 
     public IssueTicket() {
@@ -64,44 +117,92 @@ public class IssueTicket implements Serializable {
         // }
     }
 
-    public Integer getReportID() {
-        return reportID;
-    }
-
     public String getName() {
         return name;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public Boolean getIsResolved() {
-        return isResolved;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getReportID() {
+        return reportID;
+    }
+
+    public void setReportID(Integer reportID) {
+        this.reportID = reportID;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public Boolean getIsResolved() {
+        return isResolved;
+    }
+
+    public void setIsResolved(Boolean isResolved) {
+        this.isResolved = isResolved;
+    }
+
     public Customer getCustOwner() {
-        return this.custOwner;
+        return custOwner;
+    }
+
+    public void setCustOwner(Customer custOwner) {
+        this.custOwner = custOwner;
     }
 
     public Manager getRecipient() {
-        return this.recipient;
+        return recipient;
+    }
+
+    public void setRecipient(Manager recipient) {
+        this.recipient = recipient;
     }
 
     public IssueType getIssueType() {
-        return this.issueType;
+        return issueType;
+    }
+
+    public void setIssueType(IssueType issueType) {
+        this.issueType = issueType;
     }
 
     public String getResponse() {
-        return this.response;
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public static int getIssueTicketsCreated() {
+        return issueTicketsCreated;
+    }
+
+    public static void setIssueTicketsCreated(int issueTicketsCreated) {
+        IssueTicket.issueTicketsCreated = issueTicketsCreated;
     }
 
     public static ArrayList<IssueTicket> getIssueTicketList() {
-        return IssueTicket.issueTicketList;
+        return issueTicketList;
+    }
+
+    public static void setIssueTicketList(ArrayList<IssueTicket> issueTicketList) {
+        IssueTicket.issueTicketList = issueTicketList;
     }
 
     // public static void printTicketList() {
@@ -117,17 +218,17 @@ public class IssueTicket implements Serializable {
         jObject.put("Ticket Name", issueTicket.name);
         jObject.put("Ticket Description", issueTicket.description);
         jObject.put("Ticket ReportID", issueTicket.reportID);
-        jObject.put("Ticket Date", issueTicket.dateTime);
-        jObject.put("Ticket Customer", issueTicket.custOwner);
-        jObject.put("Ticket Recipient", issueTicket.recipient);
-        jObject.put("Ticket IssueType", issueTicket.issueType);
+        jObject.put("Ticket Date", issueTicket.dateTime.toString());
+        jObject.put("Ticket Customer", Customer.customerToJson(issueTicket.custOwner));
+        jObject.put("Ticket Recipient", Manager.managerToJson(issueTicket.recipient));
+        jObject.put("Ticket IssueType", issueTicket.issueType.toString());
         jObject.put("Ticket Response", issueTicket.response);
         jObject.put("Number Created", issueTicket.issueTicketsCreated);
         jObject.put("Ticket List", issueTicket.issueTicketList);
         return jObject;
     }
 
-    public static JSONArray managerJsonArray(ArrayList<IssueTicket> testArr){
+    public static JSONArray issueTicketJsonArray(ArrayList<IssueTicket> testArr){
         var jsonArray = new JSONArray();
         for (IssueTicket element : testArr) {
             jsonArray.add(issueTicketToJson(element));
@@ -135,14 +236,31 @@ public class IssueTicket implements Serializable {
     return jsonArray;
     }
 
+
+
+    public static ArrayList<IssueTicket> jsonToIssueTicket(JSONArray jArray){
+        var list = new ArrayList<IssueTicket>();
+        var ticket = new IssueTicket();
+        for (int i = 0; i < jArray.size(); i++) {
+            JSONObject jObject = (JSONObject) jArray.get(i);
+            ticket.setName(jObject.get("Ticket Name").toString());
+            ticket.setDescription(jObject.get("Ticket Description").toString());
+            ticket.setDateTime(LocalDateTime.parse(jObject.get("Ticket Date").toString()));
+            ticket.setResponse(jObject.get("Ticket Response").toString());
+            ticket.setRecipient(Manager.jsonToManager((JSONObject)jObject.get("Ticket Recipient")));    
+            ticket.setReportID(Integer.parseInt(jObject.get("Ticket ReportID").toString()));
+            ticket.issueTicketsCreated = Integer.parseInt(jObject.get("Number Created").toString());
+            ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
+            list.add(ticket);
+        }
+        return list;
+    }
+
     @Override
     public String toString() {
-
-        return "id: " + getReportID() + "date/time of issue: " + getDateTime()
-                + "name: " + getName() + " email: " + custOwner.getEmail()
-                + " resolved status: " + getIsResolved() + "issue type: "
-                + getIssueType() + " description: " + getDescription();
-
+        return "IssueTicket [custOwner=" + custOwner + ", dateTime=" + dateTime + ", description=" + description
+                + ", isResolved=" + isResolved + ", issueType=" + issueType + ", name=" + name + ", recipient="
+                + recipient + ", reportID=" + reportID + ", response=" + response + "]";
     }
 
 
@@ -199,7 +317,6 @@ public class IssueTicket implements Serializable {
 			//if user object does not break any assumption of system
 		}
 
-
-
 	}
 }
+

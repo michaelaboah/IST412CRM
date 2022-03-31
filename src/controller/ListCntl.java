@@ -1,8 +1,12 @@
+
 package controller;
 
 import model.*;
+import utility.MainData;
 import view.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -14,166 +18,88 @@ public class ListCntl {
     private LoginUI theLoginUI;
     private CustomerUI theCustomerUI;
     private ManagerUI theManagerUI;
-    private RecordSearchUI theRecordSearchUI;
-    private UserList theUserList;
+    private SubmitIssue submitIssue;
+    // private RecordSearchUI theRecordSearchUI;
+    // private UserList theUserList;
 
-    public ListCntl() {
 
-        this.getTestTicketData();
-        System.out.println(IssueTicket.getIssueTicketList());
+    public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue) {
+        this.theLoginUI = theLoginUI;
+        this.theCustomerUI = theCustomerUI;
+        this.submitIssue = submitIssue;
 
-        theUserList = new UserList(this);
+//        this.getTestTicketData();
+//        System.out.println(IssueTicket.getIssueTicketList());
 
-        theLoginUI = new LoginUI(this);
-         
-        showLoginUI();
+        // theUserList = new UserList(this);
+
+        // theLoginUI = new LoginUI(this);
+
+//        showLoginUI();
     }
 
-    public IssueOrderList getOrderList() {
-        return IssueOrder.getIssueOrderList();
+    public void login() {
+        theLoginUI.getLogInButton().addActionListener(e -> {
+            String username = theLoginUI.getUserNameField().getText();
+            String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
+
+            System.out.println(MainData.getCustomers().get(0).getEmail());
+
+
+            if (username.equals(MainData.getCustomers().get(0).getUsername()) && password.equals(MainData.getCustomers().get(0).getPassword()) && theLoginUI.getCustomer().isSelected()) {
+                theLoginUI.setVisible(false);
+                theCustomerUI.setVisible(true);
+                theCustomerUI.getUserName().setText(MainData.getCustomers().get(0).getFirstName() + " " + MainData.getCustomers().get(0).getLastName());
+            } 
+            else {
+                theLoginUI.displayIncorrectCredentials();
+            }
+
+        });
     }
 
-    //Ticket List
-    public ArrayList<IssueTicket> getTicketList() {
-        return IssueTicket.getIssueTicketList();
+    public void logout() {
+        theCustomerUI.getLogout().addActionListener(e -> {
+            int results = theCustomerUI.displayConfirmLogout();
+            if (results == 0) {
+                theCustomerUI.setVisible(false);
+                theLoginUI.setVisible(true);
+                theLoginUI.getUserNameField().setText("");
+                theLoginUI.getPasswordField().setText("");
+                theLoginUI.getBg().clearSelection();
+            }
+
+        });
     }
 
+    public void submitComplaint() {
+        theCustomerUI.getSubmit_complaint().addActionListener(e -> {
+            theCustomerUI.setVisible(false);
+            submitIssue.setVisible(true);
+        });
 
-    public void getTestTicketData() {
-
-        Customer cust = new Customer();
-        Manager manager = new Manager();
-
-        Customer cust2 = new Customer("joe", "man", "jm@gmail.com", 
-        "jm", "password1", "42 Wallaby Way, Sydney, Australia", 27);
-
-        /*
-        public IssueTicket(Integer reportID, LocalDateTime dateTime, String name, 
-        Boolean isResolved, String description, Customer custOwner, 
-        Manager recipient, IssueType issueType)
-    */
-        IssueTicket ticket1 = new IssueTicket();
-
-        IssueTicket ticket2 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
-        .description("help2")
-        .name("Problem2")
-        .build();
-
-        IssueTicket ticket3 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
-        .description("help3")
-        .name("Problem3")
-        .build();
-
-        IssueTicket ticket4 = new IssueTicket.IssueTicketBuilder(cust, manager, IssueType.OTHER)
-        .description("help4")
-        .name("Problem4")
-        .build();
-    }
-
-    /*
-    public void setTicketListName(IssueTicket issueTicket) {
-        theTicketList.getNodeDataInList().setName(issueTicket.getName());
-    }
-    public void setTicketListCustomer(IssueTicket issueTicket) {
-        theTicketList.getNodeDataInList().setCustOwner(issueTicket.getCustOwner());
-    }
-    public void setTicketListDesc(IssueTicket issueTicket) {
-        theTicketList.getNodeDataInList().setDescription(issueTicket.getDescription());
-    }
-    public void setTicketListResolved(IssueTicket issueTicket) {
-        theTicketList.getNodeDataInList().setIsResolved(issueTicket.getIsResolved());
-    }
-    */
-
-    public void showCustomerUI() {
-        theCustomerUI.setVisible(true);
-    }
-
-    public void showManagerUI() {
-        theManagerUI.setVisible(true);
-    }
-
-    public void showLoginUI(){
-        theLoginUI.setVisible(true);
-    }
-    
-
-    public void requestAuthenticateCustomer(Customer customer){
-        if(customer == null) {
-            System.out.println("Please select the type of account.");
-            return;
-        }
-
-        if(theUserList.authenticateCustomer(customer)==true) {
-            System.out.println("Valid user");
-            theLoginUI.setVisible(false);
-            theCustomerUI = new CustomerUI(this);
+        submitIssue.getBackBtn().addActionListener(e -> {
+            submitIssue.setVisible(false);
             theCustomerUI.setVisible(true);
-            //ObjectiveCntl objectiveCntl = new ObjectiveCntl(this, user);
-            //TimeGoalCntl timeGoalCntl = new TimeGoalCntl(theUserList.getListOfUsers(), currentUser);
-        }
+        });
 
-        else
-            System.out.println("Cntl: Invalid username/password");
-    }
+        submitIssue.getSubmitForm().addActionListener(e -> {
 
-    public void requestAuthenticateManager(Manager manager){
-        if(theUserList.authenticateManager(manager)==true){
-            //System.out.println("Valid user");
-            theLoginUI.setVisible(false);
-            theManagerUI = new ManagerUI(this);
-            theManagerUI.setVisible(true);
-            //ObjectiveCntl objectiveCntl = new ObjectiveCntl(this, user);
-            //TimeGoalCntl timeGoalCntl = new TimeGoalCntl(theUserList.getListOfUsers(), currentUser);
-        }
-
-        else
-            System.out.println("LoginCntl: Invalid username/password");
-    }
-
-    public void setCurrentCustomer(Customer customer) {
-        this.currentCustomer = customer;
+            if (submitIssue.getTextArea().getText().isEmpty() && submitIssue.getComboBox().getSelectedItem().equals(submitIssue.getComboBox().getItemAt(0))) {
+                
+                submitIssue.displayEmptyForm();
+            } else {
+                submitIssue.displayConfirmation();
+                submitIssue.setVisible(false);
+                MainData.getIssueTickets().add(new IssueTicket(submitIssue.getTextArea().getText(), MainData.getIssueTickets().size()+1,LocalDateTime.now(), false, submitIssue.getComboBox().getSelectedItem().toString()));
+                System.out.println(MainData.getIssueTickets());
+                System.out.println(submitIssue.getComboBox().getSelectedItem());
+                submitIssue.getTextArea().setText("");
+                submitIssue.getComboBox().setSelectedIndex(0);
+                theCustomerUI.setVisible(true);
+                
+            }
+        });
     }
 
-    public void setCurrentManager(Manager manager) {
-        this.currentManager = manager;
-    }
-
-    public Customer getCurrentCustomer() {
-        return this.currentCustomer;
-    }
-
-    public Manager getCurrentManager() {
-        return this.currentManager;
-    }
-
-    /*
-    public void writeData() {
-        theOrderList.writeFileData();
-    }
-    public String readData() {
-        return theOrderList.getFileData().toString();
-    }
-    public void importRewriteData() {
-        theOrderList = theOrderList.getFileData();
-    }
-    public void updateSessionToFile() {
-        theTicketList.writeFileData();
-    }
-    */
-    public void restoreSession() {
-        /*
-        try {
-            theTicketList = theTicketList.getFileData();
-        } catch (Exception e) {
-            System.out.println("File data could not be gotten");
-        }
-        */
-        System.out.println("session restored");
-    }
-    /*
-    public void resetSession() {
-        theTicketList = theTicketList.getTestTicketData();
-    }
-    */
 }
