@@ -79,24 +79,12 @@ public class LoginUI extends JPanel {
         logInButton.setBackground(Color.decode("#000000"));
         logInButton.setOpaque(true);
         logInButton.setBorderPainted(false);
-        logInButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-
-                CustomerUI custe = new CustomerUI();
-                custe.setVisible(true);
-
-            }
-        });
-
         add(logInButton);
     }
 
     public JTextField getUserNameField() {
         return userNameField;
     }
-
 
     public JPasswordField getPasswordField() {
         return passwordField;

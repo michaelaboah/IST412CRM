@@ -2,8 +2,11 @@
 package controller;
 
 import model.*;
+import utility.MainData;
 import view.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -18,7 +21,10 @@ public class ListCntl {
     // private RecordSearchUI theRecordSearchUI;
     // private UserList theUserList;
 
-    public ListCntl() {
+
+
+    public ListCntl(LoginUI theLoginUI) {
+        this.theLoginUI= theLoginUI;
 
         this.getTestTicketData();
         System.out.println(IssueTicket.getIssueTicketList());
@@ -28,6 +34,17 @@ public class ListCntl {
         // theLoginUI = new LoginUI(this);
          
         showLoginUI();
+    }
+
+    public void login() {
+        theLoginUI.getLogInButton().addActionListener(e -> {
+            String username = theLoginUI.getUserNameField().getText();
+            String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
+
+            System.out.println(MainData.getCustomers());
+
+
+        });
     }
 
     // public IssueOrderList getOrderList() {

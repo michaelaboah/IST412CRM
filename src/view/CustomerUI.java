@@ -60,15 +60,6 @@ public class CustomerUI extends JPanel {
         submit_complaint.setBackground(Color.decode("#000000"));
         submit_complaint.setOpaque(true);
         submit_complaint.setBorderPainted(false);
-        submit_complaint.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-
-                SubmitIssue submitIssue = new SubmitIssue();
-                submitIssue.setVisible(true);
-            }
-        });
         add(submit_complaint);
 
         viewPreviousOrders.setBounds(465, 321, 250, 55);
@@ -88,7 +79,6 @@ public class CustomerUI extends JPanel {
         viewPreviousTickets.setOpaque(true);
         viewPreviousTickets.setBorderPainted(false);
         add(viewPreviousTickets);
-
 
         logout.setBounds(1050, 570, 130, 50);
         logout.setFocusable(false);

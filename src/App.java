@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import controller.ListCntl;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -30,6 +31,9 @@ public class App {
     ManagerUI manager = new ManagerUI();
     CustomerUI customerUI = new CustomerUI();
     SubmitIssue submitIssue = new SubmitIssue();
+
+        ListCntl listCntl = new ListCntl(loginUI);
+        listCntl.login();
 
     frame.add(loginUI);
     frame.add(manager);
