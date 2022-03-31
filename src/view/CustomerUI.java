@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class CustomerUI extends JPanel {
-    JLabel userName = new JLabel("Alex Harper");
+    JLabel userName = new JLabel("");
     JButton submit_complaint = new JButton("Submit Complaint");
     JButton viewPreviousOrders = new JButton("View Previous Orders");
     JButton viewPreviousTickets = new JButton("View Previous Tickets");
@@ -94,6 +94,10 @@ public class CustomerUI extends JPanel {
         return userName;
     }
 
+    public void setUserName(JLabel userName) {
+        this.userName = userName;
+    }
+
     public JButton getSubmit_complaint() {
         return submit_complaint;
     }
@@ -108,5 +112,10 @@ public class CustomerUI extends JPanel {
 
     public JButton getLogout() {
         return logout;
+    }
+
+    public int displayConfirmLogout() {
+        int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        return results;
     }
 }

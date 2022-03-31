@@ -18,13 +18,15 @@ public class ListCntl {
     private LoginUI theLoginUI;
     private CustomerUI theCustomerUI;
     private ManagerUI theManagerUI;
+    private SubmitIssue submitIssue;
     // private RecordSearchUI theRecordSearchUI;
     // private UserList theUserList;
 
 
-    public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI) {
+    public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue) {
         this.theLoginUI = theLoginUI;
         this.theCustomerUI = theCustomerUI;
+        this.submitIssue = submitIssue;
 
 //        this.getTestTicketData();
 //        System.out.println(IssueTicket.getIssueTicketList());
@@ -47,13 +49,55 @@ public class ListCntl {
             if (username.equals(MainData.getCustomers().get(0).getUsername()) && password.equals(MainData.getCustomers().get(0).getPassword()) && theLoginUI.getCustomer().isSelected()) {
                 theLoginUI.setVisible(false);
                 theCustomerUI.setVisible(true);
+                theCustomerUI.getUserName().setText(MainData.getCustomers().get(0).getFirstName() + " " + MainData.getCustomers().get(0).getLastName());
             } else {
                 theLoginUI.displayIncorrectCredentials();
             }
+        });
+    }
 
+    public void logout() {
+        theCustomerUI.getLogout().addActionListener(e -> {
+            int results = theCustomerUI.displayConfirmLogout();
+            if (results == 0) {
+                theCustomerUI.setVisible(false);
+                theLoginUI.setVisible(true);
+                theLoginUI.getUserNameField().setText("");
+                theLoginUI.getPasswordField().setText("");
+                theLoginUI.getBg().clearSelection();
+            }
 
         });
     }
+
+    public void submitComplaint() {
+        theCustomerUI.getSubmit_complaint().addActionListener(e -> {
+            theCustomerUI.setVisible(false);
+            submitIssue.setVisible(true);
+        });
+
+        submitIssue.getBackBtn().addActionListener(e -> {
+            submitIssue.setVisible(false);
+            theCustomerUI.setVisible(true);
+        });
+
+        submitIssue.getSubmitForm().addActionListener(e -> {
+
+            if (submitIssue.getTextArea().getText().isEmpty() && submitIssue.getComboBox().getSelectedItem().equals(submitIssue.getComboBox().getItemAt(0))) {
+                submitIssue.displayEmptyForm();
+            } else {
+                submitIssue.displayConfirmation();
+                submitIssue.setVisible(false);
+                submitIssue.getTextArea().setText("");
+                submitIssue.getComboBox().setSelectedIndex(0);
+                theCustomerUI.setVisible(true);
+            }
+        });
+    }
+
+
+
+
 
     // public IssueOrderList getOrderList() {
     //     return IssueOrder.getIssueOrderList();

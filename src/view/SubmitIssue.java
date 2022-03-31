@@ -11,7 +11,6 @@ public class SubmitIssue extends JPanel {
     JComboBox comboBox;
     TextArea textArea = new TextArea();
     JButton submitForm = new JButton("SUBMIT");
-    JButton logout = new JButton("Logout");
     JButton backBtn = new JButton("Back");
 
 
@@ -63,15 +62,6 @@ public class SubmitIssue extends JPanel {
         submitForm.setBorderPainted(false);
         add(submitForm);
 
-        logout.setBounds(1050, 570, 130, 50);
-        logout.setFocusable(false);
-        logout.setFont(new Font("Helvetica", Font.BOLD, 18));
-        logout.setForeground(Color.white);
-        logout.setBackground(Color.decode("#484848"));
-        logout.setOpaque(true);
-        logout.setBorderPainted(false);
-        add(logout);
-
 
         backBtn.setBounds(0, 0, 130, 50);
         backBtn.setFocusable(false);
@@ -87,19 +77,31 @@ public class SubmitIssue extends JPanel {
         return comboBox;
     }
 
+    public void setComboBox(JComboBox comboBox) {
+        this.comboBox = comboBox;
+    }
+
     public TextArea getTextArea() {
         return textArea;
+    }
+
+    public void setTextArea(TextArea textArea) {
+        this.textArea = textArea;
     }
 
     public JButton getSubmitForm() {
         return submitForm;
     }
 
-    public JButton getLogout() {
-        return logout;
-    }
-
     public JButton getBackBtn() {
         return backBtn;
+    }
+
+    public void displayConfirmation() {
+        JOptionPane.showMessageDialog(this, "Your ticket has been submitted. \n\n" + "Topic: " + getComboBox().getSelectedItem() + "\n\nMessage: " + getTextArea().getText(), "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void displayEmptyForm() {
+        JOptionPane.showMessageDialog(this, "Please fill out the required field", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

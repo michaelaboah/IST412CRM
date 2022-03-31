@@ -33,8 +33,10 @@ public class App {
      CustomerUI customerUI = new CustomerUI();
      SubmitIssue submitIssue = new SubmitIssue();
 
-         ListCntl listCntl = new ListCntl(loginUI, customerUI);
+         ListCntl listCntl = new ListCntl(loginUI, customerUI, submitIssue);
          listCntl.login();
+         listCntl.logout();
+         listCntl.submitComplaint();
 
      frame.add(loginUI);
      frame.add(manager);
