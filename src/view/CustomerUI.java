@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class CustomerUI extends JPanel {
-    JLabel userName = new JLabel("Alex Harper");
+    JLabel userName = new JLabel("");
     JButton submit_complaint = new JButton("Submit Complaint");
     JButton viewPreviousOrders = new JButton("View Previous Orders");
     JButton viewPreviousTickets = new JButton("View Previous Tickets");
@@ -21,7 +21,7 @@ public class CustomerUI extends JPanel {
     public CustomerUI() {
         setBounds(50, 30, 1180, 620);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setBackground(Color.decode("#212121"));
 
         JLabel title = new JLabel("CRM System");
@@ -60,15 +60,6 @@ public class CustomerUI extends JPanel {
         submit_complaint.setBackground(Color.decode("#000000"));
         submit_complaint.setOpaque(true);
         submit_complaint.setBorderPainted(false);
-        submit_complaint.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-
-                SubmitIssue submitIssue = new SubmitIssue();
-                submitIssue.setVisible(true);
-            }
-        });
         add(submit_complaint);
 
         viewPreviousOrders.setBounds(465, 321, 250, 55);
@@ -89,7 +80,6 @@ public class CustomerUI extends JPanel {
         viewPreviousTickets.setBorderPainted(false);
         add(viewPreviousTickets);
 
-
         logout.setBounds(1050, 570, 130, 50);
         logout.setFocusable(false);
         logout.setFont(new Font("Helvetica", Font.BOLD, 18));
@@ -102,6 +92,10 @@ public class CustomerUI extends JPanel {
 
     public JLabel getUserName() {
         return userName;
+    }
+
+    public void setUserName(JLabel userName) {
+        this.userName = userName;
     }
 
     public JButton getSubmit_complaint() {
@@ -118,5 +112,10 @@ public class CustomerUI extends JPanel {
 
     public JButton getLogout() {
         return logout;
+    }
+
+    public int displayConfirmLogout() {
+        int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        return results;
     }
 }
