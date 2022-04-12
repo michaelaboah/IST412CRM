@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public class IssueOrder implements Serializable {
+public class IssueOrder {
 
    private ArrayList<Item> orderedItems;
    private Integer orderID;

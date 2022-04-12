@@ -26,9 +26,17 @@ public class App {
         // MainData.setIssueTickets(IssueTicket.jsonToIssueTicket(JsonUtil.readJsonArray("IssueTicket.json")));
         // MainData.getCustomers().add(Customer.jsonToCustomer(JsonUtil.readJsonObject("customer.json")));
         
-        //This is the template you will use. Add it to a Var and use .get on the variable
+        /*
+        This is the template you will use. Add it to a Var and use .get on the variable:
         JSONObject jObject = (JSONObject) JsonUtil.readJsonObject("insertSome file path here");
+        */
+       
+        //JSONObject jCustomerObject = (JSONObject) JsonUtil.readJsonObject("customer.json");
+        //Object name = jCustomerObject.get("First Name");
 
+        //JSONArray jArray = (JSONArray) JsonUtil.readJsonArray("IssueTicket.json");
+        //Object jObject = jArray.get(0);
+        //System.out.println(jObject);
 
         CRMJframe frame = new CRMJframe();
 
