@@ -1,17 +1,14 @@
 
 package model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 // import controller.ListCntl;
 
 
-public class IssueTicket implements Serializable {
+public class IssueTicket {
 
     
 
@@ -26,6 +23,54 @@ public class IssueTicket implements Serializable {
     private static int issueTicketsCreated;
     private static ArrayList<IssueTicket> issueTicketList;
 
+    public IssueTicket(String name, String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved,
+            Customer custOwner, Manager recipient, IssueType issueType, String response) {
+        this.name = name;
+        this.description = description;
+        this.reportID = reportID;
+        this.dateTime = dateTime;
+        this.isResolved = isResolved;
+        this.custOwner = custOwner;
+        this.recipient = recipient;
+        this.issueType = issueType;
+        this.response = response;
+    }
+
+    public IssueTicket(String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved, String type){
+        this.description = description;
+        this.reportID = reportID;
+        this.dateTime = dateTime;
+        this.isResolved = isResolved;
+        
+        switch (type) {
+            case "-":
+            this.issueType = IssueType.None;
+            break;
+    
+            case "A current shipment progress":
+            this.issueType = IssueType.SHIPMENT;
+            break;
+
+            case "Billing":
+            this.issueType = IssueType.BILLING;
+            break;
+
+            case "A product I ordered":
+            this.issueType = IssueType.PRODUCT;
+            break;
+
+            case "Website":
+            this.issueType = IssueType.TECH_SUPPORT;
+            break;
+            
+            case "Other":
+            this.issueType = IssueType.OTHER;
+            break;
+
+            default:
+                break;
+        }
+    }
 
     public IssueTicket(IssueTicketBuilder builder) {
 
@@ -47,26 +92,6 @@ public class IssueTicket implements Serializable {
         }
 
         
-    }
-
-    public IssueTicket() {
-
-        // this.reportID = 1234;
-        // this.dateTime = LocalDateTime.of(2017, 1, 14, 10, 34);
-        // this.name = "name";
-        // this.custOwner = new Customer();
-        // this.isResolved = false;
-        // this.description = "description";
-        // this.recipient = new Manager();
-        // this.issueType = IssueType.PRODUCT;
-        // this.response = "Awaiting response from representative,";
-        // try {
-        //     issueTicketList.add(this);
-        // }
-        // catch(NullPointerException e) {
-        //     issueTicketList = new ArrayList<>();
-        //     issueTicketList.add(this);
-        // }
     }
 
     public String getName() {
@@ -165,51 +190,7 @@ public class IssueTicket implements Serializable {
     //     System.out.println(listStr);
     // }
 
-    public static JSONObject issueTicketToJson(IssueTicket issueTicket){
-        var jObject = new JSONObject();
-        jObject.put("Ticket Name", issueTicket.name);
-        jObject.put("Ticket Description", issueTicket.description);
-        jObject.put("Ticket ReportID", issueTicket.reportID);
-        jObject.put("Ticket Date", issueTicket.dateTime.toString());
-        jObject.put("Ticket Customer", Customer.customerToJson(issueTicket.custOwner));
-        jObject.put("Ticket Recipient", Manager.managerToJson(issueTicket.recipient));
-        jObject.put("Ticket IssueType", issueTicket.issueType.toString());
-        jObject.put("Ticket Response", issueTicket.response);
-        jObject.put("Number Created", issueTicket.issueTicketsCreated);
-        jObject.put("Ticket List", issueTicket.issueTicketList);
-        return jObject;
-    }
-
-    public static JSONArray issueTicketJsonArray(ArrayList<IssueTicket> testArr){
-        var jsonArray = new JSONArray();
-        for (IssueTicket element : testArr) {
-            jsonArray.add(issueTicketToJson(element));
-        }
-    return jsonArray;
-    }
-
-
-
-    public static ArrayList<IssueTicket> jsonToIssueTicket(JSONArray jArray){
-        var list = new ArrayList<IssueTicket>();
-        var ticket = new IssueTicket();
-        for (int i = 0; i < jArray.size(); i++) {
-            JSONObject jObject = (JSONObject) jArray.get(i);
-            ticket.setName(jObject.get("Ticket Name").toString());
-            ticket.setDescription(jObject.get("Ticket Description").toString());
-            ticket.setDateTime(LocalDateTime.parse(jObject.get("Ticket Date").toString()));
-            ticket.setResponse(jObject.get("Ticket Response").toString());
-            ticket.setRecipient(Manager.jsonToManager((JSONObject)jObject.get("Ticket Recipient")));    
-            ticket.setReportID(Integer.parseInt(jObject.get("Ticket ReportID").toString()));
-            ticket.issueTicketsCreated = Integer.parseInt(jObject.get("Number Created").toString());
-            ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
-            list.add(ticket);
-        }
-
-        
-
-        return list;
-    }
+    
 
     @Override
     public String toString() {

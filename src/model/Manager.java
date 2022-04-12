@@ -90,12 +90,37 @@ public class Manager {
         this.managerID = managerID;
     }
 
+    public static ManagerType assignManagerType(String assignedType) {
+        switch (assignedType) {
+            case "CRM":
+            return ManagerType.CRM;
+
+            case "SHIPMENT":
+            return ManagerType.SHIPMENT;
+
+            case "BILLING":
+                return ManagerType.BILLING;
+            
+            case "PRODUCT":
+                return ManagerType.PRODUCT;
+
+            case "TECH_SUPPORT":
+                return ManagerType.TECH_SUPPORT;
+
+            default:
+                return null;
+        }
+    }
+
     @Override
     public String toString() {
         return "Manager [fName=" + fName + ", lName=" + lName + ", managerID=" + managerID + ", managerType="
                 + managerType + ", password=" + password + ", username=" + username + "]";
     }
 
+<<<<<<< HEAD
+    
+=======
     public static JSONObject managerToJson(Manager man){
         var jObject = new JSONObject();
         jObject.put("Manager FirstName", man.fName);
@@ -113,30 +138,9 @@ public class Manager {
         man.lName = json.get("Manager LastName").toString();
         man.username = json.get("Manager Username").toString();
         man.password = json.get("Manager Password").toString();
-        switch (json.get("Manager Type").toString()) {
-            case "CRM":
-                man.setManagerType(ManagerType.CRM);
-                break;
-
-            case "SHIPMENT":
-                man.setManagerType(ManagerType.SHIPMENT);
-                break;
-
-            case "BILLING":
-                man.setManagerType(ManagerType.BILLING);
-                break;
-            
-            case "PRODUCT":
-                man.setManagerType(ManagerType.PRODUCT);
-                break;
-
-            case "TECH_SUPPORT":
-                man.setManagerType(ManagerType.TECH_SUPPORT);
-                break;
-
-            default:
-                break;
-        }
+        ManagerType assignedManagerType = assignManagerType(json.get("Manager Type").toString());
+        man.setManagerType(assignedManagerType);
+        
         man.managerID = Integer.parseInt(json.get("ManagerID").toString());
         return man;
     }
@@ -148,6 +152,7 @@ public class Manager {
         }
     return jsonArray;
     }
+>>>>>>> 44ee4e99287d2237053ae58589f3c3ba7b20f671
 
 } 
 
