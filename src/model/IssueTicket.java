@@ -213,48 +213,48 @@ public class IssueTicket implements Serializable {
     //     System.out.println(listStr);
     // }
 
-    public static JSONObject issueTicketToJson(IssueTicket issueTicket){
-        var jObject = new JSONObject();
-        jObject.put("Ticket Name", issueTicket.name);
-        jObject.put("Ticket Description", issueTicket.description);
-        jObject.put("Ticket ReportID", issueTicket.reportID);
-        jObject.put("Ticket Date", issueTicket.dateTime.toString());
-        jObject.put("Ticket Customer", Customer.customerToJson(issueTicket.custOwner));
-        jObject.put("Ticket Recipient", Manager.managerToJson(issueTicket.recipient));
-        jObject.put("Ticket IssueType", issueTicket.issueType.toString());
-        jObject.put("Ticket Response", issueTicket.response);
-        jObject.put("Number Created", issueTicket.issueTicketsCreated);
-        jObject.put("Ticket List", issueTicket.issueTicketList);
-        return jObject;
-    }
+    // public static JSONObject issueTicketToJson(IssueTicket issueTicket){
+    //     var jObject = new JSONObject();
+    //     jObject.put("Ticket Name", issueTicket.name);
+    //     jObject.put("Ticket Description", issueTicket.description);
+    //     jObject.put("Ticket ReportID", issueTicket.reportID);
+    //     jObject.put("Ticket Date", issueTicket.dateTime.toString());
+    //     jObject.put("Ticket Customer", Customer.customerToJson(issueTicket.custOwner));
+    //     jObject.put("Ticket Recipient", Manager.managerToJson(issueTicket.recipient));
+    //     jObject.put("Ticket IssueType", issueTicket.issueType.toString());
+    //     jObject.put("Ticket Response", issueTicket.response);
+    //     jObject.put("Number Created", issueTicket.issueTicketsCreated);
+    //     jObject.put("Ticket List", issueTicket.issueTicketList);
+    //     return jObject;
+    // }
 
-    public static JSONArray issueTicketJsonArray(ArrayList<IssueTicket> testArr){
-        var jsonArray = new JSONArray();
-        for (IssueTicket element : testArr) {
-            jsonArray.add(issueTicketToJson(element));
-        }
-    return jsonArray;
-    }
+    // public static JSONArray issueTicketJsonArray(ArrayList<IssueTicket> testArr){
+    //     var jsonArray = new JSONArray();
+    //     for (IssueTicket element : testArr) {
+    //         jsonArray.add(issueTicketToJson(element));
+    //     }
+    // return jsonArray;
+    // }
 
 
 
-    public static ArrayList<IssueTicket> jsonToIssueTicket(JSONArray jArray){
-        var list = new ArrayList<IssueTicket>();
-        var ticket = new IssueTicket();
-        for (int i = 0; i < jArray.size(); i++) {
-            JSONObject jObject = (JSONObject) jArray.get(i);
-            ticket.setName(jObject.get("Ticket Name").toString());
-            ticket.setDescription(jObject.get("Ticket Description").toString());
-            ticket.setDateTime(LocalDateTime.parse(jObject.get("Ticket Date").toString()));
-            ticket.setResponse(jObject.get("Ticket Response").toString());
-            ticket.setRecipient(Manager.jsonToManager((JSONObject)jObject.get("Ticket Recipient")));    
-            ticket.setReportID(Integer.parseInt(jObject.get("Ticket ReportID").toString()));
-            ticket.issueTicketsCreated = Integer.parseInt(jObject.get("Number Created").toString());
-            ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
-            list.add(ticket);
-        }
-        return list;
-    }
+    // public static ArrayList<IssueTicket> jsonToIssueTicket(JSONArray jArray){
+    //     var list = new ArrayList<IssueTicket>();
+    //     var ticket = new IssueTicket();
+    //     for (int i = 0; i < jArray.size(); i++) {
+    //         JSONObject jObject = (JSONObject) jArray.get(i);
+    //         ticket.setName(jObject.get("Ticket Name").toString());
+    //         ticket.setDescription(jObject.get("Ticket Description").toString());
+    //         ticket.setDateTime(LocalDateTime.parse(jObject.get("Ticket Date").toString()));
+    //         ticket.setResponse(jObject.get("Ticket Response").toString());
+    //         ticket.setRecipient(Manager.jsonToManager((JSONObject)jObject.get("Ticket Recipient")));    
+    //         ticket.setReportID(Integer.parseInt(jObject.get("Ticket ReportID").toString()));
+    //         ticket.issueTicketsCreated = Integer.parseInt(jObject.get("Number Created").toString());
+    //         ticket.setCustOwner(Customer.jsonToCustomer((JSONObject)jObject.get("Ticket Customer")));
+    //         list.add(ticket);
+    //     }
+    //     return list;
+    // }
 
     @Override
     public String toString() {
