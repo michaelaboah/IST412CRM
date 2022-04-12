@@ -90,13 +90,69 @@ public class Manager {
         this.managerID = managerID;
     }
 
+    public static ManagerType assignManagerType(String assignedType) {
+        switch (assignedType) {
+            case "CRM":
+            return ManagerType.CRM;
+
+            case "SHIPMENT":
+            return ManagerType.SHIPMENT;
+
+            case "BILLING":
+                return ManagerType.BILLING;
+            
+            case "PRODUCT":
+                return ManagerType.PRODUCT;
+
+            case "TECH_SUPPORT":
+                return ManagerType.TECH_SUPPORT;
+
+            default:
+                return null;
+        }
+    }
+
     @Override
     public String toString() {
         return "Manager [fName=" + fName + ", lName=" + lName + ", managerID=" + managerID + ", managerType="
                 + managerType + ", password=" + password + ", username=" + username + "]";
     }
 
+<<<<<<< HEAD
     
+=======
+    public static JSONObject managerToJson(Manager man){
+        var jObject = new JSONObject();
+        jObject.put("Manager FirstName", man.fName);
+        jObject.put("Manager LastName", man.lName);
+        jObject.put("Manager Username", man.username);
+        jObject.put("Manager Password", man.password);
+        jObject.put("Manager Type", man.managerType.toString());
+        jObject.put("ManagerID", man.managerID);
+        return jObject;
+    }
+
+    public static Manager jsonToManager(JSONObject json){
+        var man = new Manager();
+        man.fName = json.get("Manager FirstName").toString();
+        man.lName = json.get("Manager LastName").toString();
+        man.username = json.get("Manager Username").toString();
+        man.password = json.get("Manager Password").toString();
+        ManagerType assignedManagerType = assignManagerType(json.get("Manager Type").toString());
+        man.setManagerType(assignedManagerType);
+        
+        man.managerID = Integer.parseInt(json.get("ManagerID").toString());
+        return man;
+    }
+
+    public static JSONArray managerJsonArray(ArrayList<Manager> testArr){
+        var jsonArray = new JSONArray();
+        for (Manager element : testArr) {
+            jsonArray.add(managerToJson(element));
+        }
+    return jsonArray;
+    }
+>>>>>>> 44ee4e99287d2237053ae58589f3c3ba7b20f671
 
 } 
 

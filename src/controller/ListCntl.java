@@ -4,6 +4,8 @@ package controller;
 import model.*;
 import utility.MainData;
 import view.*;
+import org.json.simple.JSONObject;
+import utility.JsonUtil;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,23 +21,12 @@ public class ListCntl {
     private CustomerUI theCustomerUI;
     private ManagerUI theManagerUI;
     private SubmitIssue submitIssue;
-    // private RecordSearchUI theRecordSearchUI;
-    // private UserList theUserList;
-
 
     public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue) {
+        System.out.println(MainData.getCustomers());
         this.theLoginUI = theLoginUI;
         this.theCustomerUI = theCustomerUI;
         this.submitIssue = submitIssue;
-
-//        this.getTestTicketData();
-//        System.out.println(IssueTicket.getIssueTicketList());
-
-        // theUserList = new UserList(this);
-
-        // theLoginUI = new LoginUI(this);
-
-//        showLoginUI();
     }
 
     public void login() {
@@ -43,13 +34,11 @@ public class ListCntl {
             String username = theLoginUI.getUserNameField().getText();
             String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
 
-            System.out.println(MainData.getCustomers().get(0).getEmail());
 
-
-            if (username.equals(MainData.getCustomers().get(0).getUsername()) && password.equals(MainData.getCustomers().get(0).getPassword()) && theLoginUI.getCustomer().isSelected()) {
+            if (username.equals(JsonUtil.readJsonObject("customer.json").get("UserName")) && password.equals(JsonUtil.readJsonObject("customer.json").get("Password")) && theLoginUI.getCustomer().isSelected()) {
                 theLoginUI.setVisible(false);
                 theCustomerUI.setVisible(true);
-                theCustomerUI.getUserName().setText(MainData.getCustomers().get(0).getFirstName() + " " + MainData.getCustomers().get(0).getLastName());
+                theCustomerUI.getUserName().setText(JsonUtil.readJsonObject("customer.json").get("First Name") + " " + JsonUtil.readJsonObject("customer.json").get("Last Name"));
             } 
             else {
                 theLoginUI.displayIncorrectCredentials();

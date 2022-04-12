@@ -1,7 +1,6 @@
 
 package model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 // import controller.ListCntl;
 
 
-public class IssueTicket implements Serializable {
+public class IssueTicket {
 
     
 
@@ -93,26 +92,6 @@ public class IssueTicket implements Serializable {
         }
 
         
-    }
-
-    public IssueTicket() {
-
-        // this.reportID = 1234;
-        // this.dateTime = LocalDateTime.of(2017, 1, 14, 10, 34);
-        // this.name = "name";
-        // this.custOwner = new Customer();
-        // this.isResolved = false;
-        // this.description = "description";
-        // this.recipient = new Manager();
-        // this.issueType = IssueType.PRODUCT;
-        // this.response = "Awaiting response from representative,";
-        // try {
-        //     issueTicketList.add(this);
-        // }
-        // catch(NullPointerException e) {
-        //     issueTicketList = new ArrayList<>();
-        //     issueTicketList.add(this);
-        // }
     }
 
     public String getName() {
