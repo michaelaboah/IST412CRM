@@ -1,43 +1,43 @@
-package utility;
+// package utility;
 
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
+// import java.io.BufferedWriter;
+// import java.io.FileReader;
+// import java.io.FileWriter;
+// import java.util.ArrayList;
 
-import model.Customer;
+// import model.Customer;
 
-public class ExternalDataControl {
+// public class ExternalDataControl {
 
     
 
-    public static String jsonInput(String s){
+//     public static String jsonInput(String s){
 
-        try {
-            Object importedData = new JSONParser().parse(new FileReader(s));
+//         try {
+//             Object importedData = new JSONParser().parse(new FileReader(s));
             
-            return importedData.toString();
-        } catch (Exception e) {
+//             return importedData.toString();
+//         } catch (Exception e) {
 
-            System.out.println(e);
-            return null;
-        }
-    }
-
-
+//             System.out.println(e);
+//             return null;
+//         }
+//     }
 
 
-    public static void jsonOutput(){
 
-        try {
 
-        // BufferedWriter writer = new BufferedWriter(new FileWriter("customer.json"));
+//     public static void jsonOutput(){
 
-        // writer.write(jo.toJSONString());
-        // writer.close();
+//         try {
 
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
-    }
-}
+//         // BufferedWriter writer = new BufferedWriter(new FileWriter("customer.json"));
+
+//         // writer.write(jo.toJSONString());
+//         // writer.close();
+
+//         } catch (Exception e) {
+//             //TODO: handle exception
+//         }
+//     }
+// }

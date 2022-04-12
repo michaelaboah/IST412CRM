@@ -4,7 +4,6 @@ package controller;
 import model.*;
 import utility.MainData;
 import view.*;
-import org.json.simple.JSONObject;
 import utility.JsonUtil;
 
 import java.awt.event.ActionEvent;
@@ -35,14 +34,29 @@ public class ListCntl {
             String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
 
 
-            if (username.equals(JsonUtil.readJsonObject("customer.json").get("UserName")) && password.equals(JsonUtil.readJsonObject("customer.json").get("Password")) && theLoginUI.getCustomer().isSelected()) {
-                theLoginUI.setVisible(false);
-                theCustomerUI.setVisible(true);
-                theCustomerUI.getUserName().setText(JsonUtil.readJsonObject("customer.json").get("First Name") + " " + JsonUtil.readJsonObject("customer.json").get("Last Name"));
-            } 
-            else {
-                theLoginUI.displayIncorrectCredentials();
+            for (Customer cus : MainData.getCustomers()) {
+                if(cus.getUsername().equals(username) && 
+                   cus.getPassword().equals(password) &&
+                   theLoginUI.getCustomer().isSelected()){
+                    theLoginUI.setVisible(false);
+                    theCustomerUI.setVisible(true);
+                    System.out.println("yes");
+
+                }
+                else theLoginUI.displayIncorrectCredentials();
             }
+
+
+
+
+            // if (username.equals(JsonUtil.readJsonObject("customer.json").get("UserName")) && password.equals(JsonUtil.readJsonObject("customer.json").get("Password")) && theLoginUI.getCustomer().isSelected()) {
+            //     theLoginUI.setVisible(false);
+            //     theCustomerUI.setVisible(true);
+            //     theCustomerUI.getUserName().setText(JsonUtil.readJsonObject("customer.json").get("First Name") + " " + JsonUtil.readJsonObject("customer.json").get("Last Name"));
+            // } 
+            // else {
+            //     theLoginUI.displayIncorrectCredentials();
+            // }
 
         });
     }

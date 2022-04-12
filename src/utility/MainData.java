@@ -13,7 +13,7 @@ public class MainData {
     private static ArrayList<IssueTicket> issueTickets = new ArrayList<>();
 
     
-    private static MainData dataPersistance = new MainData();
+
 
     public static ArrayList<Customer> getCustomers() {
         return customers;

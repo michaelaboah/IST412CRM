@@ -2,8 +2,6 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 public class IssueOrder {
 
@@ -116,26 +114,6 @@ public class IssueOrder {
                + "name: " + getListOfItemsForString() + " email: " + custOwner.getEmail()
                + " delivery status: " + getIsDelivered();
 
-   }
-
-
-   public static JSONObject issueOrderToJson(IssueOrder iss){
-       var jObject = new JSONObject();
-       jObject.put("Items Ordered", iss.orderedItems);
-       jObject.put("Order ID", iss.orderID);
-       jObject.put("Date Ordered", iss.dateOrder);
-       jObject.put("Delivered?", iss.isDelivered);
-       jObject.put("Customer Owner", iss.custOwner);
-       jObject.put("Issue Order List", iss.issueOrderList);
-       return jObject;
-   }
-
-   public static JSONArray issueOrderJsonArray(ArrayList<IssueOrder> testArr){
-       var jsonArray = new JSONArray();
-       for (IssueOrder element : testArr) {
-           jsonArray.add(issueOrderToJson(element));
-       }
-   return jsonArray;
    }
 
 }
