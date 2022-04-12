@@ -1,6 +1,5 @@
 package model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
@@ -51,41 +50,6 @@ public class IssueOrder {
            issueOrderList.add(this);
        }
    }
-
-   public IssueOrder() {
-
-       this.orderedItems = new ArrayList<>();
-       this.orderedItems.add(new Item());
-       orderID = 1234;
-       dateOrder = LocalDateTime.of(2017, 1, 14, 10, 34);
-       isDelivered = false;
-       this.custOwner = new Customer();
-       try {
-           issueOrderList.add(this);
-       }
-       catch(NullPointerException e) {
-           issueOrderList = new ArrayList<>();
-           issueOrderList.add(this);
-       }
-   }
-
-   public IssueOrder(Customer custOwner) {
-
-       this.orderedItems = new ArrayList<>();
-       this.orderedItems.add(new Item());
-       orderID = 1234;
-       dateOrder = LocalDateTime.of(2017, 1, 14, 10, 34);
-       isDelivered = false;
-       this.custOwner = custOwner;
-       try {
-           issueOrderList.add(this);
-       }
-       catch(NullPointerException e) {
-           issueOrderList = new ArrayList<>();
-           issueOrderList.add(this);
-       }
-   }
-
 
    public ArrayList<Item> getOrderedItems() {
        return this.orderedItems;
@@ -145,14 +109,6 @@ public class IssueOrder {
        return IssueOrder.issueOrderList;
    }
 
-   // public static void printOrderList() {
-   //     String listStr = "Issue Ticket List: \n";
-   //     for (int i = 0; issueOrderList.size(); i++) {
-   //         listStr += issueOrderList.get(i).getName() + "\n";
-   //     }
-   //     System.out.println(listStr);
-   // }
-
    @Override
    public String toString() {
 
@@ -160,10 +116,6 @@ public class IssueOrder {
                + "name: " + getListOfItemsForString() + " email: " + custOwner.getEmail()
                + " delivery status: " + getIsDelivered();
 
-   }
-
-   public String getExtra() {
-       return "extra";
    }
 
 

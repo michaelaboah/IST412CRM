@@ -17,15 +17,6 @@ public class Item {
         this.itemID = itemID;
     }
 
-    // public Item() {
-    //     this.itemName = "Hairbrush";
-    //     this.itemURL = "forest.com/hairbrush/";
-    //     this.itemDescription = "This is a hairbrush";
-    //     this.itemID = 12;
-    // }
-
-    public Item(){
-    }
    
     public String getItemName() {
         return this.itemName;

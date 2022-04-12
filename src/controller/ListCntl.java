@@ -21,31 +21,18 @@ public class ListCntl {
     private CustomerUI theCustomerUI;
     private ManagerUI theManagerUI;
     private SubmitIssue submitIssue;
-    // private RecordSearchUI theRecordSearchUI;
-    // private UserList theUserList;
 
     public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue) {
         System.out.println(MainData.getCustomers());
         this.theLoginUI = theLoginUI;
         this.theCustomerUI = theCustomerUI;
         this.submitIssue = submitIssue;
-
-//        this.getTestTicketData();
-//        System.out.println(IssueTicket.getIssueTicketList());
-
-        // theUserList = new UserList(this);
-
-        // theLoginUI = new LoginUI(this);
-
-//        showLoginUI();
     }
 
     public void login() {
         theLoginUI.getLogInButton().addActionListener(e -> {
             String username = theLoginUI.getUserNameField().getText();
             String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
-
-            //System.out.println(MainData.getCustomers().get(0).getEmail());
 
 
             if (username.equals(JsonUtil.readJsonObject("customer.json").get("UserName")) && password.equals(JsonUtil.readJsonObject("customer.json").get("Password")) && theLoginUI.getCustomer().isSelected()) {
