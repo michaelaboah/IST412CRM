@@ -12,7 +12,7 @@ public class MainData {
     private static ArrayList<Item> items = new ArrayList<>();
     private static ArrayList<IssueTicket> issueTickets = new ArrayList<>();
 
-    
+
 
 
     public static ArrayList<Customer> getCustomers() {
@@ -46,4 +46,3 @@ public class MainData {
 
 
 }
-

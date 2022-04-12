@@ -48,6 +48,13 @@ public class Item {
         this.itemID = itemID;
     }
 
+
+    @Override
+    public String toString() {
+        return "Item [itemDescription=" + itemDescription + ", itemID=" + itemID + ", itemName=" + itemName
+                + ", itemURL=" + itemURL + "]";
+    }
+
     
 
 }

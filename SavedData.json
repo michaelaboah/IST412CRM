@@ -1,4 +1,17 @@
-[{
+{
+  "customers": [
+    {
+      "firstName": "firstName",
+      "lastName": "lastName",
+      "email": "email",
+      "username": "username",
+      "password": "password",
+      "address": "address",
+      "custID": 123
+    }
+  ],
+  "items": [],
+  "issueTickets": [{
 	"Ticket IssueType": "BILLING",
 	"Ticket Name": "ticketName",
 	"Ticket Description": "ticketDescription",
@@ -25,4 +38,4 @@
 	}
 }
 ]
-
+}

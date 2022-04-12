@@ -13,12 +13,13 @@ import java.io.Reader;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class JsonUtil {
     
                                 //Insert filepath and Object
     public static void writeJson(String filepath, Object jsonObject){
-        Gson jParser = new Gson();
+        Gson jParser = new GsonBuilder().setPrettyPrinting().create();
         try {
             var writer = new BufferedWriter(new FileWriter(filepath));
             var data = jParser.toJson(jsonObject);
