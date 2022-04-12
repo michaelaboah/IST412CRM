@@ -59,21 +59,6 @@ public class Item {
         this.itemID = itemID;
     }
 
-    // public static JSONObject itemToJson(Item itm){
-    //     var jObject = new JSONObject();
-    //     jObject.put("Item Name", itm.itemName);
-    //     jObject.put("Item URL", itm.itemURL);
-    //     jObject.put("Item Description", itm.itemDescription);
-    //     jObject.put("Item ID", itm.itemID);
-    //     return jObject;
-    // }
-
-    // public static JSONArray itemJsonArray(ArrayList<Item> testArr){
-    //     var jsonArray = new JSONArray();
-    //     for (Item element : testArr) {
-    //         jsonArray.add(itemToJson(element));
-    //     }
-    // return jsonArray;
-    // }
+    
 
 }

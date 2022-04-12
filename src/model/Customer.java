@@ -97,41 +97,7 @@ public class Customer {
         return "Customer [address=" + address + ", custID=" + custID + ", email=" + email + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", password=" + password + ", username=" + username + "]";
     }
-    
-    // public static JSONObject customerToJson(Customer cus){
-    //     var jObject = new JSONObject();
-    //     jObject.put("First Name", cus.firstName);
-    //     jObject.put("Last Name", cus.lastName);
-    //     jObject.put("Email", cus.email);
-    //     jObject.put("UserName", cus.username);
-    //     jObject.put("Password", cus.password);
-    //     jObject.put("Address", cus.address);
-    //     jObject.put("CustomerID", cus.custID);
-    //     return jObject;
-    // }
 
-    // public static Customer jsonToCustomer(JSONObject jsonObject){
-    //     var cus = new Customer();
-    //     cus.firstName = jsonObject.get("First Name").toString();
-    //     cus.lastName = jsonObject.get("Last Name").toString();
-    //     cus.email = jsonObject.get("Email").toString();
-    //     cus.username = jsonObject.get("UserName").toString();
-    //     cus.password = jsonObject.get("Password").toString();
-    //     cus.address = jsonObject.get("Address").toString();
-    //     cus.custID = Integer.parseInt(jsonObject.get("CustomerID").toString());
-    //     return cus;
-    // }
-
-
-    // public static JSONObject customerJsonArray(ArrayList<Customer> testArr){
-    //     JSONArray jsonArray = new JSONArray();
-    //     for (Customer element : testArr) {
-    //         jsonArray.add(customerToJson(element));
-    //     }
-    //     JSONObject jObject = new JSONObject();
-    //     jObject.put("Customers", jsonArray);
-    // return jObject;
-    // }
 
 
 }

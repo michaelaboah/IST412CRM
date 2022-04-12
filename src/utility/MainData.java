@@ -2,8 +2,7 @@
 package utility;
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+
 
 import model.*;
 
@@ -14,7 +13,7 @@ public class MainData {
     private static ArrayList<IssueTicket> issueTickets = new ArrayList<>();
 
     
-    private static JSONObject dataPersistance = new JSONObject();
+    private static MainData dataPersistance = new MainData();
 
     public static ArrayList<Customer> getCustomers() {
         return customers;
@@ -43,16 +42,6 @@ public class MainData {
 
     public static void setIssueTickets(ArrayList<IssueTicket> issueTickets) {
         MainData.issueTickets = issueTickets;
-    }
-
-
-    public static JSONObject getDataPersistance() {
-        return dataPersistance;
-    }
-
-
-    public static void setDataPersistance(JSONObject dataPersistance) {
-        MainData.dataPersistance = dataPersistance;
     }
 
 

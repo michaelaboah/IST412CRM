@@ -96,58 +96,7 @@ public class Manager {
                 + managerType + ", password=" + password + ", username=" + username + "]";
     }
 
-    public static JSONObject managerToJson(Manager man){
-        var jObject = new JSONObject();
-        jObject.put("Manager FirstName", man.fName);
-        jObject.put("Manager LastName", man.lName);
-        jObject.put("Manager Username", man.username);
-        jObject.put("Manager Password", man.password);
-        jObject.put("Manager Type", man.managerType.toString());
-        jObject.put("ManagerID", man.managerID);
-        return jObject;
-    }
-
-    public static Manager jsonToManager(JSONObject json){
-        var man = new Manager();
-        man.fName = json.get("Manager FirstName").toString();
-        man.lName = json.get("Manager LastName").toString();
-        man.username = json.get("Manager Username").toString();
-        man.password = json.get("Manager Password").toString();
-        switch (json.get("Manager Type").toString()) {
-            case "CRM":
-                man.setManagerType(ManagerType.CRM);
-                break;
-
-            case "SHIPMENT":
-                man.setManagerType(ManagerType.SHIPMENT);
-                break;
-
-            case "BILLING":
-                man.setManagerType(ManagerType.BILLING);
-                break;
-            
-            case "PRODUCT":
-                man.setManagerType(ManagerType.PRODUCT);
-                break;
-
-            case "TECH_SUPPORT":
-                man.setManagerType(ManagerType.TECH_SUPPORT);
-                break;
-
-            default:
-                break;
-        }
-        man.managerID = Integer.parseInt(json.get("ManagerID").toString());
-        return man;
-    }
-
-    public static JSONArray managerJsonArray(ArrayList<Manager> testArr){
-        var jsonArray = new JSONArray();
-        for (Manager element : testArr) {
-            jsonArray.add(managerToJson(element));
-        }
-    return jsonArray;
-    }
+    
 
 } 
 

@@ -8,82 +8,37 @@ package utility;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONAware;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import com.google.gson.Gson;
 
 public class JsonUtil {
     
-
-    public static JSONArray storeAsJArray(ArrayList<?> arrayList){
-        try {
-            JSONArray array = new JSONArray();
-            for (Object element : arrayList) {
-                array.add(element);
-            }
-            return array;
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        }
-    }
-
-
-    public static void writeJson(String filepath, JSONAware jsonObject){
-        
+                                //Insert filepath and Object
+    public static void writeJson(String filepath, Object jsonObject){
+        Gson jParser = new Gson();
         try {
             var writer = new BufferedWriter(new FileWriter(filepath));
-            // JSONObject wrapper = new JSONObject();
-            // wrapper.put(jsonName, jsonObject);
-            writer.write(jsonObject.toJSONString());
+            var data = jParser.toJson(jsonObject);
+            writer.write(data);
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static JSONObject readJsonObject(String filepath){
-        try {
-            Object obj = new JSONParser().parse(new FileReader(filepath));
-            JSONObject jObject = (JSONObject) obj;
-            return jObject;
-        } catch (Exception e) {
-            //TODO: handle exception
+                        // Insert filepath and a new %ObjectType%()
+    public static Object readJson(String filePath,  Object obj ){
+        Gson gson = new Gson();
+        try (Reader reader = new FileReader(filePath)) {
+            Object object = gson.fromJson(reader, obj.getClass());
+            System.out.println(reader);
+            return object;
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-    }
-
-    
-    public static JSONArray readJsonArray(String filepath){
-        try {
-            Object parsed = new JSONParser().parse(new FileReader(filepath));
-            JSONArray jArray = (JSONArray) parsed;
-            // JSONObject jObject = (JSONObject) jArray.get(i);
-            return jArray;
-        } catch (Exception e) {
-            //TODO: handle exception
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static JSONObject jArrToJObj(JSONArray arr, int i){
-        try {
-            JSONObject jObject = (JSONObject) arr.get(i);
-            return jObject;
-        } catch (Exception e) {
-            //TODO: handle exception
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static void saveAllData(String jsonName, JSONAware json){
-        
-        MainData.getDataPersistance().put(jsonName, json);
     }
 }
