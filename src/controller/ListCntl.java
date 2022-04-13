@@ -5,46 +5,25 @@ import model.*;
 import utility.MainData;
 import view.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
-
 public class ListCntl {
 
-    private Customer currentCustomer;
-    private Manager currentManager;
     private LoginUI theLoginUI;
     private CustomerUI theCustomerUI;
     private ManagerUI theManagerUI;
     private SubmitIssue submitIssue;
-    // private RecordSearchUI theRecordSearchUI;
-    // private UserList theUserList;
-
 
     public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue) {
         this.theLoginUI = theLoginUI;
         this.theCustomerUI = theCustomerUI;
         this.submitIssue = submitIssue;
 
-//        this.getTestTicketData();
-//        System.out.println(IssueTicket.getIssueTicketList());
-
-        // theUserList = new UserList(this);
-
-        // theLoginUI = new LoginUI(this);
-
-//        showLoginUI();
     }
+
 
     public void login() {
         theLoginUI.getLogInButton().addActionListener(e -> {
             String username = theLoginUI.getUserNameField().getText();
             String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
-
-            System.out.println(MainData.getCustomers().get(0).getEmail());
-
 
             if (username.equals(MainData.getCustomers().get(0).getUsername()) && password.equals(MainData.getCustomers().get(0).getPassword()) && theLoginUI.getCustomer().isSelected()) {
                 theLoginUI.setVisible(false);
@@ -91,7 +70,7 @@ public class ListCntl {
             } else {
                 submitIssue.displayConfirmation();
                 submitIssue.setVisible(false);
-                MainData.getIssueTickets().add(new IssueTicket(submitIssue.getTextArea().getText(), MainData.getIssueTickets().size()+1,LocalDateTime.now(), false, submitIssue.getComboBox().getSelectedItem().toString()));
+//                MainData.getIssueTickets().add(new IssueTicket(submitIssue.getTextArea().getText(), MainData.getIssueTickets().size()+1,LocalDateTime.now(), false, submitIssue.getComboBox().getSelectedItem().toString()));
                 System.out.println(MainData.getIssueTickets());
                 System.out.println(submitIssue.getComboBox().getSelectedItem());
                 submitIssue.getTextArea().setText("");

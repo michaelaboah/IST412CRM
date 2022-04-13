@@ -32,16 +32,18 @@ public class App {
         ManagerUI manager = new ManagerUI();
         CustomerUI customerUI = new CustomerUI();
         SubmitIssue submitIssue = new SubmitIssue();
+        ResolveIssue resolveIssue = new ResolveIssue();
 
         ListCntl listCntl = new ListCntl(loginUI, customerUI, submitIssue);
         listCntl.login();
         listCntl.logout();
         listCntl.submitComplaint();
 
-        frame.add(loginUI);
-        frame.add(manager);
-        frame.add(customerUI);
-        frame.add(submitIssue);
+//        frame.add(loginUI);
+//        frame.add(manager);
+//        frame.add(customerUI);
+//        frame.add(submitIssue);
+        frame.add(resolveIssue);
         frame.setVisible(true);
 
     }

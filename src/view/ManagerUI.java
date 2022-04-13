@@ -8,8 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ManagerUI extends JPanel {
 
-    JLabel userName = new JLabel("Carlos Flores");
-    JLabel ticketAmount = new JLabel("1");
+    JLabel userName = new JLabel("");
     JButton resolveBtn = new JButton("Resolve Issue Ticket");
     JButton reviewBtn = new JButton("Review All Tickets");
     JButton logout = new JButton("Logout");
@@ -27,34 +26,17 @@ public class ManagerUI extends JPanel {
         add(title);
 
         JLabel welcomeTxt = new JLabel("Welcome back, ");
-        welcomeTxt.setBounds(429, 208, 322, 28);
+        welcomeTxt.setBounds(432, 244, 322, 28);
         welcomeTxt.setFont(new Font("Helvetica", Font.PLAIN, 24));
         welcomeTxt.setForeground(Color.decode("#ffffff"));
         add(welcomeTxt);
 
-        userName.setBounds(596, 208, 200, 28);
+        userName.setBounds(599, 244, 200, 28);
         userName.setFont(new Font("Helvetica", Font.PLAIN, 24));
         userName.setForeground(Color.decode("#ffffff"));
         add(userName);
 
-        JLabel description = new JLabel("You have ");
-        description.setBounds(408, 286, 90, 21);
-        description.setFont(new Font("Helvetica", Font.PLAIN, 18));
-        description.setForeground(Color.decode("#ffffff"));
-        add(description);
-
-        ticketAmount.setBounds(487, 286, 20, 21);
-        ticketAmount.setFont(new Font("Helvetica", Font.BOLD, 18));
-        ticketAmount.setForeground(Color.decode("#ffffff"));
-        add(ticketAmount);
-
-        JLabel descContinue = new JLabel("issues ticket pending to be resolve.");
-        descContinue.setBounds(500, 286, 280, 21);
-        descContinue.setFont(new Font("Helvetica", Font.PLAIN, 18));
-        descContinue.setForeground(Color.decode("#ffffff"));
-        add(descContinue);
-
-        resolveBtn.setBounds(298, 357, 230, 55);
+        resolveBtn.setBounds(298, 322, 230, 55);
         resolveBtn.setFocusable(false);
         resolveBtn.setFont(new Font("Helvetica", Font.BOLD, 18));
         resolveBtn.setForeground(Color.white);
@@ -64,12 +46,12 @@ public class ManagerUI extends JPanel {
         add(resolveBtn);
 
         JLabel orTxt = new JLabel("OR");
-        orTxt.setBounds(578, 374, 30, 21);
+        orTxt.setBounds(578, 339, 30, 21);
         orTxt.setFont(new Font("Helvetica", Font.PLAIN, 18));
         orTxt.setForeground(Color.decode("#ffffff"));
         add(orTxt);
 
-        reviewBtn.setBounds(652, 357, 230, 55);
+        reviewBtn.setBounds(652, 322, 230, 55);
         reviewBtn.setFocusable(false);
         reviewBtn.setFont(new Font("Helvetica", Font.BOLD, 18));
         reviewBtn.setForeground(Color.white);
@@ -101,12 +83,9 @@ public class ManagerUI extends JPanel {
 
     }
 
+
     public JLabel getUserName() {
         return userName;
-    }
-
-    public JLabel getTicketAmount() {
-        return ticketAmount;
     }
 
     public JButton getResolveBtn() {
@@ -115,6 +94,10 @@ public class ManagerUI extends JPanel {
 
     public JButton getReviewBtn() {
         return reviewBtn;
+    }
+
+    public void setUserName(JLabel userName) {
+        this.userName = userName;
     }
 
     public JButton getLogout() {
