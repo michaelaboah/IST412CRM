@@ -94,7 +94,7 @@ public class ListCntl {
             } else {
                 submitIssue.displayConfirmation();
                 submitIssue.setVisible(false);
-                MainData.getIssueTickets().add(new IssueTicket(submitIssue.getTextArea().getText(), MainData.getIssueTickets().size()+1,LocalDateTime.now(), false, submitIssue.getComboBox().getSelectedItem().toString()));
+                
                 System.out.println(MainData.getIssueTickets());
                 System.out.println(submitIssue.getComboBox().getSelectedItem());
                 submitIssue.getTextArea().setText("");

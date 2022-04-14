@@ -23,6 +23,7 @@ public class SavedData{
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
+
     public ArrayList<IssueTicket> getIssueTickets() {
         return issueTickets;
     }
@@ -30,18 +31,21 @@ public class SavedData{
         this.issueTickets = issueTickets;
     }
 
+
+
     @Override
     public String toString() {
         return "SavedData [customers=" + customers + ", issueTickets=" + issueTickets + ", items=" + items + "]";
     }
+
 
     public static void readAll(String filePath){
         SavedData retrieved = (SavedData) JsonUtil.readJson(filePath, new SavedData());
         
         MainData.setCustomers(retrieved.getCustomers());
         MainData.setIssueTickets(retrieved.getIssueTickets());
-        System.out.println(retrieved.getIssueTickets());
         MainData.setItems(retrieved.getItems());
+        System.out.println(retrieved);
     }
 
 

@@ -1,0 +1,53 @@
+{
+  "customers": [
+    {
+      "firstName": "firstName",
+      "lastName": "lastName",
+      "email": "email",
+      "username": "username",
+      "password": "password",
+      "address": "address",
+      "custID": 123
+    }
+  ],
+  "items": [
+    {
+      "itemName": "itemName",
+      "itemURL": "itemURL",
+      "itemDescription": "itemDescription",
+      "itemID": 1654
+    },
+    {
+      "itemName": "itemName",
+      "itemURL": "itemURL",
+      "itemDescription": "itemDescription",
+      "itemID": 1654
+    },
+    {
+      "itemName": "itemName",
+      "itemURL": "itemURL",
+      "itemDescription": "itemDescription",
+      "itemID": 1654
+    }
+  ],
+  "issueTickets": [
+    {
+      "name": "Dumb",
+      "reportID": 2323,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 14
+        },
+        "time": {
+          "hour": 13,
+          "minute": 14,
+          "second": 31,
+          "nano": 563800000
+        }
+      },
+      "isResolved": false
+    }
+  ]
+}

@@ -1,1 +1,11 @@
-[{"firstName":"firstName","lastName":"lastName","email":"email","username":"username","password":"password","address":"address","custID":123}]
+[
+  {
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "email": "email",
+    "username": "username",
+    "password": "password",
+    "address": "address",
+    "custID": 123
+  }
+]

@@ -34,9 +34,7 @@ public class JsonUtil {
     public static Object readJson(String filePath,  Object obj ){
         Gson gson = new Gson();
         try (Reader reader = new FileReader(filePath)) {
-            Object object = gson.fromJson(reader, obj.getClass());
-            System.out.println(reader);
-            return object;
+            return gson.fromJson(reader, obj.getClass());
         } catch (IOException e) {
             e.printStackTrace();
             return null;
