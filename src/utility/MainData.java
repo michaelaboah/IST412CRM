@@ -13,7 +13,7 @@ public class MainData {
     private static ArrayList<Item> items = new ArrayList<>();
     private static ArrayList<IssueTicket> issueTickets = new ArrayList<>();
 
-    
+
     private static JSONObject dataPersistance = new JSONObject();
 
     public static ArrayList<Customer> getCustomers() {

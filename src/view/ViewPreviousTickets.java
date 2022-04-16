@@ -6,22 +6,21 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class ResolveIssue extends JPanel {
+public class ViewPreviousTickets extends JPanel {
     JButton backBtn = new JButton("Back");
-//    @note: default values for testing
-    JLabel id = new JLabel("id: 910202920");
-    JLabel fullName = new JLabel("Alex Harper");
-    JLabel dates = new JLabel("2022-04-12");
+//    @note: for testing
+    JLabel id = new JLabel("192929");
+    JLabel type = new JLabel("some order");
+    JLabel dates = new JLabel("2022/02/03");
     TextArea getIssueTxt = new TextArea();
-    TextArea submitResponse = new TextArea();
-    JButton resolveIssue = new JButton("Resolve Issue");
     JButton prevBtn = new JButton("<");
     JButton nextBtn = new JButton(">");
 
-    public ResolveIssue() {
+
+    public ViewPreviousTickets() {
         setBounds(50, 30, 1180, 620);
         setLayout(null);
-        setVisible(true);
+        setVisible(false);
         setBackground(Color.decode("#212121"));
 
         JLabel date = new JLabel("" + LocalDate.now());
@@ -45,62 +44,56 @@ public class ResolveIssue extends JPanel {
         backBtn.setBorderPainted(false);
         add(backBtn);
 
-        id.setBounds(531, 36, 150, 21);
-        id.setFont(new Font("Helvetica", Font.BOLD, 18));
-        id.setForeground(Color.white );
+        JLabel title = new JLabel("Previous Issued Tickets");
+        title.setBounds(482, 116, 230, 23);
+        title.setFont(new Font("Helvetica", Font.BOLD, 20));
+        title.setForeground(Color.decode("#ffffff"));
+        add(title);
+
+        JLabel ticketIDTxt = new JLabel("Ticket ID: ");
+        ticketIDTxt.setBounds(321, 195, 100, 19);
+        ticketIDTxt.setFont(new Font("Helvetica", Font.BOLD, 16));
+        ticketIDTxt.setForeground(Color.decode("#ffffff"));
+        add(ticketIDTxt);
+
+        id.setBounds(400,195, 100, 19 );
+        id.setFont(new Font("Helvetica", Font.BOLD, 16));
+        id.setForeground(Color.decode("#ffffff"));
         add(id);
 
-        JLabel custNameTxt = new JLabel("Customer Name: ");
-        custNameTxt.setBounds(321, 77, 170, 21);
-        custNameTxt.setFont(new Font("Helvetica", Font.BOLD, 18));
-        custNameTxt.setForeground(Color.white);
-        add(custNameTxt);
+        JLabel issueTypeTxt = new JLabel("Issue Type: ");
+        issueTypeTxt.setBounds(321, 229, 100, 19);
+        issueTypeTxt.setFont(new Font("Helvetica", Font.BOLD, 16));
+        issueTypeTxt.setForeground(Color.decode("#ffffff"));
+        add(issueTypeTxt);
 
-        fullName.setBounds(476, 78, 100, 19);
-        fullName.setFont(new Font("Helvetica", Font.PLAIN, 16));
-        fullName.setForeground(Color.white );
-        add(fullName);
+        type.setBounds(420, 229, 100, 19);
+        type.setFont(new Font("Helvetica", Font.BOLD, 16));
+        type.setForeground(Color.decode("#ffffff"));
+        add(type);
 
-        JLabel dateIssueTxt = new JLabel("Date Issue: ");
-        dateIssueTxt.setBounds(630, 77, 116, 21);
-        dateIssueTxt.setFont(new Font("Helvetica", Font.BOLD, 18));
-        dateIssueTxt.setForeground(Color.white);
-        add(dateIssueTxt);
+        JLabel dataIssueTxt = new JLabel("Date Issued: ");
+        dataIssueTxt.setBounds(675, 229, 100, 19);
+        dataIssueTxt.setFont(new Font("Helvetica", Font.BOLD, 16));
+        dataIssueTxt.setForeground(Color.decode("#ffffff"));
+        add(dataIssueTxt);
 
-        dates.setBounds(738, 79, 150, 16);
-        dates.setFont(new Font("Helvetica", Font.PLAIN, 16));
-        dates.setForeground(Color.white);
+        dates.setBounds(780, 229, 100, 19);
+        dates.setFont(new Font("Helvetica", Font.BOLD, 16));
+        dates.setForeground(Color.decode("#ffffff"));
         add(dates);
 
         JLabel problemDescriptionTxt = new JLabel("Problem description:");
-        problemDescriptionTxt.setBounds(321, 118, 150, 21);
+        problemDescriptionTxt.setBounds(321, 278, 150, 21);
         problemDescriptionTxt.setFont(new Font("Helvetica", Font.PLAIN, 14));
         problemDescriptionTxt.setForeground(Color.white);
         add(problemDescriptionTxt);
 
-        getIssueTxt.setBounds(321, 144, 538, 150);
+        getIssueTxt.setBounds(321, 304, 538, 150);
+        getIssueTxt.setFocusable(false);
         add(getIssueTxt);
 
-
-        JLabel submitResponseTxt = new JLabel("Submit Response:");
-        submitResponseTxt.setBounds(321, 324, 116, 21);
-        submitResponseTxt.setFont(new Font("Helvetica", Font.PLAIN, 14));
-        submitResponseTxt.setForeground(Color.white);
-        add(submitResponseTxt);
-
-        submitResponse.setBounds(321, 350, 538, 150);
-        add(submitResponse);
-
-        resolveIssue.setBounds(480, 530, 230, 55);
-        resolveIssue.setFocusable(false);
-        resolveIssue.setFont(new Font("Helvetica", Font.BOLD, 18));
-        resolveIssue.setForeground(Color.white);
-        resolveIssue.setBackground(Color.decode("#484848"));
-        resolveIssue.setOpaque(true);
-        resolveIssue.setBorderPainted(false);
-        add(resolveIssue);
-
-        prevBtn.setBounds(130, 285, 60, 60);
+        prevBtn.setBounds(171, 356, 60, 60);
         prevBtn.setFocusable(false);
         prevBtn.setFont(new Font("Helvetica", Font.BOLD, 24));
         prevBtn.setForeground(Color.white);
@@ -109,7 +102,7 @@ public class ResolveIssue extends JPanel {
         prevBtn.setBorderPainted(false);
         add(prevBtn);
 
-        nextBtn.setBounds(969, 285, 60, 60);
+        nextBtn.setBounds(1009, 356, 60, 60);
         nextBtn.setFocusable(false);
         nextBtn.setFont(new Font("Helvetica", Font.BOLD, 24));
         nextBtn.setForeground(Color.white);
@@ -136,12 +129,12 @@ public class ResolveIssue extends JPanel {
         this.id = id;
     }
 
-    public JLabel getFullName() {
-        return fullName;
+    public JLabel getType() {
+        return type;
     }
 
-    public void setFullName(JLabel fullName) {
-        this.fullName = fullName;
+    public void setType(JLabel type) {
+        this.type = type;
     }
 
     public JLabel getDates() {
@@ -158,22 +151,6 @@ public class ResolveIssue extends JPanel {
 
     public void setGetIssueTxt(TextArea getIssueTxt) {
         this.getIssueTxt = getIssueTxt;
-    }
-
-    public TextArea getSubmitResponse() {
-        return submitResponse;
-    }
-
-    public void setSubmitResponse(TextArea submitResponse) {
-        this.submitResponse = submitResponse;
-    }
-
-    public JButton getResolveIssue() {
-        return resolveIssue;
-    }
-
-    public void setResolveIssue(JButton resolveIssue) {
-        this.resolveIssue = resolveIssue;
     }
 
     public JButton getPrevBtn() {

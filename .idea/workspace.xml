@@ -5,14 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5c98e70-eb57-43b2-b3f5-010373284629" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/ResolveIssue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/ViewPreviousTickets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer.json" beforeDir="false" afterPath="$PROJECT_DIR$/customer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/controller/ListCntl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/controller/ListCntl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/CustomerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/CustomerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/LoginUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/ManagerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IST412CRM/view/ManagerUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IST412CRM/view/ResolveIssue.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ListCntl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ListCntl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/MainData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/MainData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CustomerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CustomerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/LoginUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ManagerUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ManagerUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/RecordSearchUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ResolveIssue.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +55,13 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

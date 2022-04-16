@@ -7,13 +7,18 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class ManagerUI extends JPanel {
-
-    JLabel userName = new JLabel("");
-    JButton resolveBtn = new JButton("Resolve Issue Ticket");
-    JButton reviewBtn = new JButton("Review All Tickets");
+//    @note: default values for testing
+    JLabel id = new JLabel("id: 910202920");
+    JLabel fullName = new JLabel("Alex Harper");
+    JLabel dates = new JLabel("2022-04-12");
+    TextArea getIssueTxt = new TextArea();
+    TextArea submitResponse = new TextArea();
+    JButton resolveIssue = new JButton("Resolve Issue");
+    JButton prevBtn = new JButton("<");
+    JButton nextBtn = new JButton(">");
     JButton logout = new JButton("Logout");
 
-    public ManagerUI()  {
+    public ManagerUI() {
         setBounds(50, 30, 1180, 620);
         setLayout(null);
         setVisible(false);
@@ -24,41 +29,6 @@ public class ManagerUI extends JPanel {
         title.setFont(new Font("Helvetica", Font.BOLD, 32));
         title.setForeground(Color.decode("#ffffff"));
         add(title);
-
-        JLabel welcomeTxt = new JLabel("Welcome back, ");
-        welcomeTxt.setBounds(432, 244, 322, 28);
-        welcomeTxt.setFont(new Font("Helvetica", Font.PLAIN, 24));
-        welcomeTxt.setForeground(Color.decode("#ffffff"));
-        add(welcomeTxt);
-
-        userName.setBounds(599, 244, 200, 28);
-        userName.setFont(new Font("Helvetica", Font.PLAIN, 24));
-        userName.setForeground(Color.decode("#ffffff"));
-        add(userName);
-
-        resolveBtn.setBounds(298, 322, 230, 55);
-        resolveBtn.setFocusable(false);
-        resolveBtn.setFont(new Font("Helvetica", Font.BOLD, 18));
-        resolveBtn.setForeground(Color.white);
-        resolveBtn.setBackground(Color.decode("#000000"));
-        resolveBtn.setOpaque(true);
-        resolveBtn.setBorderPainted(false);
-        add(resolveBtn);
-
-        JLabel orTxt = new JLabel("OR");
-        orTxt.setBounds(578, 339, 30, 21);
-        orTxt.setFont(new Font("Helvetica", Font.PLAIN, 18));
-        orTxt.setForeground(Color.decode("#ffffff"));
-        add(orTxt);
-
-        reviewBtn.setBounds(652, 322, 230, 55);
-        reviewBtn.setFocusable(false);
-        reviewBtn.setFont(new Font("Helvetica", Font.BOLD, 18));
-        reviewBtn.setForeground(Color.white);
-        reviewBtn.setBackground(Color.decode("#000000"));
-        reviewBtn.setOpaque(true);
-        reviewBtn.setBorderPainted(false);
-        add(reviewBtn);
 
         JLabel date = new JLabel("" + LocalDate.now());
         date.setBounds(1080, 0, 100, 21);
@@ -72,6 +42,81 @@ public class ManagerUI extends JPanel {
         time.setForeground(Color.white  );
         add(time);
 
+        id.setBounds(531, 36, 150, 21);
+        id.setFont(new Font("Helvetica", Font.BOLD, 18));
+        id.setForeground(Color.white );
+        add(id);
+
+        JLabel custNameTxt = new JLabel("Customer Name: ");
+        custNameTxt.setBounds(321, 77, 170, 21);
+        custNameTxt.setFont(new Font("Helvetica", Font.BOLD, 18));
+        custNameTxt.setForeground(Color.white);
+        add(custNameTxt);
+
+        fullName.setBounds(476, 78, 100, 19);
+        fullName.setFont(new Font("Helvetica", Font.PLAIN, 16));
+        fullName.setForeground(Color.white );
+        add(fullName);
+
+        JLabel dateIssueTxt = new JLabel("Date Issue: ");
+        dateIssueTxt.setBounds(630, 77, 116, 21);
+        dateIssueTxt.setFont(new Font("Helvetica", Font.BOLD, 18));
+        dateIssueTxt.setForeground(Color.white);
+        add(dateIssueTxt);
+
+        dates.setBounds(738, 79, 150, 16);
+        dates.setFont(new Font("Helvetica", Font.PLAIN, 16));
+        dates.setForeground(Color.white);
+        add(dates);
+
+        JLabel problemDescriptionTxt = new JLabel("Problem description:");
+        problemDescriptionTxt.setBounds(321, 118, 150, 21);
+        problemDescriptionTxt.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        problemDescriptionTxt.setForeground(Color.white);
+        add(problemDescriptionTxt);
+
+        getIssueTxt.setBounds(321, 144, 538, 150);
+        getIssueTxt.setFocusable(false);
+        add(getIssueTxt);
+
+
+        JLabel submitResponseTxt = new JLabel("Submit Response:");
+        submitResponseTxt.setBounds(321, 324, 116, 21);
+        submitResponseTxt.setFont(new Font("Helvetica", Font.PLAIN, 14));
+        submitResponseTxt.setForeground(Color.white);
+        add(submitResponseTxt);
+
+        submitResponse.setBounds(321, 350, 538, 150);
+        submitResponse.setFocusable(true);
+        add(submitResponse);
+
+        resolveIssue.setBounds(480, 530, 230, 55);
+        resolveIssue.setFocusable(false);
+        resolveIssue.setFont(new Font("Helvetica", Font.BOLD, 18));
+        resolveIssue.setForeground(Color.white);
+        resolveIssue.setBackground(Color.decode("#484848"));
+        resolveIssue.setOpaque(true);
+        resolveIssue.setBorderPainted(false);
+        add(resolveIssue);
+
+        prevBtn.setBounds(130, 285, 60, 60);
+        prevBtn.setFocusable(false);
+        prevBtn.setFont(new Font("Helvetica", Font.BOLD, 24));
+        prevBtn.setForeground(Color.white);
+        prevBtn.setBackground(Color.decode("#212121"));
+        prevBtn.setOpaque(true);
+        prevBtn.setBorderPainted(false);
+        add(prevBtn);
+
+        nextBtn.setBounds(969, 285, 60, 60);
+        nextBtn.setFocusable(false);
+        nextBtn.setFont(new Font("Helvetica", Font.BOLD, 24));
+        nextBtn.setForeground(Color.white);
+        nextBtn.setBackground(Color.decode("#212121"));
+        nextBtn.setOpaque(true);
+        nextBtn.setBorderPainted(false);
+        add(nextBtn);
+
         logout.setBounds(1050, 570, 130, 50);
         logout.setFocusable(false);
         logout.setFont(new Font("Helvetica", Font.BOLD, 18));
@@ -84,23 +129,75 @@ public class ManagerUI extends JPanel {
     }
 
 
-    public JLabel getUserName() {
-        return userName;
+    public JLabel getId() {
+        return id;
     }
 
-    public JButton getResolveBtn() {
-        return resolveBtn;
+    public void setId(JLabel id) {
+        this.id = id;
     }
 
-    public JButton getReviewBtn() {
-        return reviewBtn;
+    public JLabel getFullName() {
+        return fullName;
     }
 
-    public void setUserName(JLabel userName) {
-        this.userName = userName;
+    public void setFullName(JLabel fullName) {
+        this.fullName = fullName;
+    }
+
+    public JLabel getDates() {
+        return dates;
+    }
+
+    public void setDates(JLabel dates) {
+        this.dates = dates;
+    }
+
+    public TextArea getGetIssueTxt() {
+        return getIssueTxt;
+    }
+
+    public void setGetIssueTxt(TextArea getIssueTxt) {
+        this.getIssueTxt = getIssueTxt;
+    }
+
+    public TextArea getSubmitResponse() {
+        return submitResponse;
+    }
+
+    public void setSubmitResponse(TextArea submitResponse) {
+        this.submitResponse = submitResponse;
+    }
+
+    public JButton getResolveIssue() {
+        return resolveIssue;
+    }
+
+    public void setResolveIssue(JButton resolveIssue) {
+        this.resolveIssue = resolveIssue;
+    }
+
+    public JButton getPrevBtn() {
+        return prevBtn;
+    }
+
+    public void setPrevBtn(JButton prevBtn) {
+        this.prevBtn = prevBtn;
+    }
+
+    public JButton getNextBtn() {
+        return nextBtn;
+    }
+
+    public void setNextBtn(JButton nextBtn) {
+        this.nextBtn = nextBtn;
     }
 
     public JButton getLogout() {
         return logout;
+    }
+
+    public void setLogout(JButton logout) {
+        this.logout = logout;
     }
 }
