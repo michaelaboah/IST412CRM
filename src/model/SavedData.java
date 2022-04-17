@@ -10,6 +10,7 @@ public class SavedData{
     private  ArrayList<Customer> customers = new ArrayList<>();
     private  ArrayList<Item> items = new ArrayList<>();
     private  ArrayList<IssueTicket> issueTickets = new ArrayList<>();
+    private  ArrayList<IssueOrder> issueOrders = new ArrayList<>();
 
     public ArrayList<Customer> getCustomers() {
         return customers;
@@ -31,11 +32,18 @@ public class SavedData{
         this.issueTickets = issueTickets;
     }
 
+    public ArrayList<IssueOrder> getIssueOrders() {
+        return issueOrders;
+    }
 
+    public void setIssueOrders(ArrayList<IssueOrder> issueOrders) {
+        this.issueOrders = issueOrders;
+    }
 
     @Override
     public String toString() {
-        return "SavedData [customers=" + customers + ", issueTickets=" + issueTickets + ", items=" + items + "]";
+        return "SavedData [customers=" + customers + ", issueTickets=" + issueTickets + ", items=" + items + ", issueOrders" +
+            issueOrders + "]";
     }
 
 
@@ -45,6 +53,7 @@ public class SavedData{
         MainData.setCustomers(retrieved.getCustomers());
         MainData.setIssueTickets(retrieved.getIssueTickets());
         MainData.setItems(retrieved.getItems());
+        MainData.setIssueOrders(retrieved.getIssueOrders());
         System.out.println(retrieved);
     }
 
@@ -54,6 +63,7 @@ public class SavedData{
         save.setCustomers(MainData.getCustomers());
         save.setIssueTickets(MainData.getIssueTickets());
         save.setItems(MainData.getItems());
+        save.setIssueOrders(MainData.getIssueOrders());
         JsonUtil.writeJson(filepath, save);
     }
 }

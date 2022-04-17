@@ -5,6 +5,11 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import controller.*;
+import model.IssueOrder;
+import utility.MainData;
 
 public class SubmitIssue extends JPanel {
 
@@ -44,14 +49,12 @@ public class SubmitIssue extends JPanel {
         description.setForeground(Color.decode("#ffffff"));
         add(description);
 
-        String topics[] = {"-", "A product I ordered", "A current shipment progress", "Billing", "Website", "Other"};
-
-        comboBox = new JComboBox(topics);
-        comboBox.setBounds(619, 154, 200, 21);
-        add(comboBox);
-
         textArea.setBounds(360, 243, 459, 200);
         add(textArea);
+
+        comboBox = new JComboBox();
+        comboBox.setBounds(619, 154, 200, 21);
+        add(comboBox);
 
         submitForm.setBounds(360, 473, 200, 50);
         submitForm.setFocusable(false);
@@ -95,6 +98,24 @@ public class SubmitIssue extends JPanel {
 
     public JButton getBackBtn() {
         return backBtn;
+    }
+
+    public void setComboBox() {
+        comboBox.removeAllItems();
+        Integer custID = ListCntl.getCurrentCustomer().getCustID();
+        ArrayList<IssueOrder> temp = new ArrayList<>();
+        System.out.println("custID:" + custID);
+        for (IssueOrder order : MainData.getIssueOrders()) {
+            System.out.println("current order's custID: " + order.getCustID());
+            if (order.getCustID() == custID) {
+                System.out.println("match!");
+                temp.add(order);
+            }
+        }
+        System.out.println(temp);
+        for (IssueOrder order : temp) {
+            comboBox.addItem(order);
+        }
     }
 
     public void displayConfirmation() {

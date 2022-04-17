@@ -21,7 +21,7 @@ public class LoginUI extends JPanel {
         setBackground(Color.decode("#212121"));
 
         JLabel title = new JLabel("CRM System");
-        title.setBounds(0, 0, 203, 38);
+        title.setBounds(0, 0, 210, 38);
         title.setFont(new Font("Helvetica", Font.BOLD, 32));
         title.setForeground(Color.decode("#ffffff"));
         add(title);
@@ -36,10 +36,14 @@ public class LoginUI extends JPanel {
         customer.setBounds(440, 177,110, 30);
         customer.setFont(new Font("Helvetica", Font.PLAIN, 16));
         customer.setForeground(Color.decode("#ffffff"));
+        customer.setBackground(Color.decode("#212121"));
+        customer    .setOpaque(true);
 
         manager.setBounds(545, 177, 110, 30);
         manager.setFont(new Font("Helvetica", Font.PLAIN, 16));
         manager.setForeground(Color.decode("#ffffff"));
+        manager.setBackground(Color.decode("#212121"));
+        manager.setOpaque(true);
 
 //        adding radio buttons to button group
         bg.add(customer);

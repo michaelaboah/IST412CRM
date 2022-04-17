@@ -12,7 +12,6 @@ import java.time.format.DateTimeFormatter;
 public class CustomerUI extends JPanel {
     JLabel userName = new JLabel("");
     JButton submit_complaint = new JButton("Submit Complaint");
-    JButton viewPreviousOrders = new JButton("View Previous Orders");
     JButton viewPreviousTickets = new JButton("View Previous Tickets");
     JButton logout = new JButton("Logout");
 
@@ -43,17 +42,17 @@ public class CustomerUI extends JPanel {
         add(time);
 
         JLabel welcomeTxt = new JLabel("Welcome back, ");
-        welcomeTxt.setBounds(440, 158, 170, 28);
+        welcomeTxt.setBounds(440, 191, 170, 28);
         welcomeTxt.setFont(new Font("Helvetica", Font.PLAIN, 24));
         welcomeTxt.setForeground(Color.decode("#ffffff"));
         add(welcomeTxt);
 
-        userName.setBounds(607, 158, 140, 28);
+        userName.setBounds(607, 191, 140, 28);
         userName.setFont(new Font("Helvetica", Font.PLAIN, 24));
         userName.setForeground(Color.decode("#ffffff"));
         add(userName);
 
-        submit_complaint.setBounds(465, 236, 250, 55);
+        submit_complaint.setBounds(465, 269, 250, 55);
         submit_complaint.setFocusable(false);
         submit_complaint.setFont(new Font("Helvetica", Font.BOLD, 18));
         submit_complaint.setForeground(Color.white);
@@ -62,16 +61,8 @@ public class CustomerUI extends JPanel {
         submit_complaint.setBorderPainted(false);
         add(submit_complaint);
 
-        viewPreviousOrders.setBounds(465, 321, 250, 55);
-        viewPreviousOrders.setFocusable(false);
-        viewPreviousOrders.setFont(new Font("Helvetica", Font.BOLD, 18));
-        viewPreviousOrders.setForeground(Color.white);
-        viewPreviousOrders.setBackground(Color.decode("#000000"));
-        viewPreviousOrders.setOpaque(true);
-        viewPreviousOrders.setBorderPainted(false);
-        add(viewPreviousOrders);
 
-        viewPreviousTickets.setBounds(465, 406, 250, 55);
+        viewPreviousTickets.setBounds(465, 374, 250, 55);
         viewPreviousTickets.setFocusable(false);
         viewPreviousTickets.setFont(new Font("Helvetica", Font.BOLD, 18));
         viewPreviousTickets.setForeground(Color.white);
@@ -100,10 +91,6 @@ public class CustomerUI extends JPanel {
 
     public JButton getSubmit_complaint() {
         return submit_complaint;
-    }
-
-    public JButton getViewPreviousOrders() {
-        return viewPreviousOrders;
     }
 
     public JButton getViewPreviousTickets() {

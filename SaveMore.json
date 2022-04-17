@@ -7,7 +7,16 @@
       "username": "username",
       "password": "password",
       "address": "address",
-      "custID": 123
+      "custID": 1
+    },
+    {
+      "firstName": "Jose",
+      "lastName": "Torres",
+      "email": "email",
+      "username": "mzk123",
+      "password": "1234",
+      "address": "address",
+      "custID": 2
     }
   ],
   "items": [
@@ -15,39 +24,178 @@
       "itemName": "itemName",
       "itemURL": "itemURL",
       "itemDescription": "itemDescription",
-      "itemID": 1654
+      "itemID": 1
     },
     {
       "itemName": "itemName",
       "itemURL": "itemURL",
       "itemDescription": "itemDescription",
-      "itemID": 1654
+      "itemID": 2
     },
     {
       "itemName": "itemName",
       "itemURL": "itemURL",
       "itemDescription": "itemDescription",
-      "itemID": 1654
+      "itemID": 3
     }
   ],
   "issueTickets": [
     {
-      "name": "Dumb",
-      "reportID": 2323,
+      "description": "Table broke lol idk",
+      "reportID": 1,
       "dateTime": {
         "date": {
           "year": 2022,
           "month": 4,
-          "day": 14
+          "day": 16
         },
         "time": {
-          "hour": 13,
-          "minute": 13,
-          "second": 46,
-          "nano": 713163000
+          "hour": 20,
+          "minute": 0,
+          "second": 31,
+          "nano": 136613000
         }
       },
-      "isResolved": false
+      "isResolved": false,
+      "custID": 1,
+      "orderID": 3,
+      "response": ""
+    },
+    {
+      "description": "eh yo man the pizza ain\u0027t here yet lol wut",
+      "reportID": 2,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 16
+        },
+        "time": {
+          "hour": 20,
+          "minute": 1,
+          "second": 55,
+          "nano": 363286000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 2,
+      "response": ""
+    },
+    {
+      "description": "electric boogaloo",
+      "reportID": 3,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 16
+        },
+        "time": {
+          "hour": 20,
+          "minute": 50,
+          "second": 34,
+          "nano": 899105000
+        }
+      },
+      "isResolved": false,
+      "custID": 1,
+      "orderID": 1,
+      "response": ""
+    }
+  ],
+  "issueOrders": [
+    {
+      "orderedItem": [
+        1,
+        2,
+        3
+      ],
+      "orderID": 1,
+      "dateOrder": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 16
+        },
+        "time": {
+          "hour": 19,
+          "minute": 27,
+          "second": 22,
+          "nano": 464758000
+        }
+      },
+      "isDelivered": false,
+      "custID": 1
+    },
+    {
+      "orderedItem": [
+        1,
+        2,
+        3
+      ],
+      "orderID": 2,
+      "dateOrder": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 16
+        },
+        "time": {
+          "hour": 19,
+          "minute": 27,
+          "second": 22,
+          "nano": 468178000
+        }
+      },
+      "isDelivered": true,
+      "custID": 1
+    },
+    {
+      "orderedItem": [
+        1,
+        2,
+        3
+      ],
+      "orderID": 3,
+      "dateOrder": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 16
+        },
+        "time": {
+          "hour": 19,
+          "minute": 27,
+          "second": 22,
+          "nano": 468201000
+        }
+      },
+      "isDelivered": false,
+      "custID": 2
+    },
+    {
+      "orderedItem": [
+        1,
+        2,
+        3
+      ],
+      "orderID": 4,
+      "dateOrder": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 16
+        },
+        "time": {
+          "hour": 19,
+          "minute": 27,
+          "second": 22,
+          "nano": 468209000
+        }
+      },
+      "isDelivered": true,
+      "custID": 2
     }
   ]
 }

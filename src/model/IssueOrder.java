@@ -5,56 +5,32 @@ import java.util.ArrayList;
 
 public class IssueOrder {
 
-   private ArrayList<Item> orderedItems;
+   private ArrayList<Integer> orderedItem;
    private Integer orderID;
    private LocalDateTime dateOrder;
    private Boolean isDelivered;
-   private Customer custOwner;
-   private static ArrayList<IssueOrder> issueOrderList;
+   private int custID;
 
-   public IssueOrder(ArrayList<Item> orderedItems, Integer orderID,
-       LocalDateTime dateOrder, Boolean isDelivered,
-       Customer custOwner) {
+   public IssueOrder(ArrayList<Integer> orderedItem, Integer orderID,
+       LocalDateTime dateOrder, Boolean isDelivered, int custID) {
 
-       this.orderedItems = orderedItems;
+       this.orderedItem = orderedItem;
        this.orderID = orderID;
        this.dateOrder = dateOrder;
        this.isDelivered = isDelivered;
-       this.custOwner = custOwner;
-       try {
-           issueOrderList.add(this);
-       }
-       catch(NullPointerException e) {
-           issueOrderList = new ArrayList<>();
-           issueOrderList.add(this);
-       }
+       this.custID = custID;
    }
 
-   public IssueOrder(Item orderedItem, Integer orderID,
-       LocalDateTime dateOrder, Boolean isDelivered,
-       Customer custOwner) {
+   public IssueOrder() {
 
-       this.orderedItems = new ArrayList<>();
-       this.orderedItems.add(orderedItem);
-       this.orderID = orderID;
-       this.dateOrder = dateOrder;
-       this.isDelivered = isDelivered;
-       this.custOwner = custOwner;
-       try {
-           issueOrderList.add(this);
-       }
-       catch(NullPointerException e) {
-           issueOrderList = new ArrayList<>();
-           issueOrderList.add(this);
-       }
    }
 
-   public ArrayList<Item> getOrderedItems() {
-       return this.orderedItems;
+   public ArrayList<Integer> getOrderedItem() {
+       return this.orderedItem;
    }
 
-   public void setOrderedItems(ArrayList<Item> orderedItems) {
-       this.orderedItems = orderedItems;
+   public void setOrderedItem(ArrayList<Integer> orderedItem) {
+       this.orderedItem = orderedItem;
    }
 
    public Integer getOrderID() {
@@ -83,35 +59,22 @@ public class IssueOrder {
        this.isDelivered = isDelivered;
    }
 
-   public Customer getCustOwner() {
-       return this.custOwner;
-   }
+   
 
-   public void setCustOwner(Customer custOwner) {
-       this.custOwner = custOwner;
-   }
+   public int getCustID() {
+    return custID;
+}
 
-   public String getListOfItemsForString() {
-       String tempStringList = "";
-       for(Item item : orderedItems) {
-           tempStringList += item.getItemName();
-           tempStringList += ", ";
-       }
+    public void setCustID(int custID) {
+        this.custID = custID;
+    }
 
-       tempStringList = tempStringList.substring(0, tempStringList.length()-2);
 
-       return tempStringList;
-   }
-
-   public static ArrayList<IssueOrder> getIssueOrderList() {
-       return IssueOrder.issueOrderList;
-   }
 
    @Override
    public String toString() {
 
        return "id: " + getOrderID() + "date/time of issue: " + getDateOrder()
-               + "name: " + getListOfItemsForString() + " email: " + custOwner.getEmail()
                + " delivery status: " + getIsDelivered();
 
    }

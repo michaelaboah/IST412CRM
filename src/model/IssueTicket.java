@@ -9,36 +9,30 @@ import java.util.ArrayList;
 
 public class IssueTicket {
 
-    private String name, description;
+    private String description;
     private Integer reportID;
     private LocalDateTime dateTime;
     private Boolean isResolved;
-    // private Customer custOwner;
+    private Integer custID;
     // private Manager recipient;
-    private IssueType issueType;
+    private Integer orderID;
     private String response;
     private static int issueTicketsCreated;
 
-    public IssueTicket(String name, String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved,
-            IssueType issueType, String response) {
-        this.name = name;
+    public IssueTicket(String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved,
+            Integer orderID, String response, Integer custID) {
         this.description = description;
         this.reportID = reportID;
         this.dateTime = dateTime;
         this.isResolved = isResolved;
-        this.issueType = issueType;
+        this.orderID = orderID;
         this.response = response;
+        this.custID = custID;
     }
 
     public IssueTicket() {
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
     public String getDescription() {
         return description;
     }
@@ -63,11 +57,11 @@ public class IssueTicket {
     public void setIsResolved(Boolean isResolved) {
         this.isResolved = isResolved;
     }
-    public IssueType getIssueType() {
-        return issueType;
+    public Integer getOrderID() {
+        return orderID;
     }
-    public void setIssueType(IssueType issueType) {
-        this.issueType = issueType;
+    public void setIssueType(Integer orderID) {
+        this.orderID = orderID;
     }
     public String getResponse() {
         return response;
@@ -81,17 +75,18 @@ public class IssueTicket {
     public static void setIssueTicketsCreated(int issueTicketsCreated) {
         IssueTicket.issueTicketsCreated = issueTicketsCreated;
     }
+    public Integer getCustID() {
+        return custID;
+    }
+    public void setCustID(Integer custID) {
+        this.custID = custID;
+    }
+
     @Override
     public String toString() {
         return "IssueTicket [dateTime=" + dateTime + ", description=" + description + ", isResolved=" + isResolved
-                + ", issueType=" + issueType + ", name=" + name + ", reportID=" + reportID + ", response=" + response
+                + ", orderID=" + orderID + ", reportID=" + reportID + ", response=" + response
                 + "]";
-    }
-
-
-    public String getExtra() {
-
-        return "extra";
     }
 }
 
@@ -145,4 +140,3 @@ public class IssueTicket {
 
 // 	}
 // }
-
