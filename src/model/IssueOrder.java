@@ -74,8 +74,7 @@ public class IssueOrder {
    @Override
    public String toString() {
 
-       return "id: " + getOrderID() + "date/time of issue: " + getDateOrder()
-               + " delivery status: " + getIsDelivered();
+       return "Order ID: " + getOrderID() + "; Date: " + getDateOrder();
 
    }
 
