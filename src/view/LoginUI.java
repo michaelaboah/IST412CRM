@@ -15,11 +15,12 @@ public class LoginUI extends JPanel {
     ButtonGroup bg = new ButtonGroup();
 
     public LoginUI() {
-        setBounds(50, 30, 1180, 620);
-        setLayout(null);
-        setVisible(true);
-        setBackground(Color.decode("#212121"));
+        setScreen();
+        createElements();
 
+    }
+
+    public void createElements() {
         JLabel title = new JLabel("CRM System");
         title.setBounds(0, 0, 210, 38);
         title.setFont(new Font("Helvetica", Font.BOLD, 32));
@@ -45,11 +46,11 @@ public class LoginUI extends JPanel {
         manager.setBackground(Color.decode("#212121"));
         manager.setOpaque(true);
 
-//        adding radio buttons to button group
+        // adding radio buttons to button group
         bg.add(customer);
         bg.add(manager);
 
-//        adding to jpanel
+        // adding to jpanel
         add(customer);
         add(manager);
 
@@ -84,6 +85,13 @@ public class LoginUI extends JPanel {
         logInButton.setOpaque(true);
         logInButton.setBorderPainted(false);
         add(logInButton);
+    }
+
+    public void setScreen() {
+        setBounds(50, 30, 1180, 620);
+        setLayout(null);
+        setVisible(true);
+        setBackground(Color.decode("#212121"));
     }
 
     public JTextField getUserNameField() {

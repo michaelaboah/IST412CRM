@@ -18,11 +18,12 @@ public class ViewPreviousTickets extends JPanel {
 
 
     public ViewPreviousTickets() {
-        setBounds(50, 30, 1180, 620);
-        setLayout(null);
-        setVisible(false);
-        setBackground(Color.decode("#212121"));
+        setScreen();
+        createElements();
 
+    }
+
+    public void createElements() {
         JLabel date = new JLabel("" + LocalDate.now());
         date.setBounds(1080, 0, 100, 21);
         date.setForeground(Color.white);
@@ -110,9 +111,15 @@ public class ViewPreviousTickets extends JPanel {
         nextBtn.setOpaque(true);
         nextBtn.setBorderPainted(false);
         add(nextBtn);
-
     }
 
+    public void setScreen() {
+        setBounds(50, 30, 1180, 620);
+        setLayout(null);
+        setVisible(false);
+        setBackground(Color.decode("#212121"));
+    }
+    
     public JButton getBackBtn() {
         return backBtn;
     }

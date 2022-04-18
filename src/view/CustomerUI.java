@@ -18,11 +18,11 @@ public class CustomerUI extends JPanel {
 
 
     public CustomerUI() {
-        setBounds(50, 30, 1180, 620);
-        setLayout(null);
-        setVisible(false);
-        setBackground(Color.decode("#212121"));
+        setScreen();
+        createElements();
+    }
 
+    public void createElements() {
         JLabel title = new JLabel("CRM System");
         title.setBounds(0, 0, 203, 38);
         title.setFont(new Font("Helvetica", Font.BOLD, 32));
@@ -79,6 +79,13 @@ public class CustomerUI extends JPanel {
         logout.setOpaque(true);
         logout.setBorderPainted(false);
         add(logout);
+    }
+
+    public void setScreen() {
+        setBounds(50, 30, 1180, 620);
+        setLayout(null);
+        setVisible(false);
+        setBackground(Color.decode("#212121"));
     }
 
     public JLabel getUserName() {

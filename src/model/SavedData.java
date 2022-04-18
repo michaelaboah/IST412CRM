@@ -42,8 +42,12 @@ public class SavedData{
 
     @Override
     public String toString() {
-        return "SavedData [customers=" + customers + ", issueTickets=" + issueTickets + ", items=" + items + ", issueOrders" +
-            issueOrders + "]";
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("SavedData [customers=").append(customers).append(", issueTickets=").append(issueTickets)
+            .append(", items=").append(items).append(", issueOrders").append(issueOrders).append("]");
+
+        return sb.toString();
     }
 
 

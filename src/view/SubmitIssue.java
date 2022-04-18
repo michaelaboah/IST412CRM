@@ -20,11 +20,11 @@ public class SubmitIssue extends JPanel {
 
 
     public SubmitIssue() {
-        setBounds(50, 30, 1180, 620);
-        setLayout(null);
-        setVisible(false);
-        setBackground(Color.decode("#212121"));
+        setScreen();
+        createElements();
+    }
 
+    public void createElements() {
         JLabel date = new JLabel("" + LocalDate.now());
         date.setBounds(1080, 0, 100, 21);
         date.setForeground(Color.white);
@@ -74,6 +74,13 @@ public class SubmitIssue extends JPanel {
         backBtn.setOpaque(true);
         backBtn.setBorderPainted(false);
         add(backBtn);
+    }
+
+    public void setScreen() {
+        setBounds(50, 30, 1180, 620);
+        setLayout(null);
+        setVisible(false);
+        setBackground(Color.decode("#212121"));
     }
 
     public JComboBox getComboBox() {
