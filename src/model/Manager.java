@@ -1,9 +1,14 @@
 
 package model;
 
-import java.util.ArrayList;
 
-
+/**
+ * Object representation of a Forest manager
+ * 
+ * @author Michael Aboah, Nathan Carr, Lamees Eltohami, Henry Hoffman, Liam Kirkland, Edwin Reyes Rodriguez
+ * @version 04/17/22
+ * 
+ */
 public class Manager {
     
     private String fName, lName, username, password;
@@ -11,7 +16,11 @@ public class Manager {
     private Integer managerID;
 
 
-
+    /**
+     * Categorization lables for the different types of managers
+     * Used to differentiate confidentiality restrictions
+     * 
+     */
     public enum ManagerType {
         CRM, // Just to access one employee use case
         SHIPMENT, // For shipment issues
@@ -20,6 +29,17 @@ public class Manager {
         TECH_SUPPORT // For glitches/bug issues
     }
 
+
+    /**
+     * Create manager constructor
+     * 
+     * @param fName         String representation of the manager's first name
+     * @param lName         String representation of the manager's last name
+     * @param username      String representation of the manager's username to login into the CRM
+     * @param password      String representation of the manager's password to login into the CRM
+     * @param managerType   instance of categorization to which the manager resides within Forest
+     * @param managerID     Integer identification of managger
+     */
     public Manager(String fName, String lName, String username,
         String password, ManagerType managerType, Integer managerID) {
         this.fName = fName;
@@ -30,6 +50,10 @@ public class Manager {
         this.managerID = managerID;
     }
 
+    /**
+     * If no manager specificaitons are made, program automatically uses these defualts
+     * 
+     */
     public Manager() {
         this.fName = "Joe";
         this.lName = "Dude";
@@ -112,8 +136,15 @@ public class Manager {
 
     @Override
     public String toString() {
-        return "Manager [fName=" + fName + ", lName=" + lName + ", managerID=" + managerID + ", managerType="
-                + managerType + ", password=" + password + ", username=" + username + "]";
+        
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Manager [fName=").append(fName).append(", lName=").append(lName)
+        .append(", managerID=").append(managerID).append(", managerType=").append(managerType)
+        .append(", password=").append(password).append(", username=").append(username).append("]");
+    
+        return sb.toString();
     }
 
     

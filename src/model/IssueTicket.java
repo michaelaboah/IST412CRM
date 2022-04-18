@@ -2,11 +2,15 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 
-
-
+/**
+ * Object representation of the customers' issue they have with a product/service
+ * 
+ * @author Michael Aboah, Nathan Carr, Lamees Eltohami, Henry Hoffman, Liam Kirkland, Edwin Reyes Rodriguez
+ * @version 04/17/22
+ * 
+ */
 public class IssueTicket {
 
     private String description;
@@ -14,11 +18,22 @@ public class IssueTicket {
     private LocalDateTime dateTime;
     private Boolean isResolved;
     private Integer custID;
-    // private Manager recipient;
     private Integer orderID;
     private String response;
     private static int issueTicketsCreated;
 
+
+    /**
+     * Create constructor for IssueTicket
+     * 
+     * @param description   String text field of the customer's full complaint message
+     * @param reportID      Integer representation of specific identification number for a given issueTicket
+     * @param dateTime      LocalDateTime used to capture when the customer submitted the complaint
+     * @param isResolved    Boolean used to determine if the matter has been resolved
+     * @param orderID       Integer used to identify the customer's order/s
+     * @param response      String text field of the CRM manager's full response message
+     * @param custID        Integer representation of customer's documented Forest identification number for a given issue
+     */
     public IssueTicket(String description, Integer reportID, LocalDateTime dateTime, Boolean isResolved,
             Integer orderID, String response, Integer custID) {
         this.description = description;
@@ -30,7 +45,7 @@ public class IssueTicket {
         this.custID = custID;
     }
 
-    public IssueTicket() {
+    public IssueTicket() {          // TODO: EMPTY MEETHOD???? DELETE AGAIN?????
     }
 
     public String getDescription() {
@@ -84,59 +99,15 @@ public class IssueTicket {
 
     @Override
     public String toString() {
-        return "IssueTicket [dateTime=" + dateTime + ", description=" + description + ", isResolved=" + isResolved
-                + ", orderID=" + orderID + ", reportID=" + reportID + ", response=" + response
-                + "]";
+
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("IssueTicket [dateTime=").append(dateTime).append(", description=").append(description)
+        .append(", isResolved=").append(isResolved).append(", orderID=").append(orderID)
+        .append(", reportID=").append(reportID).append(", response=").append(response).append("]");
+
+        return sb.toString();
+
     }
 }
-
-//     public static class IssueTicketBuilder
-// 	{
-// 		private String name, description;
-//         private Integer reportID;
-//         private LocalDateTime dateTime;
-//         private Boolean isResolved;
-//         private Customer custOwner;
-//         private Manager recipient;
-//         private IssueType issueType;
-//         private String response;
-//         private static int issueTicketsCreated;
-
-// 		public IssueTicketBuilder(Customer custOwner,Manager recipient, IssueType issueType) {
-//             try {
-//                 issueTicketsCreated += 1;
-//                 reportID = issueTicketsCreated;
-//             }
-//             catch(NullPointerException e) {
-//                 issueTicketsCreated = 1;
-//                 reportID = issueTicketsCreated;
-//             }
-//             this.dateTime = LocalDateTime.now();
-//             this.isResolved = false;
-//             this.custOwner = custOwner;
-//             this.recipient = recipient;
-//             this.issueType = issueType;
-//             this.response = "Awaiting response from representative";
-			
-// 		}
-// 		public IssueTicketBuilder name(String name) {
-// 			this.name= name;
-// 			return this;
-// 		}
-// 		public IssueTicketBuilder description(String description) {
-// 			this.description = description;
-// 			return this;
-// 		}
-// 		//Return the finally consrcuted User object
-// 		// public IssueTicket build() {
-// 		// 	IssueTicket ticket =  new IssueTicket(this);
-// 		// 	validateUserObject(ticket);
-// 		// 	return ticket;
-// 		// }
-// 		private void validateUserObject(IssueTicket ticket) {
-// 			//Do some basic validations to check
-// 			//if user object does not break any assumption of system
-// 		}
-
-// 	}
-// }

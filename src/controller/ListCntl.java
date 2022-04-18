@@ -5,21 +5,37 @@ import model.*;
 import utility.MainData;
 import view.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+/**
+ * Controls the interactions between CRM UI interface (view) and backend (model)
+ * 
+ * @author Michael Aboah, Nathan Carr, Lamees Eltohami, Henry Hoffman, Liam Kirkland, Edwin Reyes Rodriguez
+ * @version 04/17/22
+ * 
+ */
 public class ListCntl {
 
     private LoginUI theLoginUI;
     private CustomerUI theCustomerUI;
-    private ManagerUI theManagerUI;
     private SubmitIssue submitIssue;
     private ViewPreviousTickets previousTickets;
     private static Customer currentCustomer;
     private Integer currentTicket;
 
+    // Uncomment once Manager front/back end is fully developed
+    // private ManagerUI theManagerUI;
+
+
+    /**
+     * Creates ListCntl constructor
+     * 
+     * @param theLoginUI        LoginUI view class instance
+     * @param theCustomerUI     CustomerUI view class instance
+     * @param submitIssue       SubmitIssue view class instance
+     * @param previousTickets   ViewPreviousTickets view class instance
+     */
     public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue, ViewPreviousTickets previousTickets) {
         this.theLoginUI = theLoginUI;
         this.theCustomerUI = theCustomerUI;
@@ -29,6 +45,10 @@ public class ListCntl {
 
     }
 
+    /**
+     * Launches the "submit complaint" UI/use case
+     * 
+     */
     public void submitComplaint() {
         theCustomerUI.getSubmit_complaint().addActionListener(e -> {
             theCustomerUI.setVisible(false);
@@ -51,7 +71,7 @@ public class ListCntl {
                 submitIssue.displayConfirmation();
                 submitIssue.setVisible(false);
                 MainData.getIssueTickets().add(new IssueTicket(submitIssue.getTextArea().getText(), 
-                    MainData.getIssueTickets().size()+1, LocalDateTime.now(), false, selectedOrder.getOrderID(), 
+                    MainData.getIssueTickets().size() + 1, LocalDateTime.now(), false, selectedOrder.getOrderID(), 
                     "", currentCustomer.getCustID()));
                 SavedData.saveAll("SaveMore.json");
                 
@@ -64,10 +84,17 @@ public class ListCntl {
         });
     }
 
+    /**
+     * Launches the "view previous tickets" UI/use case
+     * 
+     */
     public void previousTickets() {
         ArrayList<IssueTicket> filteredTickets = new ArrayList<>();
 
         theCustomerUI.getViewPreviousTickets().addActionListener(e -> {
+            if(filteredTickets.size() > 0) {
+                filteredTickets.clear();
+            }
             for (IssueTicket ticket : MainData.getIssueTickets()) {
                 if (ticket.getCustID() == currentCustomer.getCustID()) {
                     filteredTickets.add(ticket);
@@ -106,6 +133,12 @@ public class ListCntl {
         });
     }
 
+    /**
+     * Sets the current viewable ticket in ticket history based on index in list
+     * 
+     * @param currentTicket     integer marking the current index of the currently viewing ticket
+     * @param filteredTickets   arraylist of all issuetickets that the current customer has made
+     */
     public void parsePreviousTicket(int currentTicket, ArrayList<IssueTicket> filteredTickets) {
         previousTickets.setId(filteredTickets.get(currentTicket).getReportID().toString());
         previousTickets.setType(filteredTickets.get(currentTicket).getOrderID().toString());
@@ -113,6 +146,10 @@ public class ListCntl {
         previousTickets.setIssueTxt(filteredTickets.get(currentTicket).getDescription());
     }
 
+    /**
+     * Handles customer user data generation upon login and logout
+     * 
+     */
     public void customers() {
         theLoginUI.getLogInButton().addActionListener(e -> {
             String username = theLoginUI.getUserNameField().getText();
@@ -143,6 +180,7 @@ public class ListCntl {
         });
     }
 
+    
     public static Customer getCurrentCustomer() {
         return currentCustomer;
     }

@@ -1,14 +1,29 @@
 package model;
 
-import java.util.ArrayList;
-
-
+/**
+ * Object representation of customer
+ * 
+ * @author Michael Aboah, Nathan Carr, Lamees Eltohami, Henry Hoffman, Liam Kirkland, Edwin Reyes Rodriguez
+ * @version 04/17/22
+ * 
+ */
 public class Customer {
     private String firstName, lastName, email, 
         username, password, address;
 
     private Integer custID;
 
+    /**
+     * Creates Customer constructor
+     * 
+     * @param firstName     String representation of customer's documented first name
+     * @param lastName      String representation of customer's documented last name
+     * @param email         String representation of customer's documented email address
+     * @param username      String representation of customer's documented username credential for CRM login
+     * @param password      String representation of customer's documented password credential for CRM password
+     * @param address       String representation of customer's documented physical address
+     * @param custID        Integer representation of customer's documented Forest identification number
+     */
     public Customer(String firstName, String lastName, String email, 
         String username, String password, String address, Integer custID) {
         this.firstName = firstName;
@@ -80,8 +95,14 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer [address=" + address + ", custID=" + custID + ", email=" + email + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", password=" + password + ", username=" + username + "]";
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Customer [address=").append(address).append(", custID=").append(custID).append(", email=").append(email)
+        .append(", firstName=").append(firstName).append(", lastName=").append(lastName).append(", password=").append(password)
+        .append(", username=").append(username).append("]");
+
+        return sb.toString();
     }
 
 

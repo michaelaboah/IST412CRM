@@ -1,12 +1,25 @@
 package model;
 
-import java.util.Random;
-import java.util.ArrayList;
 
+/**
+ * Object representation of a distributor's item
+ * 
+ * @author Michael Aboah, Nathan Carr, Lamees Eltohami, Henry Hoffman, Liam Kirkland, Edwin Reyes Rodriguez
+ * @version 04/17/22
+ * 
+ */
 public class Item {
     private String itemName, itemURL, itemDescription;
     private int itemID;
 
+    /**
+     * Create Item constructor
+     * 
+     * @param itemName          String name of a given item
+     * @param itemURL           String url link of a given item
+     * @param itemDescription   String description of a given item
+     * @param itemID            Integer identification of a given item
+     */
     public Item(String itemName, String itemURL, 
         String itemDescription, int itemID) {
         this.itemName = itemName;
@@ -51,8 +64,15 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item [itemDescription=" + itemDescription + ", itemID=" + itemID + ", itemName=" + itemName
-                + ", itemURL=" + itemURL + "]";
+
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Item [itemDescription").append(itemDescription).append(", itemID=").append(itemID)
+        .append(", itemName=").append(itemName).append(", itemURL=").append(itemURL).append("]");
+    
+        return sb.toString();
+
     }
 
     
