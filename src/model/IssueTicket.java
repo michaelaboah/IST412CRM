@@ -45,9 +45,6 @@ public class IssueTicket {
         this.custID = custID;
     }
 
-    public IssueTicket() {          // TODO: EMPTY MEETHOD???? DELETE AGAIN?????
-    }
-
     public String getDescription() {
         return description;
     }

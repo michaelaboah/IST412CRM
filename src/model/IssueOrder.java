@@ -39,11 +39,6 @@ public class IssueOrder {
        this.custID = custID;
    }
 
-
-   public IssueOrder() {                    // TODO: EMPTY METHOD??? DELETE??? ?????????????????
-
-   }
-
    public ArrayList<Integer> getOrderedItem() {
        return this.orderedItem;
    }

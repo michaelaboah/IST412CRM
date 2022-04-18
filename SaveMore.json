@@ -207,6 +207,48 @@
       "custID": 1,
       "orderID": 2,
       "response": ""
+    },
+    {
+      "description": "username issue April 18 evening with 1",
+      "reportID": 9,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 18
+        },
+        "time": {
+          "hour": 19,
+          "minute": 44,
+          "second": 48,
+          "nano": 98745000
+        }
+      },
+      "isResolved": false,
+      "custID": 1,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "our 10th issue. mzk wins!!! 4 btw",
+      "reportID": 10,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 18
+        },
+        "time": {
+          "hour": 19,
+          "minute": 45,
+          "second": 54,
+          "nano": 372633000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 4,
+      "response": ""
     }
   ],
   "issueOrders": [

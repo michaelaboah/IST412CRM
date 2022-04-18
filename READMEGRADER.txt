@@ -28,7 +28,7 @@ we found it was necessary to compliment the "create issue ticket" use case.
 
 REFACTORING:
 1) Deleted large chunks of outdated, commented-out code 
-2) Deleted unimplmented and useless functions
+2) Deleted unimplmented and useless functions, including empty constructors
 3) Replaced concatenation with StringBuilder in toString() functions
    within model classes
 4) Deleted outdated, unreachable classes (ImplEditList and RecordSearchUI)

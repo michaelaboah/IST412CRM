@@ -35,8 +35,6 @@ public class Customer {
         this.custID = custID;
     }
 
-
-
     public String getFirstName() {
         return this.firstName;
     }
