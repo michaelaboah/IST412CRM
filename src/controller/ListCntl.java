@@ -244,7 +244,11 @@ public class ListCntl {
         });
 
         managerUI.getResolveIssue().addActionListener(e -> {
-
+            String resolution = managerUI.getSubmitResponse().getText();
+            IssueTicket currentTicket = MainData.getIssueTickets().get(currentRecord);
+            currentTicket.setIsResolved(true);
+            currentTicket.setResponse(resolution);
+            SavedData.saveAll("SaveMore.json");
         });
     }
 
