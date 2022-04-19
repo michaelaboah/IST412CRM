@@ -13,6 +13,7 @@ public class MainData {
     private static ArrayList<Item> items = new ArrayList<>();
     private static ArrayList<IssueTicket> issueTickets = new ArrayList<>();
     private static ArrayList<IssueOrder> issueOrders = new ArrayList<>();
+    private static ArrayList<Manager> managers = new ArrayList<>();
 
 
     private static JSONObject dataPersistance = new JSONObject();
@@ -54,6 +55,15 @@ public class MainData {
     
     public static void setIssueOrders(ArrayList<IssueOrder> issueOrders) {
         MainData.issueOrders = issueOrders;
+    }
+
+    public static ArrayList<Manager> getManagers() {
+        return managers;
+    }
+
+
+    public static void setManagers(ArrayList<Manager> managers) {
+        MainData.managers = managers;
     }
 
 

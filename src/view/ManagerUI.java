@@ -21,9 +21,6 @@ public class ManagerUI extends JPanel {
     public ManagerUI() {
         setScreen();
         createElements();
-
-        
-
     }
 
     public void createElements() {
@@ -141,32 +138,32 @@ public class ManagerUI extends JPanel {
         return id;
     }
 
-    public void setId(JLabel id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id.setText(id);
     }
 
     public JLabel getFullName() {
         return fullName;
     }
 
-    public void setFullName(JLabel fullName) {
-        this.fullName = fullName;
+    public void setFullName(String fullName) {
+        this.fullName.setText(fullName);
     }
 
     public JLabel getDates() {
         return dates;
     }
 
-    public void setDates(JLabel dates) {
-        this.dates = dates;
+    public void setDates(String dates) {
+        this.dates.setText(dates);
     }
 
     public TextArea getGetIssueTxt() {
         return getIssueTxt;
     }
 
-    public void setGetIssueTxt(TextArea getIssueTxt) {
-        this.getIssueTxt = getIssueTxt;
+    public void setGetIssueTxt(String getIssueTxt) {
+        this.getIssueTxt.setText(getIssueTxt);
     }
 
     public TextArea getSubmitResponse() {

@@ -11,6 +11,7 @@ public class SavedData{
     private  ArrayList<Item> items = new ArrayList<>();
     private  ArrayList<IssueTicket> issueTickets = new ArrayList<>();
     private  ArrayList<IssueOrder> issueOrders = new ArrayList<>();
+    private  ArrayList<Manager> managers = new ArrayList<>();
 
     public ArrayList<Customer> getCustomers() {
         return customers;
@@ -40,6 +41,12 @@ public class SavedData{
         this.issueOrders = issueOrders;
     }
 
+    public ArrayList<Manager> getManagers() {
+        return managers;
+    }
+    public void setManagers(ArrayList<Manager> managers) {
+        this.managers = managers;
+    }
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -58,6 +65,7 @@ public class SavedData{
         MainData.setIssueTickets(retrieved.getIssueTickets());
         MainData.setItems(retrieved.getItems());
         MainData.setIssueOrders(retrieved.getIssueOrders());
+        MainData.setManagers(retrieved.getManagers());
         System.out.println(retrieved);
     }
 
@@ -68,6 +76,7 @@ public class SavedData{
         save.setIssueTickets(MainData.getIssueTickets());
         save.setItems(MainData.getItems());
         save.setIssueOrders(MainData.getIssueOrders());
+        save.setManagers(MainData.getManagers());
         JsonUtil.writeJson(filepath, save);
     }
 }

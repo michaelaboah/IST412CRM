@@ -60,7 +60,7 @@ public class Manager {
         this.username = "m1";
         this.password = "12";
         this.managerType = ManagerType.CRM;
-        this.managerID = 7;
+        this.managerID = 1;
     }
 
 

@@ -344,5 +344,15 @@
       "isDelivered": true,
       "custID": 2
     }
+  ],
+  "managers": [
+    {
+      "fName": "Joe",
+      "lName": "Dude",
+      "username": "m1",
+      "password": "12",
+      "managerType": "CRM",
+      "managerID": 1
+    }
   ]
 }

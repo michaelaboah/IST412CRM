@@ -21,8 +21,11 @@ public class ListCntl {
     private CustomerUI theCustomerUI;
     private SubmitIssue submitIssue;
     private ViewPreviousTickets previousTickets;
+    private ManagerUI managerUI;
     private static Customer currentCustomer;
+    private static Manager currentManager;
     private Integer currentTicket;
+    private Integer currentRecord;
 
     // Uncomment once Manager front/back end is fully developed
     // private ManagerUI theManagerUI;
@@ -35,12 +38,15 @@ public class ListCntl {
      * @param theCustomerUI     CustomerUI view class instance
      * @param submitIssue       SubmitIssue view class instance
      * @param previousTickets   ViewPreviousTickets view class instance
+     * @param managerUI         ManagerUI view class instance
      */
-    public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue, ViewPreviousTickets previousTickets) {
+    public ListCntl(LoginUI theLoginUI, CustomerUI theCustomerUI, SubmitIssue submitIssue, 
+        ViewPreviousTickets previousTickets, ManagerUI managerUI) {
         this.theLoginUI = theLoginUI;
         this.theCustomerUI = theCustomerUI;
         this.submitIssue = submitIssue;
         this.previousTickets = previousTickets;
+        this.managerUI = managerUI;
         this.currentTicket = 0;
 
     }
@@ -150,7 +156,7 @@ public class ListCntl {
      * Handles customer user data generation upon login and logout
      * 
      */
-    public void customers() {
+    public void logInOut() {
         theLoginUI.getLogInButton().addActionListener(e -> {
             String username = theLoginUI.getUserNameField().getText();
             String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
@@ -161,6 +167,18 @@ public class ListCntl {
                     theLoginUI.setVisible(false);
                     theCustomerUI.setVisible(true);
                     theCustomerUI.getUserName().setText(MainData.getCustomers().get(i).getFirstName() + " " + MainData.getCustomers().get(i).getLastName());
+                    return;
+                }
+            }
+            for(int i = 0; i < MainData.getManagers().size(); i++) {
+                System.out.println("Current username: " + MainData.getManagers().get(i).getUsername());
+                System.out.println("Current password: " + MainData.getManagers().get(i).getPassword());
+                if (username.equals(MainData.getManagers().get(i).getUsername()) && password.equals(MainData.getManagers().get(i).getPassword()) && theLoginUI.getManager().isSelected()) {
+                    currentManager = MainData.getManagers().get(i);
+                    theLoginUI.setVisible(false);
+                    managerUI.setVisible(true);
+                    currentRecord = 0;
+                    parseManagerUI(currentRecord);
                     return;
                 }
             }
@@ -178,11 +196,71 @@ public class ListCntl {
                 currentCustomer = null;
             }
         });
-    }
 
+        managerUI.getLogout().addActionListener(e -> {
+            int results = theCustomerUI.displayConfirmLogout();
+            if (results == 0) {
+                managerUI.setVisible(false);
+                theLoginUI.setVisible(true);
+                theLoginUI.getUserNameField().setText("");
+                theLoginUI.getPasswordField().setText("");
+                theLoginUI.getBg().clearSelection();
+                currentManager = null;
+            }
+        });
+    }
     
     public static Customer getCurrentCustomer() {
         return currentCustomer;
+    }
+
+    public static Manager getCurrentManager() {
+        return currentManager;
+    }
+
+    public void manager() {
+        managerUI.getNextBtn().addActionListener(e -> {
+            System.out.println("Next clicked");
+            if(currentRecord < MainData.getIssueTickets().size() -1 ) {
+                currentRecord++;
+            }
+            else {
+                currentRecord = 0;
+            }
+            System.out.println("Current Record: " + currentRecord);
+            parseManagerUI(currentRecord);
+        });
+
+        managerUI.getPrevBtn().addActionListener(e -> {
+            System.out.println("Prev clicked");
+            if(currentRecord > 0) {
+                currentRecord --;
+            }
+            else {
+                currentRecord = MainData.getIssueTickets().size() - 1;
+            }
+            System.out.println("Current Record: " + currentRecord);
+            parseManagerUI(currentRecord);
+        });
+
+        managerUI.getResolveIssue().addActionListener(e -> {
+
+        });
+    }
+
+    public void parseManagerUI(int currentRecord) {
+        IssueTicket currentTicket = MainData.getIssueTickets().get(currentRecord);
+        managerUI.setId("ID: " + currentTicket.getReportID().toString());
+        Customer custOwner = null;
+        for(Customer cust : MainData.getCustomers()) {
+            if(currentTicket.getCustID() == cust.getCustID()) {
+                custOwner = cust;
+            }
+        }
+        managerUI.setFullName(custOwner.getFirstName() + custOwner.getLastName());
+        managerUI.setDates(currentTicket.getDateTime().toString());
+        managerUI.setGetIssueTxt(currentTicket.getDescription());
+
     }
 
 }

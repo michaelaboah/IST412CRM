@@ -1,6 +1,8 @@
 
 import controller.ListCntl;
+import model.Manager;
 import model.SavedData;
+import utility.MainData;
 import view.*;
 
 
@@ -13,7 +15,14 @@ public class App {
     public static void main(String[] args) {
 
         SavedData.readAll("SaveMore.json");
+
+        // Manager m = new Manager();
         
+        // MainData.getManagers().add(m);
+
+        // SavedData.saveAll("SaveMore.json");
+
+        System.out.println(MainData.getManagers());
         
         CRMJframe frame = new CRMJframe();
 
@@ -23,10 +32,11 @@ public class App {
         ManagerUI managerUI = new ManagerUI();
         ViewPreviousTickets previousTickets = new ViewPreviousTickets();
 
-        ListCntl listCntl = new ListCntl(loginUI, customerUI, submitIssue, previousTickets);
-        listCntl.customers();
+        ListCntl listCntl = new ListCntl(loginUI, customerUI, submitIssue, previousTickets, managerUI);
+        listCntl.logInOut();
         listCntl.submitComplaint();
         listCntl.previousTickets();
+        listCntl.manager();
 
         frame.add(loginUI);
         frame.add(managerUI);
