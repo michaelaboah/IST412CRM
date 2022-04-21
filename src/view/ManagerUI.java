@@ -205,4 +205,12 @@ public class ManagerUI extends JPanel {
     public void setLogout(JButton logout) {
         this.logout = logout;
     }
+
+    public void displayConfirmation() {
+        JOptionPane.showMessageDialog(this, "Your response has been applied.", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void displayEmptyForm() {
+        JOptionPane.showMessageDialog(this, "Please fill out the response field.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
 }
