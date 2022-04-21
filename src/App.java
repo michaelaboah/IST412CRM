@@ -16,12 +16,6 @@ public class App {
 
         SavedData.readAll("SaveMore.json");
 
-        // Manager m = new Manager();
-        
-        // MainData.getManagers().add(m);
-
-        // SavedData.saveAll("SaveMore.json");
-
         System.out.println(MainData.getManagers());
         
         CRMJframe frame = new CRMJframe();

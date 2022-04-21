@@ -26,6 +26,7 @@ public class ListCntl {
     private static Manager currentManager;
     private Integer currentTicket;
     private Integer currentRecord;
+    private ArrayList<IssueTicket> unresolvedTickets;
 
     // Uncomment once Manager front/back end is fully developed
     // private ManagerUI theManagerUI;
@@ -48,6 +49,7 @@ public class ListCntl {
         this.previousTickets = previousTickets;
         this.managerUI = managerUI;
         this.currentTicket = 0;
+        this.unresolvedTickets = new ArrayList<>();
 
     }
 
@@ -174,10 +176,20 @@ public class ListCntl {
                 System.out.println("Current username: " + MainData.getManagers().get(i).getUsername());
                 System.out.println("Current password: " + MainData.getManagers().get(i).getPassword());
                 if (username.equals(MainData.getManagers().get(i).getUsername()) && password.equals(MainData.getManagers().get(i).getPassword()) && theLoginUI.getManager().isSelected()) {
+                    unresolvedTickets = generateUnresolvedList();
                     currentManager = MainData.getManagers().get(i);
                     theLoginUI.setVisible(false);
                     managerUI.setVisible(true);
                     currentRecord = 0;
+
+                    //Lock interactions if no tickets exist
+                    if(unresolvedTickets.isEmpty()) {
+                        managerUI.getNextBtn().setEnabled(false);
+                        managerUI.getPrevBtn().setEnabled(false);
+                        managerUI.getResolveIssue().setEnabled(false);
+                        return;
+                    }
+                
                     parseManagerUI(currentRecord);
                     return;
                 }
@@ -221,7 +233,7 @@ public class ListCntl {
     public void manager() {
         managerUI.getNextBtn().addActionListener(e -> {
             System.out.println("Next clicked");
-            if(currentRecord < MainData.getIssueTickets().size() -1 ) {
+            if(currentRecord < unresolvedTickets.size() -1 ) {
                 currentRecord++;
             }
             else {
@@ -237,7 +249,7 @@ public class ListCntl {
                 currentRecord --;
             }
             else {
-                currentRecord = MainData.getIssueTickets().size() - 1;
+                currentRecord = unresolvedTickets.size() - 1;
             }
             System.out.println("Current Record: " + currentRecord);
             parseManagerUI(currentRecord);
@@ -245,15 +257,26 @@ public class ListCntl {
 
         managerUI.getResolveIssue().addActionListener(e -> {
             String resolution = managerUI.getSubmitResponse().getText();
-            IssueTicket currentTicket = MainData.getIssueTickets().get(currentRecord);
+            IssueTicket currentTicket = unresolvedTickets.get(currentRecord);
             currentTicket.setIsResolved(true);
             currentTicket.setResponse(resolution);
+            unresolvedTickets.remove(currentTicket);
+            if(currentRecord > unresolvedTickets.size() -1 ) {
+                currentRecord = 0;
+            }
+            System.out.println("Current Record: " + currentRecord);
+            parseManagerUI(currentRecord);
+            managerUI.getSubmitResponse().setText("");
             SavedData.saveAll("SaveMore.json");
         });
     }
 
     public void parseManagerUI(int currentRecord) {
-        IssueTicket currentTicket = MainData.getIssueTickets().get(currentRecord);
+        if (unresolvedTickets.size() == 0) {
+            System.out.println("There are no issue ticket records to review.");
+            return;
+        }
+        IssueTicket currentTicket = unresolvedTickets.get(currentRecord);
         managerUI.setId("ID: " + currentTicket.getReportID().toString());
         Customer custOwner = null;
         for(Customer cust : MainData.getCustomers()) {
@@ -264,7 +287,17 @@ public class ListCntl {
         managerUI.setFullName(custOwner.getFirstName() + custOwner.getLastName());
         managerUI.setDates(currentTicket.getDateTime().toString());
         managerUI.setGetIssueTxt(currentTicket.getDescription());
+    }
 
+    public ArrayList<IssueTicket> generateUnresolvedList() {
+        ArrayList<IssueTicket> unresolvedTickets = new ArrayList<>();
+        for(IssueTicket ticket : MainData.getIssueTickets()) {
+            if(!ticket.getIsResolved()) {
+                unresolvedTickets.add(ticket);
+            }
+        }
+
+        return unresolvedTickets;
     }
 
 }

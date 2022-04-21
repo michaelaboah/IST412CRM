@@ -8,10 +8,10 @@ import java.time.format.DateTimeFormatter;
 
 public class ManagerUI extends JPanel {
 //    @note: default values for testing
-    JLabel id = new JLabel("id: 910202920");
-    JLabel fullName = new JLabel("Alex Harper");
-    JLabel dates = new JLabel("2022-04-12");
-    TextArea getIssueTxt = new TextArea();
+    JLabel id = new JLabel("ID: No Tickets Avaiable");
+    JLabel fullName = new JLabel("No Tickets Avaiable");
+    JLabel dates = new JLabel("No Tickets Avaiable");
+    TextArea getIssueTxt = new TextArea("No Tickets Avaiable");
     TextArea submitResponse = new TextArea();
     JButton resolveIssue = new JButton("Resolve Issue");
     JButton prevBtn = new JButton("<");
