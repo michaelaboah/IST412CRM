@@ -90,7 +90,8 @@ public class IssueOrder {
 
     StringBuilder sb = new StringBuilder();
 
-    sb.append("Order ID: ").append(getOrderID()).append("; Date: ").append(getDateOrder());
+    sb.append("Order ID: ").append(getOrderID()).append("; Date: ").append(getDateOrder().getMonthValue() + "/" +
+        getDateOrder().getDayOfMonth() + "/" + getDateOrder().getYear());
 
     return sb.toString();
 

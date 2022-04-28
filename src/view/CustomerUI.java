@@ -41,18 +41,13 @@ public class CustomerUI extends JPanel {
         time.setForeground(Color.white  );
         add(time);
 
-        JLabel welcomeTxt = new JLabel("Welcome back, ");
-        welcomeTxt.setBounds(440, 191, 170, 28);
-        welcomeTxt.setFont(new Font("Helvetica", Font.PLAIN, 24));
-        welcomeTxt.setForeground(Color.decode("#ffffff"));
-        add(welcomeTxt);
-
-        userName.setBounds(607, 191, 140, 28);
+        userName.setBounds(0, 191, 1280, 28);
+        userName.setHorizontalAlignment(JLabel.CENTER);
         userName.setFont(new Font("Helvetica", Font.PLAIN, 24));
         userName.setForeground(Color.decode("#ffffff"));
         add(userName);
 
-        submit_complaint.setBounds(465, 269, 250, 55);
+        submit_complaint.setBounds(515, 269, 250, 55);
         submit_complaint.setFocusable(false);
         submit_complaint.setFont(new Font("Helvetica", Font.BOLD, 18));
         submit_complaint.setForeground(Color.white);
@@ -61,8 +56,7 @@ public class CustomerUI extends JPanel {
         submit_complaint.setBorderPainted(false);
         add(submit_complaint);
 
-
-        viewPreviousTickets.setBounds(465, 374, 250, 55);
+        viewPreviousTickets.setBounds(515, 374, 250, 55);
         viewPreviousTickets.setFocusable(false);
         viewPreviousTickets.setFont(new Font("Helvetica", Font.BOLD, 18));
         viewPreviousTickets.setForeground(Color.white);
@@ -111,5 +105,13 @@ public class CustomerUI extends JPanel {
     public int displayConfirmLogout() {
         int results = JOptionPane.showConfirmDialog(this, "Are you sure you want to logout?", "Confirmation", JOptionPane.YES_NO_OPTION);
         return results;
+    }
+
+    public void displayEmptyList() {
+        JOptionPane.showMessageDialog(this, "You have no previously submitted issue tickets to view.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void displayNoOrders() {
+        JOptionPane.showMessageDialog(this, "You cannot file a comlpaint with no order history.", "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

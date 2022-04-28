@@ -12,10 +12,12 @@ import view.*;
  * @param   args the command-line arguments for the program
  */
 public class App {    
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         SavedData.readAll("SaveMore.json");
 
+        Testharness testharness = new Testharness();
+        /*
         System.out.println(MainData.getManagers());
         
         CRMJframe frame = new CRMJframe();
@@ -39,6 +41,6 @@ public class App {
         frame.add(managerUI);
         frame.add(previousTickets);
         frame.setVisible(true);
-
+        */
     }
 }

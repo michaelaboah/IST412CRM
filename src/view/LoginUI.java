@@ -122,4 +122,8 @@ public class LoginUI extends JPanel {
         JOptionPane.showMessageDialog(this, "Invalid username or password", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
+    public void displayNoTypeSpecified() {
+        JOptionPane.showMessageDialog(this, "Please specify if you are a customer or manager signing in.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
 }

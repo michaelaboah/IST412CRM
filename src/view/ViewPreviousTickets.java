@@ -12,7 +12,7 @@ public class ViewPreviousTickets extends JPanel {
     JLabel id = new JLabel("192929");
     JLabel type = new JLabel("some order");
     JLabel dates = new JLabel("2022/02/03");
-    TextArea getIssueTxt = new TextArea();
+    JTextArea getIssueTxt = new JTextArea();
     JButton prevBtn = new JButton("<");
     JButton nextBtn = new JButton(">");
 
@@ -92,6 +92,8 @@ public class ViewPreviousTickets extends JPanel {
 
         getIssueTxt.setBounds(321, 304, 538, 150);
         getIssueTxt.setFocusable(false);
+        getIssueTxt.setLineWrap(true);
+        getIssueTxt.setWrapStyleWord(true);
         add(getIssueTxt);
 
         prevBtn.setBounds(171, 356, 60, 60);
@@ -162,7 +164,7 @@ public class ViewPreviousTickets extends JPanel {
         this.dates.setText(dates);
     }
 
-    public TextArea getGetIssueTxt() {
+    public JTextArea getGetIssueTxt() {
         return getIssueTxt;
     }
 

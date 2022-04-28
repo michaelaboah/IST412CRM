@@ -17,6 +17,24 @@
       "password": "1234",
       "address": "address",
       "custID": 2
+    },
+    {
+      "firstName": "Joseph",
+      "lastName": "Reese",
+      "email": "email",
+      "username": "dumpcust",
+      "password": "1234",
+      "address": "address",
+      "custID": 3
+    },
+    {
+      "firstName": "Sandy",
+      "lastName": "Cust",
+      "email": "email",
+      "username": "emptycust",
+      "password": "1234",
+      "address": "address",
+      "custID": 4
     }
   ],
   "items": [
@@ -41,7 +59,7 @@
   ],
   "issueTickets": [
     {
-      "description": "Table broke",
+      "description": "Table broke\n\nResponse: Table fixed ;)",
       "reportID": 1,
       "dateTime": {
         "date": {
@@ -62,7 +80,7 @@
       "response": "Table fixed ;)"
     },
     {
-      "description": "New issue !!!",
+      "description": "New issue !!!\n\nResponse: Solved 5!!!",
       "reportID": 2,
       "dateTime": {
         "date": {
@@ -83,7 +101,7 @@
       "response": "Solved 5!!!"
     },
     {
-      "description": "another username issue april 17",
+      "description": "another username issue april 17\n\nResponse: Solved 6!!!",
       "reportID": 3,
       "dateTime": {
         "date": {
@@ -104,7 +122,7 @@
       "response": "Solved 6!!!"
     },
     {
-      "description": "new mzk123 issue april 17",
+      "description": "new mzk123 issue april 17\n\nResponse: sdfasdf",
       "reportID": 4,
       "dateTime": {
         "date": {
@@ -125,7 +143,7 @@
       "response": "sdfasdf\n"
     },
     {
-      "description": "april 18",
+      "description": "april 18\n\nResponse: sdfs",
       "reportID": 5,
       "dateTime": {
         "date": {
@@ -146,7 +164,7 @@
       "response": "sdfs"
     },
     {
-      "description": "username issue April 18 evening with 1",
+      "description": "username issue April 18 evening with 1\n\nResponse: Solved problem 11!!!!",
       "reportID": 6,
       "dateTime": {
         "date": {
@@ -209,7 +227,7 @@
       "response": ""
     },
     {
-      "description": "New order 2 from username dude",
+      "description": "New order 2 from username dude\n\nResponse: done 9",
       "reportID": 9,
       "dateTime": {
         "date": {
@@ -230,7 +248,7 @@
       "response": "done 9"
     },
     {
-      "description": "order 1 apr 20 ",
+      "description": "order 1 apr 20\n\nResponse: solved issue 10 ",
       "reportID": 10,
       "dateTime": {
         "date": {
@@ -249,6 +267,405 @@
       "custID": 1,
       "orderID": 1,
       "response": "solved issue 10"
+    },
+    {
+      "description": "Test",
+      "reportID": 14,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 21,
+          "second": 36,
+          "nano": 470607000
+        }
+      },
+      "isResolved": false,
+      "custID": 3,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "Test",
+      "reportID": 14,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 21,
+          "second": 36,
+          "nano": 470607000
+        }
+      },
+      "isResolved": false,
+      "custID": 3,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "Test",
+      "reportID": 14,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 21,
+          "second": 36,
+          "nano": 470607000
+        }
+      },
+      "isResolved": false,
+      "custID": 3,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "Test",
+      "reportID": 14,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 21,
+          "second": 36,
+          "nano": 470607000
+        }
+      },
+      "isResolved": false,
+      "custID": 3,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "Test",
+      "reportID": 14,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 21,
+          "second": 36,
+          "nano": 470607000
+        }
+      },
+      "isResolved": false,
+      "custID": 3,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "Test",
+      "reportID": 14,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 21,
+          "second": 36,
+          "nano": 470607000
+        }
+      },
+      "isResolved": false,
+      "custID": 3,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "April 24 order 4 problem",
+      "reportID": 15,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 59,
+          "second": 32,
+          "nano": 802602000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 4,
+      "response": ""
+    },
+    {
+      "description": "april 24 problem 3 test",
+      "reportID": 16,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 0,
+          "minute": 59,
+          "second": 55,
+          "nano": 545481000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 3,
+      "response": ""
+    },
+    {
+      "description": "done\n\nResponse: done fixed",
+      "reportID": 17,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 1,
+          "minute": 0,
+          "second": 34,
+          "nano": 352003000
+        }
+      },
+      "isResolved": true,
+      "custID": 1,
+      "orderID": 1,
+      "response": "done fixed"
+    },
+    {
+      "description": "test for response change\n\nResponse: This should work....",
+      "reportID": 20,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 9,
+          "minute": 55,
+          "second": 47,
+          "nano": 717140000
+        }
+      },
+      "isResolved": true,
+      "custID": 2,
+      "orderID": 3,
+      "response": "This should work...."
+    },
+    {
+      "description": "I ordered a table and it came in broken.\n\nResponse: I understand your issue. A refund has been provided.",
+      "reportID": 16,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 19,
+          "minute": 54,
+          "second": 40,
+          "nano": 756734000
+        }
+      },
+      "isResolved": true,
+      "custID": 2,
+      "orderID": 4,
+      "response": "I understand your issue. A refund has been provided."
+    },
+    {
+      "description": "test",
+      "reportID": 17,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 19,
+          "minute": 57,
+          "second": 14,
+          "nano": 393638000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 4,
+      "response": ""
+    },
+    {
+      "description": "I ordered a table and it came in broken.\n\nResponse: Thank you for letting us know. A refund has been provided.",
+      "reportID": 23,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 24
+        },
+        "time": {
+          "hour": 20,
+          "minute": 12,
+          "second": 55,
+          "nano": 893512000
+        }
+      },
+      "isResolved": true,
+      "custID": 2,
+      "orderID": 4,
+      "response": "Thank you for letting us know. A refund has been provided."
+    },
+    {
+      "description": "This is a really long message that should traverse over multiple lines. Hopefully retyping this thing the JTextArea will not break our entire use case. Well, here goes nothing....",
+      "reportID": 24,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 25
+        },
+        "time": {
+          "hour": 12,
+          "minute": 6,
+          "second": 14,
+          "nano": 597039000
+        }
+      },
+      "isResolved": false,
+      "custID": 1,
+      "orderID": 1,
+      "response": ""
+    },
+    {
+      "description": "I need a refund.",
+      "reportID": 25,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 25
+        },
+        "time": {
+          "hour": 22,
+          "minute": 41,
+          "second": 36,
+          "nano": 764852000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 3,
+      "response": ""
+    },
+    {
+      "description": "Something is broken.",
+      "reportID": 26,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 25
+        },
+        "time": {
+          "hour": 22,
+          "minute": 42,
+          "second": 6,
+          "nano": 640168000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 3,
+      "response": ""
+    },
+    {
+      "description": "Something else broke in my package.",
+      "reportID": 27,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 25
+        },
+        "time": {
+          "hour": 22,
+          "minute": 42,
+          "second": 22,
+          "nano": 176619000
+        }
+      },
+      "isResolved": false,
+      "custID": 2,
+      "orderID": 4,
+      "response": ""
+    },
+    {
+      "description": "My order is 2 weeks late. What is the status?\n\nResponse: Hello firstName. We checked our delivery records, and your order should be delivered by tomorrow. We apologize for the inconvenience.",
+      "reportID": 28,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 27
+        },
+        "time": {
+          "hour": 21,
+          "minute": 58,
+          "second": 24,
+          "nano": 454450000
+        }
+      },
+      "isResolved": true,
+      "custID": 1,
+      "orderID": 1,
+      "response": "Hello firstName. We checked our delivery records, and your order should be delivered by tomorrow. We apologize for the inconvenience."
+    },
+    {
+      "description": "Test",
+      "reportID": 29,
+      "dateTime": {
+        "date": {
+          "year": 2022,
+          "month": 4,
+          "day": 27
+        },
+        "time": {
+          "hour": 22,
+          "minute": 21,
+          "second": 27,
+          "nano": 573534000
+        }
+      },
+      "isResolved": false,
+      "custID": 1,
+      "orderID": 1,
+      "response": ""
     }
   ],
   "issueOrders": [

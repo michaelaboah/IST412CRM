@@ -14,7 +14,7 @@ import utility.MainData;
 public class SubmitIssue extends JPanel {
 
     JComboBox comboBox;
-    TextArea textArea = new TextArea();
+    JTextArea textArea = new JTextArea();
     JButton submitForm = new JButton("SUBMIT");
     JButton backBtn = new JButton("Back");
 
@@ -43,17 +43,27 @@ public class SubmitIssue extends JPanel {
         header.setForeground(Color.decode("#ffffff"));
         add(header);
 
-        JLabel description = new JLabel("What do you need help with?");
-        description.setBounds(360, 154, 240, 21);
+        JLabel description = new JLabel("What order do you need help with?");
+        description.setBounds(360, 154, 285, 21);
         description.setFont(new Font("Helvetica", Font.PLAIN, 18));
         description.setForeground(Color.decode("#ffffff"));
         add(description);
 
+        JLabel description2 = new JLabel("Please describe your specific issue.");
+        description2.setBounds(360, 215, 350, 21);
+        description2.setFont(new Font("Helvetica", Font.PLAIN, 18));
+        description2.setForeground(Color.decode("#ffffff"));
+        description2.setHorizontalAlignment(JLabel.LEFT);
+        description2.setVerticalAlignment(JLabel.BOTTOM);
+        add(description2);
+
         textArea.setBounds(360, 243, 459, 200);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
         add(textArea);
 
         comboBox = new JComboBox();
-        comboBox.setBounds(619, 154, 200, 21);
+        comboBox.setBounds(654, 154, 200, 21);
         add(comboBox);
 
         submitForm.setBounds(360, 473, 200, 50);
@@ -91,11 +101,11 @@ public class SubmitIssue extends JPanel {
         this.comboBox = comboBox;
     }
 
-    public TextArea getTextArea() {
+    public JTextArea getTextArea() {
         return textArea;
     }
 
-    public void setTextArea(TextArea textArea) {
+    public void setTextArea(JTextArea textArea) {
         this.textArea = textArea;
     }
 
@@ -111,15 +121,15 @@ public class SubmitIssue extends JPanel {
         comboBox.removeAllItems();
         Integer custID = ListCntl.getCurrentCustomer().getCustID();
         ArrayList<IssueOrder> temp = new ArrayList<>();
-        System.out.println("custID:" + custID);
+        //System.out.println("custID:" + custID);
         for (IssueOrder order : MainData.getIssueOrders()) {
-            System.out.println("current order's custID: " + order.getCustID());
+            //System.out.println("current order's custID: " + order.getCustID());
             if (order.getCustID() == custID) {
-                System.out.println("match!");
+                //System.out.println("match!");
                 temp.add(order);
             }
         }
-        System.out.println(temp);
+        //System.out.println(temp);
         for (IssueOrder order : temp) {
             comboBox.addItem(order);
         }

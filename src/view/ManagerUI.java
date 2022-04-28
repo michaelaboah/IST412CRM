@@ -11,8 +11,8 @@ public class ManagerUI extends JPanel {
     JLabel id = new JLabel("ID: No Tickets Avaiable");
     JLabel fullName = new JLabel("No Tickets Avaiable");
     JLabel dates = new JLabel("No Tickets Avaiable");
-    TextArea getIssueTxt = new TextArea("No Tickets Avaiable");
-    TextArea submitResponse = new TextArea();
+    JTextArea getIssueTxt = new JTextArea("No Tickets Avaiable");
+    JTextArea submitResponse = new JTextArea();
     JButton resolveIssue = new JButton("Resolve Issue");
     JButton prevBtn = new JButton("<");
     JButton nextBtn = new JButton(">");
@@ -53,18 +53,18 @@ public class ManagerUI extends JPanel {
         custNameTxt.setForeground(Color.white);
         add(custNameTxt);
 
-        fullName.setBounds(476, 78, 100, 19);
+        fullName.setBounds(476, 78, 200, 19);
         fullName.setFont(new Font("Helvetica", Font.PLAIN, 16));
         fullName.setForeground(Color.white );
         add(fullName);
 
         JLabel dateIssueTxt = new JLabel("Date Issue: ");
-        dateIssueTxt.setBounds(630, 77, 116, 21);
+        dateIssueTxt.setBounds(682, 77, 116, 21);
         dateIssueTxt.setFont(new Font("Helvetica", Font.BOLD, 18));
         dateIssueTxt.setForeground(Color.white);
         add(dateIssueTxt);
 
-        dates.setBounds(738, 79, 150, 16);
+        dates.setBounds(790, 79, 150, 16);
         dates.setFont(new Font("Helvetica", Font.PLAIN, 16));
         dates.setForeground(Color.white);
         add(dates);
@@ -77,6 +77,8 @@ public class ManagerUI extends JPanel {
 
         getIssueTxt.setBounds(321, 144, 538, 150);
         getIssueTxt.setFocusable(false);
+        getIssueTxt.setLineWrap(true);
+        getIssueTxt.setWrapStyleWord(true);
         add(getIssueTxt);
 
 
@@ -88,6 +90,8 @@ public class ManagerUI extends JPanel {
 
         submitResponse.setBounds(321, 350, 538, 150);
         submitResponse.setFocusable(true);
+        submitResponse.setLineWrap(true);
+        submitResponse.setWrapStyleWord(true);
         add(submitResponse);
 
         resolveIssue.setBounds(480, 530, 230, 55);
@@ -158,7 +162,7 @@ public class ManagerUI extends JPanel {
         this.dates.setText(dates);
     }
 
-    public TextArea getGetIssueTxt() {
+    public JTextArea getGetIssueTxt() {
         return getIssueTxt;
     }
 
@@ -166,11 +170,11 @@ public class ManagerUI extends JPanel {
         this.getIssueTxt.setText(getIssueTxt);
     }
 
-    public TextArea getSubmitResponse() {
+    public JTextArea getSubmitResponse() {
         return submitResponse;
     }
 
-    public void setSubmitResponse(TextArea submitResponse) {
+    public void setSubmitResponse(JTextArea submitResponse) {
         this.submitResponse = submitResponse;
     }
 

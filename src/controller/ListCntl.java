@@ -5,6 +5,9 @@ import model.*;
 import utility.MainData;
 import view.*;
 
+import java.rmi.registry.LocateRegistry;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -17,6 +20,7 @@ import java.util.ArrayList;
  */
 public class ListCntl {
 
+    private static final java.time.Duration Duration = null;
     private LoginUI theLoginUI;
     private CustomerUI theCustomerUI;
     private SubmitIssue submitIssue;
@@ -27,6 +31,9 @@ public class ListCntl {
     private Integer currentTicket;
     private Integer currentRecord;
     private ArrayList<IssueTicket> unresolvedTickets;
+    private ArrayList<IssueTicket> filteredTickets;
+    private LocalDateTime lastSubmission;
+    Duration duration;
 
     // Uncomment once Manager front/back end is fully developed
     // private ManagerUI theManagerUI;
@@ -59,8 +66,12 @@ public class ListCntl {
      */
     public void submitComplaint() {
         theCustomerUI.getSubmit_complaint().addActionListener(e -> {
+            buildOrderSelection();
+            if (submitIssue.getComboBox().getItemCount() == 0) {
+                theCustomerUI.displayNoOrders();
+                return;
+            }
             theCustomerUI.setVisible(false);
-            submitIssue.setComboBox();
             submitIssue.setVisible(true);
         });
 
@@ -70,26 +81,55 @@ public class ListCntl {
         });
 
         submitIssue.getSubmitForm().addActionListener(e -> {
-
-            if (submitIssue.getTextArea().getText().isEmpty() && submitIssue.getComboBox().getSelectedItem().equals(submitIssue.getComboBox().getItemAt(0))) {
-                
-                submitIssue.displayEmptyForm();
-            } else {
-                IssueOrder selectedOrder = (IssueOrder) submitIssue.getComboBox().getSelectedItem();
+            if(checkSpam()) {
+                return;
+            }
+            if(submitTicket()) {
                 submitIssue.displayConfirmation();
                 submitIssue.setVisible(false);
-                MainData.getIssueTickets().add(new IssueTicket(submitIssue.getTextArea().getText(), 
-                    MainData.getIssueTickets().size() + 1, LocalDateTime.now(), false, selectedOrder.getOrderID(), 
-                    "", currentCustomer.getCustID()));
-                SavedData.saveAll("SaveMore.json");
-                
                 submitIssue.getTextArea().setText("");
                 submitIssue.getComboBox().setSelectedIndex(0);
-
                 theCustomerUI.setVisible(true);
-                
+                SavedData.saveAll("SaveMore.json");
+            }
+            else {
+                submitIssue.displayEmptyForm();
             }
         });
+    }
+
+    public void buildOrderSelection() {
+        submitIssue.setComboBox();
+        if (submitIssue.getComboBox().getItemCount() == 0) {
+            submitIssue.getSubmitForm().setEnabled(false);
+        }
+    }
+
+    public Boolean submitTicket() {
+        if (submitIssue.getTextArea().getText().isEmpty() && submitIssue.getComboBox().getSelectedItem().equals(submitIssue.getComboBox().getItemAt(0))) {
+            return false;
+        } 
+
+        IssueOrder selectedOrder = (IssueOrder) submitIssue.getComboBox().getSelectedItem();
+        MainData.getIssueTickets().add(new IssueTicket(submitIssue.getTextArea().getText(), 
+            MainData.getIssueTickets().size() + 1, LocalDateTime.now(), false, selectedOrder.getOrderID(), 
+            "", currentCustomer.getCustID()));
+        
+        lastSubmission = LocalDateTime.now();
+
+        return true;
+    }
+
+    public Boolean checkSpam() {
+        if (lastSubmission != null) {
+            duration = java.time.Duration.between(lastSubmission, LocalDateTime.now());
+            if (duration.getSeconds() < 5) {
+                System.out.println("Spam detected. Blocking all subsequent submissions. Until 5 seconds elapsed.");
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -97,22 +137,13 @@ public class ListCntl {
      * 
      */
     public void previousTickets() {
-        ArrayList<IssueTicket> filteredTickets = new ArrayList<>();
-
         theCustomerUI.getViewPreviousTickets().addActionListener(e -> {
-            if(filteredTickets.size() > 0) {
-                filteredTickets.clear();
-            }
-            for (IssueTicket ticket : MainData.getIssueTickets()) {
-                if (ticket.getCustID() == currentCustomer.getCustID()) {
-                    filteredTickets.add(ticket);
-                }
-            }
+            filteredTickets = filterIssueTickets();
             //if user has no tickets, return to main menu
             if (filteredTickets.size() == 0) {
+                theCustomerUI.displayEmptyList();
                 return;
             }
-
             theCustomerUI.setVisible(false);
             previousTickets.setVisible(true);
             parsePreviousTicket(currentTicket, filteredTickets);
@@ -141,6 +172,19 @@ public class ListCntl {
         });
     }
 
+    public ArrayList<IssueTicket> filterIssueTickets() {
+        ArrayList<IssueTicket> filteredTickets = new ArrayList<>();
+        if(filteredTickets.size() > 0) {
+            filteredTickets.clear();
+        }
+        for (IssueTicket ticket : MainData.getIssueTickets()) {
+            if (ticket.getCustID() == currentCustomer.getCustID()) {
+                filteredTickets.add(ticket);
+            }
+        }
+        return filteredTickets;
+    }
+
     /**
      * Sets the current viewable ticket in ticket history based on index in list
      * 
@@ -148,9 +192,10 @@ public class ListCntl {
      * @param filteredTickets   arraylist of all issuetickets that the current customer has made
      */
     public void parsePreviousTicket(int currentTicket, ArrayList<IssueTicket> filteredTickets) {
+        LocalDateTime date = filteredTickets.get(currentTicket).getDateTime();
         previousTickets.setId(filteredTickets.get(currentTicket).getReportID().toString());
-        previousTickets.setType(filteredTickets.get(currentTicket).getOrderID().toString());
-        previousTickets.setDates(filteredTickets.get(currentTicket).getDateTime().toString());
+        previousTickets.setType(filteredTickets.get(currentTicket).getOrderID().toString()); 
+        previousTickets.setDates(date.getMonthValue() + "/" + date.getDayOfMonth() + "/" + date.getYear());
         previousTickets.setIssueTxt(filteredTickets.get(currentTicket).getDescription());
     }
 
@@ -162,64 +207,92 @@ public class ListCntl {
         theLoginUI.getLogInButton().addActionListener(e -> {
             String username = theLoginUI.getUserNameField().getText();
             String password = String.valueOf(theLoginUI.getPasswordField().getPassword());
-            
-            for(int i = 0; i < MainData.getCustomers().size(); i++) {
-                if (username.equals(MainData.getCustomers().get(i).getUsername()) && password.equals(MainData.getCustomers().get(i).getPassword()) && theLoginUI.getCustomer().isSelected()) {
-                    currentCustomer = MainData.getCustomers().get(i);
-                    theLoginUI.setVisible(false);
-                    theCustomerUI.setVisible(true);
-                    theCustomerUI.getUserName().setText(MainData.getCustomers().get(i).getFirstName() + " " + MainData.getCustomers().get(i).getLastName());
-                    return;
-                }
+            // loginUser(username, password);
+            if (!theLoginUI.getCustomer().isSelected() && !theLoginUI.getManager().isSelected()) {
+                theLoginUI.displayNoTypeSpecified();
+                return;
             }
-            for(int i = 0; i < MainData.getManagers().size(); i++) {
-                System.out.println("Current username: " + MainData.getManagers().get(i).getUsername());
-                System.out.println("Current password: " + MainData.getManagers().get(i).getPassword());
-                if (username.equals(MainData.getManagers().get(i).getUsername()) && password.equals(MainData.getManagers().get(i).getPassword()) && theLoginUI.getManager().isSelected()) {
-                    unresolvedTickets = generateUnresolvedList();
-                    currentManager = MainData.getManagers().get(i);
-                    theLoginUI.setVisible(false);
-                    managerUI.setVisible(true);
-                    currentRecord = 0;
-
-                    //Lock interactions if no tickets exist
-                    if(unresolvedTickets.isEmpty()) {
-                        managerUI.getNextBtn().setEnabled(false);
-                        managerUI.getPrevBtn().setEnabled(false);
-                        managerUI.getResolveIssue().setEnabled(false);
-                        return;
-                    }
-                
-                    parseManagerUI(currentRecord);
-                    return;
-                }
+            if (!loginUser(username, password)) {
+                theLoginUI.displayIncorrectCredentials();
             }
-            theLoginUI.displayIncorrectCredentials();
         });
 
         theCustomerUI.getLogout().addActionListener(e -> {
-            int results = theCustomerUI.displayConfirmLogout();
-            if (results == 0) {
-                theCustomerUI.setVisible(false);
-                theLoginUI.setVisible(true);
-                theLoginUI.getUserNameField().setText("");
-                theLoginUI.getPasswordField().setText("");
-                theLoginUI.getBg().clearSelection();
-                currentCustomer = null;
-            }
+            logoutCustomer();
         });
 
         managerUI.getLogout().addActionListener(e -> {
-            int results = theCustomerUI.displayConfirmLogout();
-            if (results == 0) {
-                managerUI.setVisible(false);
-                theLoginUI.setVisible(true);
-                theLoginUI.getUserNameField().setText("");
-                theLoginUI.getPasswordField().setText("");
-                theLoginUI.getBg().clearSelection();
-                currentManager = null;
-            }
+            logoutManager();
         });
+    }
+
+    public Boolean loginUser(String username, String password) {
+        for(int i = 0; i < MainData.getCustomers().size(); i++) {
+            if (username.equals(MainData.getCustomers().get(i).getUsername()) && password.equals(MainData.getCustomers().get(i).getPassword()) && theLoginUI.getCustomer().isSelected()) {
+                currentCustomer = MainData.getCustomers().get(i);
+                theLoginUI.setVisible(false);
+                theCustomerUI.setVisible(true);
+                theCustomerUI.getUserName().setText("Welcome back, " + MainData.getCustomers().get(i).getFirstName() + " " + MainData.getCustomers().get(i).getLastName());
+                return true;
+            }
+        }
+        for(int i = 0; i < MainData.getManagers().size(); i++) {
+            // System.out.println("Current username: " + MainData.getManagers().get(i).getUsername());
+            // System.out.println("Current password: " + MainData.getManagers().get(i).getPassword());
+            if (username.equals(MainData.getManagers().get(i).getUsername()) && password.equals(MainData.getManagers().get(i).getPassword()) && theLoginUI.getManager().isSelected()) {
+                // unresolvedTickets = new ArrayList<>(); // For testing purposes only
+                unresolvedTickets = generateUnresolvedList();
+                currentManager = MainData.getManagers().get(i);
+                theLoginUI.setVisible(false);
+                managerUI.setVisible(true);
+                currentRecord = 0;
+
+                //Lock interactions if no tickets exist
+                if(emptyListCheck()) {
+                    parseManagerUI(currentRecord);
+                    return true;
+                }
+            
+                parseManagerUI(currentRecord);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean emptyListCheck() {
+        if(unresolvedTickets.isEmpty()) {
+            managerUI.getNextBtn().setEnabled(false);
+            managerUI.getPrevBtn().setEnabled(false);
+            managerUI.getResolveIssue().setEnabled(false);
+            managerUI.getSubmitResponse().setEditable(false);
+            return true;
+        }
+        return false;
+    }
+
+    public void logoutCustomer() {
+        int results = theCustomerUI.displayConfirmLogout();
+        if (results == 0) {
+            theCustomerUI.setVisible(false);
+            theLoginUI.setVisible(true);
+            theLoginUI.getUserNameField().setText("");
+            theLoginUI.getPasswordField().setText("");
+            theLoginUI.getBg().clearSelection();
+            currentCustomer = null;
+        }
+    }
+
+    public void logoutManager() {
+        int results = theCustomerUI.displayConfirmLogout();
+        if (results == 0) {
+            managerUI.setVisible(false);
+            theLoginUI.setVisible(true);
+            theLoginUI.getUserNameField().setText("");
+            theLoginUI.getPasswordField().setText("");
+            theLoginUI.getBg().clearSelection();
+            currentManager = null;
+        }
     }
     
     public static Customer getCurrentCustomer() {
@@ -232,53 +305,76 @@ public class ListCntl {
 
     public void manager() {
         managerUI.getNextBtn().addActionListener(e -> {
-            System.out.println("Next clicked");
-            if(currentRecord < unresolvedTickets.size() -1 ) {
-                currentRecord++;
-            }
-            else {
-                currentRecord = 0;
-            }
-            System.out.println("Current Record: " + currentRecord);
-            parseManagerUI(currentRecord);
+            traverseForwardManager();
         });
 
         managerUI.getPrevBtn().addActionListener(e -> {
-            System.out.println("Prev clicked");
-            if(currentRecord > 0) {
-                currentRecord --;
-            }
-            else {
-                currentRecord = unresolvedTickets.size() - 1;
-            }
-            System.out.println("Current Record: " + currentRecord);
-            parseManagerUI(currentRecord);
+            traverseBackwardManager();
         });
 
         managerUI.getResolveIssue().addActionListener(e -> {
-            String resolution = managerUI.getSubmitResponse().getText();
-            if(resolution.equals("")) {
+            
+            if(!resolveIssue()) {
                 managerUI.displayEmptyForm();
-                return;
             }
-            IssueTicket currentTicket = unresolvedTickets.get(currentRecord);
-            currentTicket.setIsResolved(true);
-            currentTicket.setResponse(resolution);
-            unresolvedTickets.remove(currentTicket);
-            if(currentRecord > unresolvedTickets.size() -1 ) {
-                currentRecord = 0;
+            else {
+                managerUI.displayConfirmation();
+                SavedData.saveAll("SaveMore.json");
             }
-            System.out.println("Current Record: " + currentRecord);
-            parseManagerUI(currentRecord);
-            managerUI.getSubmitResponse().setText("");
-            SavedData.saveAll("SaveMore.json");
-            managerUI.displayConfirmation();
         });
+    }
+
+    public Boolean resolveIssue() {
+        String resolution = managerUI.getSubmitResponse().getText();
+        if(resolution.equals("")) {
+            return false;
+        }
+        IssueTicket currentTicket = unresolvedTickets.get(currentRecord);
+        currentTicket.setIsResolved(true);
+        currentTicket.setResponse(resolution);
+        currentTicket.setDescription(currentTicket.getDescription() + "\n\nResponse: " + resolution);
+        unresolvedTickets.remove(currentTicket);
+        if(currentRecord > unresolvedTickets.size() -1 ) {
+            currentRecord = 0;
+        }
+        System.out.println("Current Record: " + currentRecord);
+        parseManagerUI(currentRecord);
+        managerUI.getSubmitResponse().setText("");
+        return true;
+    }
+    
+    public void traverseForwardManager() {
+        System.out.println("Next clicked");
+        if(currentRecord < unresolvedTickets.size() -1 ) {
+            currentRecord++;
+        }
+        else {
+            currentRecord = 0;
+        }
+        System.out.println("Current Record: " + currentRecord);
+        parseManagerUI(currentRecord);
+    }
+
+    public void traverseBackwardManager() {
+        System.out.println("Prev clicked");
+        if(currentRecord > 0) {
+            currentRecord --;
+        }
+        else {
+            currentRecord = unresolvedTickets.size() - 1;
+        }
+        System.out.println("Current Record: " + currentRecord);
+        parseManagerUI(currentRecord);
     }
 
     public void parseManagerUI(int currentRecord) {
         if (unresolvedTickets.size() == 0) {
             System.out.println("There are no issue ticket records to review.");
+            managerUI.setId("ID: N/A");
+            managerUI.setFullName("N/A");
+            managerUI.setDates("N/A");
+            managerUI.setGetIssueTxt("N/A");
+            managerUI.getSubmitResponse().setText("No tickets to respond to.");
             return;
         }
         IssueTicket currentTicket = unresolvedTickets.get(currentRecord);
@@ -289,8 +385,9 @@ public class ListCntl {
                 custOwner = cust;
             }
         }
-        managerUI.setFullName(custOwner.getFirstName() + custOwner.getLastName());
-        managerUI.setDates(currentTicket.getDateTime().toString());
+        LocalDateTime date = currentTicket.getDateTime();
+        managerUI.setFullName(custOwner.getFirstName() + " " + custOwner.getLastName());
+        managerUI.setDates(date.getMonthValue() + "/" + date.getDayOfMonth() + "/" + date.getYear());
         managerUI.setGetIssueTxt(currentTicket.getDescription());
     }
 
@@ -303,6 +400,82 @@ public class ListCntl {
         }
 
         return unresolvedTickets;
+    }
+
+    public LoginUI getTheLoginUI() {
+        return theLoginUI;
+    }
+
+    public void setTheLoginUI(LoginUI theLoginUI) {
+        this.theLoginUI = theLoginUI;
+    }
+
+    public CustomerUI getTheCustomerUI() {
+        return theCustomerUI;
+    }
+
+    public void setTheCustomerUI(CustomerUI theCustomerUI) {
+        this.theCustomerUI = theCustomerUI;
+    }
+
+    public ManagerUI getManagerUI() {
+        return managerUI;
+    }
+
+    public void setManagerUI(ManagerUI managerUI) {
+        this.managerUI = managerUI;
+    }
+
+    public SubmitIssue getSubmitIssue() {
+        return submitIssue;
+    }
+
+    public void setSubmitIssue(SubmitIssue submitIssue) {
+        this.submitIssue = submitIssue;
+    }
+
+    public ViewPreviousTickets getPreviousTickets() {
+        return previousTickets;
+    }
+
+    public void setPreviousTickets(ViewPreviousTickets previousTickets) {
+        this.previousTickets = previousTickets;
+    }
+
+    public static void setCurrentCustomer(Customer currentCustomer) {
+        ListCntl.currentCustomer = currentCustomer;
+    }
+
+    public static void setCurrentManager(Manager currentManager) {
+        ListCntl.currentManager = currentManager;
+    }
+
+    public Integer getCurrentTicket() {
+        return currentTicket;
+    }
+
+    public void setCurrentTicket(Integer currentTicket) {
+        this.currentTicket = currentTicket;
+    }
+
+    public Integer getCurrentRecord() {
+        return currentRecord;
+    }
+
+    public void setCurrentRecord(Integer currentRecord) {
+        this.currentRecord = currentRecord;
+    }
+
+    public ArrayList<IssueTicket> getUnresolvedTickets() {
+        return unresolvedTickets;
+    }
+
+    public void setUnresolvedTickets(ArrayList<IssueTicket> unresolvedTickets) {
+        this.unresolvedTickets = unresolvedTickets;
+    }
+
+    public void saveData() {
+        SavedData.saveAll("SaveMore.json");
     }
 
 }
